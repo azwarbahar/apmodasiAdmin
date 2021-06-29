@@ -32,7 +32,7 @@ require '../template/header/header.php';
                 <div class="callout callout-danger">
                   <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> -->
                   <h5><i class="icon fas fa-info"></i> Welcome Back!</h5>
-                  Selamat Datang <b>Admin</b>
+                  Selamat Datang <b><?= $nama_header ?></b>
                 </div>
 
         <!-- Small boxes (Stat box) -->
@@ -114,7 +114,6 @@ require '../template/header/header.php';
         </div>
         <br>
         <!-- /.row (main row) -->
-        
         <div class="row">
           <div class="col-md-6">
             <div class="card card-danger">

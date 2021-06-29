@@ -1,6 +1,6 @@
 <?php
 require_once '../template/header/header.php';
-$akun_kelurahan = mysqli_query($conn, "SELECT * FROM tb_akun_kelurahan");
+$admin = mysqli_query($conn, "SELECT * FROM tb_admin");
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -31,8 +31,69 @@ $akun_kelurahan = mysqli_query($conn, "SELECT * FROM tb_akun_kelurahan");
 
             <div class="card">
               <div class="card-header">
-                <a href="tambah.php" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Admin</a>
+                <button data-toggle="modal" data-target="#modal-lg" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Admin</a>
               </div>
+
+
+                <!-- Modal Tambah AREA -->
+                <div class="modal fade" id="modal-lg">
+                  <div class="modal-dialog modal-lg">
+                    <form method="POST" action="controller.php" enctype="multipart/form-data">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Tambah Admin</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                        <div class="form-group">
+                          <label for="inputName">Nama Lengkap</label>
+                          <input type="text" id="nama_admin" name="nama_admin"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Email</label>
+                          <input type="email" id="email_admin" name="email_admin"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Username</label>
+                          <input type="text" id="username_admin" name="username_admin"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Password</label>
+                          <input type="password" id="password_admin" name="password_admin"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="customFile">Foto</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="foto_admin" name="foto_admin" onchange="readURL(this);" >
+                            <label class="custom-file-label" for="foto_admin">Choose file</label>
+                          </div>
+                        </div>
+                        <br>
+                        <img style="max-width:180px; max-height:180px;" id="blah" src="/apmodasi/assets/dist/img/default-150x150.png" alt="your image" />
+
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                          <button type="submit" name="submit_admin" class="btn btn-primary">Simpan</button>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
+
+
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -47,37 +108,111 @@ $akun_kelurahan = mysqli_query($conn, "SELECT * FROM tb_akun_kelurahan");
                   </tr>
                   </thead>
                   <tbody>
-                  <?php //$i = 1; foreach($akun_kelurahan as $dta) { ?>
+                  <?php $i = 1; foreach($admin as $dta) { ?>
                   <tr>
-                    <td style="text-align:center">1</td>
-                    <td style="text-align:center">Foto</td>
-                    <td>Nama Admin</td>
-                    <td>Email@gmail.com</td>
-                    <td style='text-align:center'><span class='badge bg-success'>Aktif</span>
+                    <td style="text-align:center"><?= $i ?></td>
+                    <td style="text-align: center">
+                      <a href="/apmodasi/assets/dist/img/admin/<?= $dta['foto_admin'] ?>" data-toggle="lightbox" data-title="Nama : <?= $dta['nama_admin'] ?>" data-gallery="gallery">
+                        <img src="/apmodasi/assets/dist/img/admin/<?= $dta['foto_admin'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
+                      </a>
+                    </td>
+                    <td><?= $dta['nama_admin'] ?></td>
+                    <td><?= $dta['email_admin'] ?></td>
+                    <td style='text-align:center'><span class='badge bg-success'><?= $dta['status_admin'] ?></span>
                     <td style="text-align:center">
                       <div class="btn-group btn-group-sm">
-                        <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <button data-toggle="modal" data-target="#modal-lg<?= $dta['id_admin'] ?>"  type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
+                        <button data-toggle="modal" data-target="#modal-danger<?= $dta['id_admin'] ?>" type="button"  class="btn btn-danger"><i class="fas fa-trash"></i></button>
                       </div>
                     </td>
                   </tr>
 
+                <!-- Modal EDIT ADMIN -->
+                <div class="modal fade" id="modal-lg<?= $dta['id_admin'] ?>">
+                  <div class="modal-dialog modal-lg">
+                    <form method="POST" action="controller.php" enctype="multipart/form-data">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Edit Admin</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                        <div class="form-group">
+                          <label for="inputName">Nama Lengkap</label>
+                          <input type="text" value="<?= $dta['nama_admin'] ?>" id="nama_admin" name="nama_admin"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Email</label>
+                          <input type="email" value="<?= $dta['email_admin'] ?>" id="email_admin" name="email_admin"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Username</label>
+                          <input type="text" value="<?= $dta['username_admin'] ?>" id="username_admin" name="username_admin"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Status Akun</label>
+                          <div class="col-sm-9">
+                            <select name="status_admin" id="status_admin" class="form-control">
+                            <?php
+                              if ($dta['status_admin']=="Active"){
+                                echo "<option selected='selected' value='Active'>Active</option>
+                                  <option value='Suspend'>Suspend</option>";
+                              } else{
+                                echo "<option value='Active'>Active</option>
+                                  <option selected='selected' value='Suspend'>Suspend</option>";
+                              }
+                            ?>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="customFile">Foto</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="foto_admin" name="foto_admin" onchange="readURL(this);" >
+                            <label class="custom-file-label" for="foto_admin">Choose file</label>
+                          </div>
+                        </div>
+                        <br>
+                        <img style="max-width:180px; max-height:180px;" id="blah" src="/apmodasi/assets/dist/img/admin/<?= $dta['foto_admin'] ?>" alt="your image" />
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <input type="hidden" value="<?= $dta['foto_admin'] ?>" name="foto_now">
+                          <input type="hidden" value="<?= $dta['id_admin'] ?>" name="id_admin">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                          <button type="submit" name="edit_admin" class="btn btn-primary">Simpan</button>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
       <!-- Modal Hapus -->
-      <div class="modal fade" tabindex="-1" id="modal-danger<?= $dta['id_akun_kelurahan'] ?>">
+      <div class="modal fade" id="modal-danger<?= $dta['id_admin'] ?>">
         <div class="modal-dialog">
           <div class="modal-content bg-danger">
             <div class="modal-header">
-              <h4 class="modal-title">Hapus Akun Admin Kelurahan</h4>
+              <h4 class="modal-title">Hapus Akun Admin?</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <p>Yakin Ingin Menghapus Akun Admin Kelurahan</p>
+              <p>Yakin Ingin Menghapus Akun Admin</p>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-              <a href="controller.php?hapus_admin=true&id_admin=<?= $dta['id_akun_kelurahan'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
+              <a href="controller.php?hapus_admin=true&id_admin=<?= $dta['id_admin'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -86,7 +221,7 @@ $akun_kelurahan = mysqli_query($conn, "SELECT * FROM tb_akun_kelurahan");
       </div>
       <!-- /.modal -->
 
-                  <?php //$i = $i + 1; } ?>
+                  <?php $i = $i + 1; } ?>
                   </tbody>
 
                 </table>
