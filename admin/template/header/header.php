@@ -47,7 +47,7 @@ require('../../koneksi.php');
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-blue navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-info navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -107,7 +107,7 @@ require('../../koneksi.php');
 <!-- /.modal -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-blue elevation-5">
+  <aside class="main-sidebar sidebar-dark-info elevation-5">
     <!-- Brand Logo -->
     <a href="/apmodasi/kecamatan/admin/index.php" class="brand-link">
       <img src="/apmodasi/assets/dist/img/logo_apmodasi.png" alt="Logo Kabupaten Soppeng" class="brand-image img-circle elevation-3"
@@ -135,7 +135,7 @@ require('../../koneksi.php');
                with font-awesome or any other icon font library -->
 
           <li class="nav-item has-treeview menu-open">
-            <a href="/apmodasi/kecamatan/admin/" class="nav-link active">
+            <a href="/apmodasi/admin/" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -149,7 +149,7 @@ require('../../koneksi.php');
           <li class="nav-header">Master Data</li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/apmodasi/admin/bayi/data.php" class="nav-link">
               <i class="nav-icon fa fa-user-plus"></i>
               <p>
                 Data Bayi
@@ -158,7 +158,7 @@ require('../../koneksi.php');
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/apmodasi/admin/bunda/data.php" class="nav-link">
               <i class="nav-icon fa fa-user-plus"></i>
               <p>
                 Data Bunda
@@ -167,7 +167,7 @@ require('../../koneksi.php');
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/apmodasi/admin/kader/data.php" class="nav-link">
               <i class="nav-icon fa fa-user-plus"></i>
               <p>
                 Data Kader
@@ -185,7 +185,7 @@ require('../../koneksi.php');
           </li>
 
           <li class="nav-item">
-            <a href="/apmodasi/kecamatan/admin/user/data.php" class="nav-link">
+            <a href="/apmodasi/admin/admin/data.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>
                 Admin

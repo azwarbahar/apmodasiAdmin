@@ -10,12 +10,12 @@ $akun_kelurahan = mysqli_query($conn, "SELECT * FROM tb_akun_kelurahan");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Admin Kelurahan</h1>
+            <h1 class="m-0 text-dark">Admin</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/pelaporan-sampah/kecamatan/admin/">Home</a></li>
-              <li class="breadcrumb-item active">Admin Kelurahan</li>
+              <li class="breadcrumb-item"><a href="/apmodasi/admin/">Home</a></li>
+              <li class="breadcrumb-item active">Admin</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,26 +31,7 @@ $akun_kelurahan = mysqli_query($conn, "SELECT * FROM tb_akun_kelurahan");
 
             <div class="card">
               <div class="card-header">
-                <label for="inputName">Kelurahan</label>
-                <div class="row">
-                  <div class="col-4">
-                    <select class="form-control select2" style="width: 100%;" name="kelurahan_masyarakat" id="kelurahan_masyarakat">
-                      <option selected="selected" value="-">- Semua -</option>
-                      <option value="Balang Baru">Balang Baru</option>
-                      <option value="Barombong">Barombong</option>
-                      <option value="Bongaya">Bongaya</option>
-                      <option value="Bonto Duri">Bonto Duri</option>
-                      <option value="Jongaya">Jongaya</option>
-                      <option value="Maccini Sombala">Maccini Sombala</option>
-                      <option value="Mangasa">Mangasa</option>
-                      <option value="Mannuruki">Mannuruki</option>
-                      <option value="Pa'baeng-Baeng">Pa'baeng-Baeng</option>
-                      <option value="Parang Tambung">Parang Tambung</option>
-                      <option value="Tanjung Merdeka">Tanjung Merdeka</option>
-                    </select>
-                  </div>
-                </div>
-                <!-- <a href="tambah.php" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Admin</a> -->
+                <a href="tambah.php" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Admin</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -60,24 +41,25 @@ $akun_kelurahan = mysqli_query($conn, "SELECT * FROM tb_akun_kelurahan");
                     <th>No</th>
                     <th>Foto</th>
                     <th>Nama</th>
-                    <th>Kelurahan</th>
-                    <th>Satus Akun</th>
+                    <th>Email</th>
+                    <th>Satus</th>
+                    <th></th>
                   </tr>
                   </thead>
                   <tbody>
-                  <?php $i = 1; foreach($akun_kelurahan as $dta) { ?>
+                  <?php //$i = 1; foreach($akun_kelurahan as $dta) { ?>
                   <tr>
-                    <td style="text-align:center"><?= $i ?></td>
-                    <td style="text-align:center"><img src="/pelaporan-sampah/kelurahan/admin/user/foto/<?php echo $dta['foto_akun_kelurahan'] ?>" alt="" border=3 height=60 width=60></img></td>
-                    <td><?= $dta['nama_akun_kelurahan'] ?></td>
-                    <td><?= $dta['kelurahan_akun_kelurahan'] ?></td>
-                    <?php
-                      if ($dta['status_akun_kelurahan'] == "Aktif"){
-                        echo "<td style='text-align:center'><span class='badge bg-success'>Aktif</span></td>";
-                      } else if ($dta['status_akun_kelurahan'] == "Non Aktif"){
-                        echo "<td style='text-align:center'><span class='badge bg-danger'>Non Aktif</span></td>";
-                      }
-                    ?>
+                    <td style="text-align:center">1</td>
+                    <td style="text-align:center">Foto</td>
+                    <td>Nama Admin</td>
+                    <td>Email@gmail.com</td>
+                    <td style='text-align:center'><span class='badge bg-success'>Aktif</span>
+                    <td style="text-align:center">
+                      <div class="btn-group btn-group-sm">
+                        <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </td>
                   </tr>
 
       <!-- Modal Hapus -->
@@ -104,7 +86,7 @@ $akun_kelurahan = mysqli_query($conn, "SELECT * FROM tb_akun_kelurahan");
       </div>
       <!-- /.modal -->
 
-                  <?php $i = $i + 1; } ?>
+                  <?php //$i = $i + 1; } ?>
                   </tbody>
 
                 </table>
