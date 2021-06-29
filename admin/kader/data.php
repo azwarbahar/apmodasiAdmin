@@ -62,8 +62,8 @@ $masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th  style="text-align:center">NIP</th>
                     <th>Foto</th>
+                    <th>NIP</th>
                     <th>Nama</th>
                     <th>Kontak</th>
                     <th>Status</th>
@@ -72,12 +72,16 @@ $masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
                   </thead>
                   <tbody>
                   <tr>
+                    <td style="text-align: center">
+                      <a href="/apmodasi/assets/dist/img/kader/foto_default.png" data-toggle="lightbox" data-title="Nama : Nama Kader" data-gallery="gallery">
+                        <img src="/apmodasi/assets/dist/img/kader/foto_default.png" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
+                      </a>
+                    </td>
                     <td style="text-align:center">4567898765434567</td>
-                    <td>Foto Bunda</td>
                     <td>Nama Bunda</td>
                     <td>Kontak</td>
                     <td style="text-align:center">
-                    <span class="badge badge-info">3 Orang</span>
+                    <span class="badge badge-info">Active</span>
                     </td>
                     <td style="text-align:center; width: 20px;">
                       <div class="btn-group">

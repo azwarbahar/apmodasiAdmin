@@ -1,13 +1,13 @@
 <?php
 require('../../koneksi.php');
 
-// if (!isset($_SESSION['login_admin_kecamatan'])) {
-//   header("location: ../../login.php");
-// }
-// $get_id_session = $_SESSION['get_id_kecamatan'];
-// $query_header_akun = mysqli_query($conn, "SELECT * FROM tb_akun_kecamatan WHERE id_akun_kecamatan = '$get_id_session'");
-// $get_data_akun = mysqli_fetch_assoc($query_header_akun);
-// $nama_header = $get_data_akun['nama_akun_kecamatan'];
+if (!isset($_SESSION['login_admin'])) {
+  header("location: ../../login.php");
+}
+$get_id_session = $_SESSION['get_id'];
+$query_header_admin = mysqli_query($conn, "SELECT * FROM tb_admin WHERE id_admin = '$get_id_session'");
+$get_data_admin = mysqli_fetch_assoc($query_header_admin);
+$nama_header = $get_data_admin['nama_admin'];
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +15,8 @@ require('../../koneksi.php');
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Tamalate | Pelaporan Sampah</title>
-  <link rel="icon" href="/apmodasi/assets/dist/img/AdminLTELogo.png">
+  <title>Apmodasi</title>
+  <link rel="icon" href="/apmodasi/assets/dist/img/logo_apmodasi.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -54,7 +54,7 @@ require('../../koneksi.php');
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/apmodasi/kecamatan/admin/index.php" class="nav-link">Home</a>
+        <a href="/apmodasi/admin/index.php" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -97,7 +97,7 @@ require('../../koneksi.php');
     </div>
     <div class="modal-footer justify-content-between">
       <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Batal</button>
-      <a href="/apmodasi/kecamatan/logout.php?logout=true&for=login_admin_kecamatan" type="button" class="btn btn-outline-dark">Keluar</a>
+      <a href="/apmodasi/logout.php?logout=true&for=login_admin" type="button" class="btn btn-outline-dark">Keluar</a>
     </div>
   </div>
   <!-- /.modal-content -->
@@ -109,7 +109,7 @@ require('../../koneksi.php');
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-info elevation-5">
     <!-- Brand Logo -->
-    <a href="/apmodasi/kecamatan/admin/index.php" class="brand-link">
+    <a href="/apmodasi/admin/index.php" class="brand-link">
       <img src="/apmodasi/assets/dist/img/logo_apmodasi.png" alt="Logo Kabupaten Soppeng" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Apmodasi</span>
@@ -120,10 +120,10 @@ require('../../koneksi.php');
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/apmodasi/assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/apmodasi/assets/dist/img/admin/<?= $get_data_admin['foto_admin'] ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nama Admin</a>
+          <a href="#" class="d-block"><?= $nama_header ?></a>
           <a href="#"<i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

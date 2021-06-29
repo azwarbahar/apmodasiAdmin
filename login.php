@@ -1,12 +1,12 @@
 
 <?php
-// require '../koneksi.php';
+require 'koneksi.php';
 
-// if (isset($_COOKIE['login_admin_kecamatan'])) $_SESSION['login_admin_kecamatan'] = $_COOKIE['login_admin_kecamatan'];
+if (isset($_COOKIE['login_admin'])) $_SESSION['login_admin'] = $_COOKIE['login_admin'];
 
-// if (isset($_COOKIE['get_id_kecamatan'])) $_SESSION['get_id_kecamatan'] = $_COOKIE['get_id_kecamatan'];
+if (isset($_COOKIE['get_id'])) $_SESSION['get_id'] = $_COOKIE['get_id'];
 
-// if (isset($_SESSION['login_admin_kecamatan'])) header("location: admin/");
+if (isset($_SESSION['login_admin'])) header("location: admin/");
 
 $password = null;
 $username = null;
@@ -15,34 +15,34 @@ $err_pass = false;
 $err_stss = false;
 
 
-// if (isset($_POST['login'])) {
-//   $username = $_POST['username'];
-//   $password = $_POST['password'];
+if (isset($_POST['login'])) {
+  $username_admin = $_POST['username_admin'];
+  $password_admin = $_POST['password_admin'];
 
-//   $result = mysqli_query($conn, "SELECT * FROM tb_akun_kecamatan WHERE username_akun_kecamatan = '$username' AND status_akun_kecamatan = 'Aktif'");
-//   $get = mysqli_fetch_assoc($result);
+  $result = mysqli_query($conn, "SELECT * FROM tb_admin WHERE username_admin = '$username_admin' AND status_admin = 'Active'");
+  $get = mysqli_fetch_assoc($result);
 
-//   if ($get) {
-//     $get_password = $get['password_akun_kecamatan'];
-//     $get_id_kecamatan = $get['id_akun_kecamatan'];
-//     $status = $get['status_akun_kecamatan'];
+  if ($get) {
+    $get_password = $get['password_admin'];
+    $get_id = $get['id_admin'];
+    $status = $get['status_admin'];
 
-//     if (password_verify($password, $get_password)) {
-//       $_SESSION['get_id_kecamatan'] = $get_id_kecamatan;
-//       setcookie('get_id_kecamatan', $get_id_kecamatan, time()+172800);
+    if (password_verify($password_admin, $get_password)) {
+      $_SESSION['get_id'] = $get_id;
+      setcookie('get_id', $get_id, time()+172800);
 
-//         if ($status != 'Aktif') $err_stss = true;
-//         else {
-//           $_SESSION['login_admin_kecamatan'] = $get_password;
-//           if (isset($_POST['remember'])) {
-//             setcookie('login_admin_kecamatan', $get_password, time()+172800);
-//           }
-//           header("location: admin/");
-//           exit();
-//         }
-//     } else $err_pass = true;
-//   } else $err_user = true;
-// }
+        if ($status != 'Active') $err_stss = true;
+        else {
+          $_SESSION['login_admin'] = $get_password;
+          if (isset($_POST['remember'])) {
+            setcookie('login_admin', $get_password, time()+172800);
+          }
+          header("location: admin/");
+          exit();
+        }
+    } else $err_pass = true;
+  } else $err_user = true;
+}
 
 ?>
 
@@ -55,6 +55,7 @@ $err_stss = false;
   <link rel="icon" href="/pelaporan-sampah/assets/dist/img/AdminLTELogo.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
@@ -70,9 +71,7 @@ $err_stss = false;
 <body class="hold-transition login-page">
   
 <h4 style="text-align: center;">
-  WEBSITE ADMIN KECAMATAN </h4>
-<h4 style="text-align: center;">
-PELAPORAN SAMPAH KECAMATAN TAMALATE</h4>
+  WEBSITE ADMIN APMODASI</h4>
 <div class="login-box">
   <div class="login-logo">
   </div>
@@ -84,7 +83,7 @@ PELAPORAN SAMPAH KECAMATAN TAMALATE</h4>
 
       <form  method="POST" class="needs-validation">
         <div class="input-group mb-3">
-          <input id="username" type="text" class="form-control" name="username" tabindex="1" required autofocus value="">
+          <input id="username_admin" type="text" class="form-control" name="username_admin" tabindex="1" required autofocus value="">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -92,7 +91,7 @@ PELAPORAN SAMPAH KECAMATAN TAMALATE</h4>
           </div>
           </div>
           <div class="invalid-feedback">
-                        Masukkan username
+                        Masukkan username_admin
                       </div>
                       <?php
                       if ($err_user == true) { 
@@ -103,7 +102,7 @@ PELAPORAN SAMPAH KECAMATAN TAMALATE</h4>
                       <?php } ?>
 
         <div class="input-group mb-3">
-          <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+          <input id="password_admin" type="password" class="form-control" name="password_admin" tabindex="2" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -119,7 +118,7 @@ PELAPORAN SAMPAH KECAMATAN TAMALATE</h4>
 
         <?php if ($err_stss == true) { ?>
         <div class="text-danger">
-          Akun belum diverifikasi atau sedang dinonaktifkan
+          Akun belum diverifikasi atau sedang dinonActivekan
         </div>
         <?php } ?>
           <br><br>
@@ -134,7 +133,7 @@ PELAPORAN SAMPAH KECAMATAN TAMALATE</h4>
           </div> -->
           <!-- /.col -->
           <div class="col-4">
-            <a href="admin"  class="btn btn-primary btn-block" name="login" tabindex="4">Login</a>
+            <button href="admin" type="submit"  class="btn btn-primary btn-block" name="login" tabindex="4">Login</button>
             <!-- <a  href="submit" type="submit" class="btn btn-primary btn-block" name="login" tabindex="4">Login</a> -->
           </div>
           <!-- /.col -->

@@ -44,12 +44,12 @@ require '../template/header/header.php';
 
               <div class="info-box-content">
                 <?php
-                  $masyarakat_home = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
-                  $row_masyarakat_home = mysqli_num_rows($masyarakat_home);
-                  $row_masyarakat_home_final = $row_masyarakat_home;
+                  $bayi_home = mysqli_query($conn, "SELECT * FROM tb_bayi");
+                  $row_bayi_home = mysqli_num_rows($bayi_home);
+                  $row_bayi_home_final = $row_bayi_home;
                 ?>
-                <span class="info-box-text">Data Masyarakat</span>
-                <span class="info-box-number"><?= $row_masyarakat_home_final ?></span>
+                <span class="info-box-text">Data Bayi</span>
+                <span class="info-box-number"><?= $row_bayi_home_final ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -62,12 +62,12 @@ require '../template/header/header.php';
 
               <div class="info-box-content">
                 <?php
-                  $kendaraan_home = mysqli_query($conn, "SELECT * FROM tb_kendaraan");
-                  $row_kendaraan_home = mysqli_num_rows($kendaraan_home);
-                  $row_kendaraan_home_final = $row_kendaraan_home;
+                  $bunda_home = mysqli_query($conn, "SELECT * FROM tb_bunda");
+                  $row_bunda_home = mysqli_num_rows($bunda_home);
+                  $row_bunda_home_final = $row_bunda_home;
                 ?>
-                <span class="info-box-text">Jumlah Kendaraan</span>
-                <span class="info-box-number"><?= $row_kendaraan_home_final ?></span>
+                <span class="info-box-text">Data Bunda</span>
+                <span class="info-box-number"><?= $row_bunda_home_final ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -80,12 +80,12 @@ require '../template/header/header.php';
 
               <div class="info-box-content">
                 <?php
-                  $pekerja_home = mysqli_query($conn, "SELECT * FROM tb_pekerja");
-                  $row_pekerja_home = mysqli_num_rows($pekerja_home);
-                  $row_pekerja_home_final = $row_pekerja_home;
+                  $kader_home = mysqli_query($conn, "SELECT * FROM tb_kader");
+                  $row_kader_home = mysqli_num_rows($kader_home);
+                  $row_kader_home_final = $row_kader_home;
                 ?>
-                <span class="info-box-text">Data Petugas</span>
-                <span class="info-box-number"><?= $row_pekerja_home_final ?></span>
+                <span class="info-box-text">Data Kader</span>
+                <span class="info-box-number"><?= $row_kader_home_final ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -98,155 +98,23 @@ require '../template/header/header.php';
 
               <div class="info-box-content">
                 <?php
-                  $akun_kelurahan_home = mysqli_query($conn, "SELECT * FROM tb_akun_kelurahan");
-                  $row_akun_kelurahan_home = mysqli_num_rows($akun_kelurahan_home);
-                  $row_akun_kelurahan_home_final = $row_akun_kelurahan_home;
+                  $admin_home = mysqli_query($conn, "SELECT * FROM tb_admin");
+                  $row_admin_home = mysqli_num_rows($admin_home);
+                  $row_admin_home_final = $row_admin_home;
                 ?>
-                <span class="info-box-text">Admin Kelurahan</span>
-                <span class="info-box-number"><?= $row_akun_kelurahan_home_final ?></span>
+                <span class="info-box-text">Data Admin</span>
+                <span class="info-box-number"><?= $row_admin_home_final ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-          <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-              <span class="info-box-icon bg-success"><i class="fa fa-file"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Laporan Sampah</span>
-                <span class="info-box-number">20</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-              <span class="info-box-icon bg-danger"><i class="fa fa-file-excel"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Laporan Keluhan</span>
-                <span class="info-box-number">20</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          
-          <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-              <span class="info-box-icon bg-info"><i class="fa fa-image"></i></span>
-
-              <div class="info-box-content">
-                <?php
-                  $edukasi_home = mysqli_query($conn, "SELECT * FROM tb_edukasi");
-                  $row_edukasi_home = mysqli_num_rows($edukasi_home);
-                  $row_edukasi_home_final = $row_edukasi_home;
-                ?>
-                <span class="info-box-text">Konten Edukasi</span>
-                <span class="info-box-number"><?= $row_edukasi_home_final ?></span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box">
-              <span class="info-box-icon bg-warning"><i class="fa fa-newspaper"></i></span>
-
-              <div class="info-box-content">
-                <?php
-                  $berita_home = mysqli_query($conn, "SELECT * FROM tb_berita");
-                  $row_berita_home = mysqli_num_rows($berita_home);
-                  $row_berita_home_final = $row_berita_home;
-                ?>
-                <span class="info-box-text">Konten Berita</span>
-                <span class="info-box-number"><?= $row_berita_home_final ?></span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
           <!-- /.col -->
         </div>
         <br>
         <!-- /.row (main row) -->
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card card-success card-tabs">
-              <div class="card-header p-0 pt-1">
-                <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                  <li class="pt-2 px-3"><h3 class="card-title">Data Sampah</h3></li>
-                  <li class="nav-item">
-                    <a class="nav-link active" id="custom-tabs-two-grafik-tab" data-toggle="pill" href="#custom-tabs-two-grafik" role="tab" aria-controls="custom-tabs-two-grafik" aria-selected="true">Grafik</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-two-tabel-tab" data-toggle="pill" href="#custom-tabs-two-tabel" role="tab" aria-controls="custom-tabs-two-tabel" aria-selected="false">Tabel</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="card-body">
-                <div class="tab-content" id="custom-tabs-two-tabContent">
-                    <?php
-                    $berat_sampah= mysqli_query($conn,"SELECT SUM(berat_sampah) AS total_berat FROM tb_laporan_petugas");
-                    $row_berat_sampah = mysqli_fetch_assoc($berat_sampah)
-                    ?>
-                    <h2><b><small> Total Se-Kecamatan </small> <?= $row_berat_sampah['total_berat'] ?> </b> kg </h2> <br>
-                  <div class="tab-pane fade show active" id="custom-tabs-two-grafik" role="tabpanel" aria-labelledby="custom-tabs-two-grafik-tab">
-                    <div id="container2" style="min-width: fit-content; height: fit-content; margin: 0"></div>
-                  </div>
-                  <div class="tab-pane fade" id="custom-tabs-two-tabel" role="tabpanel" aria-labelledby="custom-tabs-two-tabel-tab">
-                    <div class="card-body p-0">
-                      <table class="table table-bordered">
-                        <thead>
-                          <tr>
-                            <th style="width: 10px">No</th>
-                            <th>Kelurahan</th>
-                            <th style="width: 40px">Total</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <?php
-                            $no = 1;
-                            $kelurahan_array_tabel = array("Balang Baru", "Barombong", "Bongaya",
-                                                  "Bonto Duri", "Jongaya", "Maccini Sombala", "Mangasa",
-                                                  "Mannuruki", "Pabaeng-Baeng", "Parang Tambung", "Tanjung Merdeka");
-                            foreach ($kelurahan_array_tabel as $dta_kelurahan_array_tabel){
-                            // $getPetugas_tabel = mysqli_query($conn,"SELECT * FROM tb_pekerja WHERE kelurahan_pekerja = '$kelurahan_header' ");
-                            // foreach ($getPetugas_tabel as $dta_getPetugas_tabel){
-                              $result_tabel= mysqli_query($conn,"SELECT SUM(berat_sampah) AS total_berat_tabel FROM tb_laporan_petugas WHERE kelurahan = '$dta_kelurahan_array_tabel' ");
-                              $row_tabel = mysqli_fetch_assoc($result_tabel);
-                          ?>
-                          <tr>
-                            <td><?= $no ?></td>
-                            <td> <?= $dta_kelurahan_array_tabel ?> </td>
-                            <?php
-                              if ($row_tabel['total_berat_tabel'] < 1){
-                                echo "<td><span class='badge bg-success'> 0 kg </span></td>";
-                              } else{
-                                echo "<td><span class='badge bg-success'> $row_tabel[total_berat_tabel] kg </span></td>";
-                              }
-
-                            ?>
-                          </tr>
-                        </tbody>
-                          <?php $no = $no + 1; } ?>
-                      </table>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        
         <div class="row">
           <div class="col-md-6">
             <div class="card card-danger">
