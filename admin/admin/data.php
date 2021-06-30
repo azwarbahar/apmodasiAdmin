@@ -118,7 +118,13 @@ $admin = mysqli_query($conn, "SELECT * FROM tb_admin");
                     </td>
                     <td><?= $dta['nama_admin'] ?></td>
                     <td><?= $dta['email_admin'] ?></td>
-                    <td style='text-align:center'><span class='badge bg-success'><?= $dta['status_admin'] ?></span>
+                    <?php
+                      if ($dta['status_admin']=="Active"){
+                        echo " <td style='text-align:center'><span class='badge bg-success'> $dta[status_admin] </span>";
+                      } else{
+                        echo " <td style='text-align:center'><span class='badge bg-danger'> $dta[status_admin] </span>";
+                      }
+                    ?>
                     <td style="text-align:center">
                       <div class="btn-group btn-group-sm">
                         <button data-toggle="modal" data-target="#modal-lg<?= $dta['id_admin'] ?>"  type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>

@@ -1,6 +1,6 @@
 <?php
 require_once '../template/header/header.php';
-$masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
+$kader = mysqli_query($conn, "SELECT * FROM tb_kader");
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -55,8 +55,77 @@ $masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
                   </div>
 
                 </div> -->
-                <a href="#" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Kader</a>
+                <button data-toggle="modal" data-target="#modal-lg" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Kader</a>
               </div>
+
+
+                <!-- Modal Tambah KADER -->
+                <div class="modal fade" id="modal-lg">
+                  <div class="modal-dialog modal-lg">
+                    <form method="POST" action="controller.php" enctype="multipart/form-data">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Tambah Kader</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                        <div class="form-group">
+                          <label for="inputName">NIP</label>
+                          <input type="text" id="nip_kader" name="nip_kader"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Nama Lengkap</label>
+                          <input type="text" id="nama_kader" name="nama_kader"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="inputName">Jenis Kelamin</label>
+                          <select class="form-control select2" style="width: 100%;" name="jenis_kelamin_kader" id="jenis_kelamin_kader">
+                            <option selected="selected" value="Laki - laki">- Pilih -</option>
+                            <option value="Laki - laki">Laki - laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Kontak</label>
+                          <input type="text" id="kontak_kader" name="kontak_kader"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Alamat</label>
+                          <input type="text" id="alamat_kader" name="alamat_kader"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="customFile">Foto</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="foto_kader" name="foto_kader" onchange="readURL(this);" >
+                            <label class="custom-file-label" for="foto_kader">Choose file</label>
+                          </div>
+                        </div>
+                        <br>
+                        <img style="max-width:180px; max-height:180px;" id="blah" src="/apmodasi/assets/dist/img/default-150x150.png" alt="your image" />
+
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                          <button type="submit" name="submit_kader" class="btn btn-primary">Simpan</button>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
+
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -71,18 +140,23 @@ $masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
                   </tr>
                   </thead>
                   <tbody>
+                  <?php $i = 1; foreach($kader as $dta) { ?>
                   <tr>
                     <td style="text-align: center">
-                      <a href="/apmodasi/assets/dist/img/kader/foto_default.png" data-toggle="lightbox" data-title="Nama : Nama Kader" data-gallery="gallery">
-                        <img src="/apmodasi/assets/dist/img/kader/foto_default.png" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
+                      <a href="/apmodasi/assets/dist/img/kader//<?= $dta['foto_kader'] ?>" data-toggle="lightbox" data-title="Nama : <?= $dta['nama_kader'] ?>" data-gallery="gallery">
+                        <img src="/apmodasi/assets/dist/img/kader//<?= $dta['foto_kader'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
                       </a>
                     </td>
-                    <td style="text-align:center">4567898765434567</td>
-                    <td>Nama Bunda</td>
-                    <td>Kontak</td>
-                    <td style="text-align:center">
-                    <span class="badge badge-info">Active</span>
-                    </td>
+                    <td style="text-align:center"><?= $dta['nip_kader'] ?></td>
+                    <td><?= $dta['nama_kader'] ?></td>
+                    <td><?= $dta['kontak_kader'] ?></td>
+                    <?php
+                      if ($dta['status_kader']=="Active"){
+                        echo " <td style='text-align:center'><span class='badge bg-info'> $dta[status_kader] </span>";
+                      } else{
+                        echo " <td style='text-align:center'><span class='badge bg-danger'> $dta[status_kader] </span>";
+                      }
+                    ?>
                     <td style="text-align:center; width: 20px;">
                       <div class="btn-group">
                         <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
@@ -90,13 +164,133 @@ $masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" role="menu">
                           <a href="#" class="dropdown-item">Detail</a>
-                          <a href="#" class="dropdown-item">Edit</a>
-                          <a href="#" data-toggle="modal" data-target="#modal-danger" class="dropdown-item">Hapus</a>
+                          <a href="#" data-toggle="modal" data-target="#modal-lg<?= $dta['id_kader'] ?>"  class="dropdown-item">Edit</a>
+                          <a href="#" data-toggle="modal" data-target="#modal-danger<?= $dta['id_kader'] ?>" class="dropdown-item">Hapus</a>
                         </div>
                       </div>
                     </td>
                   </tr>
 
+                  
+
+                <!-- Modal EDIT KADER -->
+                <div class="modal fade" id="modal-lg<?= $dta['id_kader'] ?>">
+                  <div class="modal-dialog modal-lg">
+                    <form method="POST" action="controller.php" enctype="multipart/form-data">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Edit Kader</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                        <div class="form-group">
+                          <label for="inputName">NIP</label>
+                          <input type="text" value="<?= $dta['nip_kader'] ?>" id="nip_kader" name="nip_kader"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Nama Lengkap</label>
+                          <input type="text" value="<?= $dta['nama_kader'] ?>" id="nama_kader" name="nama_kader"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Jenis Kelamin</label>
+                          <div class="col-sm-9">
+                            <select name="jenis_kelamin_kader" id="jenis_kelamin_kader" class="form-control">
+                            <?php
+                              if ($dta['jenis_kelamin_kader']=="Laki - laki"){
+                                echo "<option selected='selected' value='Laki - laki'>Laki - laki</option>
+                                  <option value='Perempuan'>Perempuan</option>";
+                              } else{
+                                echo "<option value='Laki - laki'>Laki - laki</option>
+                                  <option selected='selected' value='Perempuan'>Perempuan</option>";
+                              }
+                            ?>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Kontak</label>
+                          <input type="text" value="<?= $dta['kontak_kader'] ?>" id="kontak_kader" name="kontak_kader"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Alamat</label>
+                          <input type="text" value="<?= $dta['alamat_kader'] ?>" id="alamat_kader" name="alamat_kader"class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Status Akun</label>
+                          <div class="col-sm-9">
+                            <select name="status_kader" id="status_kader" class="form-control">
+                            <?php
+                              if ($dta['status_kader']=="Active"){
+                                echo "<option selected='selected' value='Active'>Active</option>
+                                  <option value='Suspend'>Suspend</option>";
+                              } else{
+                                echo "<option value='Active'>Active</option>
+                                  <option selected='selected' value='Suspend'>Suspend</option>";
+                              }
+                            ?>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="customFile">Foto</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="foto_kader" name="foto_kader" onchange="readURL(this);" >
+                            <label class="custom-file-label" for="foto_kader">Choose file</label>
+                          </div>
+                        </div>
+                        <br>
+                        <img style="max-width:180px; max-height:180px;" id="blah" src="/apmodasi/assets/dist/img/kader/<?= $dta['foto_kader'] ?>" alt="your image" />
+
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <input type="hidden" name="id_kader" value="<?= $dta['id_kader'] ?>">
+                          <input type="hidden" name="foto_now" value="<?= $dta['foto_kader'] ?>">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                          <button type="submit" name="edit_kader" class="btn btn-primary">Simpan</button>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
+      <!-- Modal Hapus -->
+      <div class="modal fade" id="modal-danger<?= $dta['id_kader'] ?>">
+        <div class="modal-dialog">
+          <div class="modal-content bg-danger">
+            <div class="modal-header">
+              <h4 class="modal-title">Hapus Akun Kader?</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Yakin Ingin Menghapus Akun Kader</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
+              <a href="controller.php?hapus_kader=true&id_kader=<?= $dta['id_kader'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+                  <?php $i = $i + 1; } ?>
                   </tbody>
 
                 </table>
