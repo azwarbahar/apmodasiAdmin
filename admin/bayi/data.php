@@ -1,6 +1,6 @@
 <?php
 require_once '../template/header/header.php';
-$masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
+$bayi = mysqli_query($conn, "SELECT * FROM tb_bayi");
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -30,7 +30,7 @@ $masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
           <div class="col-12">
 
             <div class="card">
-              <div class="card-header">
+              <!-- <div class="card-header"> -->
                 <!-- <label for="inputName">Kelurahan</label>
                 <div class="row">
                   <div class="col-4">
@@ -55,8 +55,8 @@ $masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
                   </div>
 
                 </div> -->
-                <a href="#" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Masyarakat</a>
-              </div>
+                <!-- <button data-toggle="modal" data-target="#modal-lg" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Bayi</a> -->
+              <!-- </div> -->
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -73,13 +73,18 @@ $masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
                   </tr>
                   </thead>
                   <tbody>
+                  <?php $i = 1; foreach($bayi as $dta) { ?>
                   <tr>
-                    <td style="text-align:center">1</td>
-                    <td>Foto Bayi</td>
-                    <td>Nama Bayi</td>
-                    <td>Jekel Bayi</td>
-                    <td>Nama Bunda</td>
-                    <td>1 Januari 2021</td>
+                    <td style="text-align:center"><?= $i ?></td>
+                    <td style="text-align: center">
+                      <a href="/apmodasi/assets/dist/img/bayi//<?= $dta['foto_bayi'] ?>" data-toggle="lightbox" data-title="Nama : <?= $dta['nama_bayi'] ?>" data-gallery="gallery">
+                        <img src="/apmodasi/assets/dist/img/bayi//<?= $dta['foto_bayi'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
+                      </a>
+                    </td>
+                    <td><?= $dta['nama_bayi'] ?></td>
+                    <td><?= $dta['jenis_kelamin_bayi'] ?></td>
+                    <td><?= $dta['bunda_id'] ?></td>
+                    <td><?= $dta['tanggal_lahir_bayi'] ?></td>
                     <!-- <td>
                       <div class="progress progress-sm">
                         <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
@@ -101,6 +106,9 @@ $masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat");
                     </td>
                   </tr>
 
+
+
+                  <?php $i = $i + 1; } ?>
                   </tbody>
 
                 </table>
