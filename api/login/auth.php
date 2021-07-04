@@ -10,11 +10,11 @@
  if ($row_pass){
     if (password_verify($password, $row_pass["password"])) {
         $ray=$row_pass;
-        echo json_encode(array("kode" => 1, "auth_result" => $ray));
+        echo json_encode(array("kode" => "1", "auth_result" => $ray));
     } else{
-        echo json_encode(array("kode" => 2, "pesan" => "Password tidak sesuai"));
+        echo json_encode(array("kode" => "2", "pesan" => "Password tidak sesuai"));
     }
  } else {
-    echo json_encode(array("kode" => 0, "pesan" => "Username tidak ditemukan"));
+    echo json_encode(array("kode" => "0", "pesan" => "Username tidak ditemukan"));
  }
 ?>
