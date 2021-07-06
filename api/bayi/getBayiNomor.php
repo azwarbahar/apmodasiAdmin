@@ -2,8 +2,8 @@
  require_once '../../koneksi.php';
  header('Content-type: application/json');
 
-$id_bayi = $_GET["id_bayi"];
-$query = "SELECT * FROM tb_bayi WHERE id_bayi = '$id_bayi'";
+$nomor_bayi = $_GET["nomor_bayi"];
+$query = "SELECT * FROM tb_bayi WHERE nomor_bayi = '$nomor_bayi'";
 
  $result = mysqli_query($conn, $query);
 

@@ -22,51 +22,15 @@
                                             null)";
 
         if ( mysqli_query($conn, $query) ){
-
-            if ($foto_bukti == null) {
-
-                $finalPath = "../../assets/dist/img/bayi/QrCode/img_default.png";
                 $result["kode"] = "1";
                 $result["pesan"] = "Success";
-
                 echo json_encode($result);
                 mysqli_close($conn);
-            } else {
 
-                $id = mysqli_insert_id($conn);
-                $path = "../../assets/dist/img/bayi/QrCode/QR_".time().".png";
-                $finalPath = "QR_".time().".png";
-
-                $insert_picture = "UPDATE tb_laporan_petugas SET foto_bukti='$finalPath' WHERE id_laporan_petugas='$id' ";
-
-                if (mysqli_query($conn, $insert_picture)) {
-
-                    if ( file_put_contents( $path, base64_decode($foto_bukti) ) ) {
-
-                        $result["kode"] = "1";
-                        $result["pesan"] = "Success!";
-
-                        echo json_encode($result);
-                        mysqli_close($conn);
-
-                    } else {
-
-                        $response["kode"] = "0";
-                        $response["pesan"] = "Error! ".mysqli_error($conn);
-                        echo json_encode($response);
-
-                        mysqli_close($conn);
-                    }
-
-                }
-            }
-
-        }
-        else {
+        } else {
             $response["kode"] = "0";
             $response["pesan"] = "Error! ".mysqli_error($conn);
             echo json_encode($response);
-
             mysqli_close($conn);
         }
 
