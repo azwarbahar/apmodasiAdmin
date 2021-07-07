@@ -68,7 +68,7 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi");
                     <th>Jenis Kelamin</th>
                     <th>Nama Bunda</th>
                     <th>Tanggal Lahir</th>
-                    <!-- <th>Imunisasi</th> -->
+                    <th>Status</th>
                     <th></th>
                   </tr>
                   </thead>
@@ -85,6 +85,13 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi");
                     <td><?= $dta['jenis_kelamin_bayi'] ?></td>
                     <td><?= $dta['bunda_id'] ?></td>
                     <td><?= $dta['tanggal_lahir_bayi'] ?></td>
+                    <?php
+                      if ($dta['status_bayi']=="Active"){
+                        echo " <td style='text-align:center'><span class='badge bg-primary'> $dta[status_bayi] </span>";
+                      } else{
+                        echo " <td style='text-align:center'><span class='badge bg-warning'> $dta[status_bayi] </span>";
+                      }
+                    ?>
                     <!-- <td>
                       <div class="progress progress-sm">
                         <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
@@ -98,7 +105,13 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi");
                           <i class="fas fa fa-ellipsis-v"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" role="menu">
-                          <a href="#" class="dropdown-item">QR Code</a>
+                        <?php
+
+                          if ($dta['status_bayi'] == "Menunggu") {
+                            echo "<a href='controller.php?aktif_bayi=true&id_bayi=$dta[id_bayi]' class='dropdown-item'>Aktifkan</a>";
+                          }
+
+                        ?>
                           <a href="#" class="dropdown-item">Edit</a>
                           <a href="#" data-toggle="modal" data-target="#modal-danger" class="dropdown-item">Hapus</a>
                         </div>
