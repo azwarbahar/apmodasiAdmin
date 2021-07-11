@@ -3,7 +3,7 @@
  header('Content-type: application/json');
 
 $kader_id = $_GET["kader_id"];
-$query = "SELECT * FROM tb_riwayat WHERE kader_id = '$kader_id' ";
+$query = "SELECT * FROM tb_riwayat_kader WHERE kader_id = '$kader_id' ORDER BY id_riwayat_kader DESC ";
 
  $result = mysqli_query($conn, $query);
 

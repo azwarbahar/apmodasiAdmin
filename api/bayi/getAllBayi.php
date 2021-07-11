@@ -2,7 +2,7 @@
  require_once '../../koneksi.php';
  header('Content-type: application/json');
 
-$query = "SELECT * FROM tb_bayi ORDER BY id_bayi DESC";
+$query = "SELECT * FROM tb_bayi WHERE status_bayi = 'Active' ORDER BY id_bayi DESC";
 
  $result = mysqli_query($conn, $query);
 
