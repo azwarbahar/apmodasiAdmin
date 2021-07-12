@@ -83,7 +83,11 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi");
                     </td>
                     <td><?= $dta['nama_bayi'] ?></td>
                     <td><?= $dta['jenis_kelamin_bayi'] ?></td>
-                    <td><?= $dta['bunda_id'] ?></td>
+                    <?php
+                      $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE id_bunda = '$dta[bunda_id]'");
+                      $get_bunda = mysqli_fetch_assoc($bunda);
+                    ?>
+                    <td><?= $get_bunda['nama_bunda'] ?></td>
                     <td><?= $dta['tanggal_lahir_bayi'] ?></td>
                     <?php
                       if ($dta['status_bayi']=="Active"){
@@ -108,16 +112,43 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi");
                         <?php
 
                           if ($dta['status_bayi'] == "Menunggu") {
-                            echo "<a href='controller.php?aktif_bayi=true&id_bayi=$dta[id_bayi]' class='dropdown-item'>Aktifkan</a>";
+                            echo "<a href='controller.php?aktif_bayi=true&id_bayi=$dta[id_bayi]' class='dropdown-item'>Aktifkan</a>
+                                  <a href='#' data-toggle='modal' data-target='#modal-danger<?= $dta[id_bayi] ?>' class='dropdown-item'>Hapus</a>
+                            ";
+                          } else {
+                            echo "<a href='#' data-toggle='modal' data-target='#modal-danger<?= $dta[id_bayi] ?>' class='dropdown-item'>Hapus</a>
+                            ";
                           }
 
                         ?>
-                          <a href="#" class="dropdown-item">Edit</a>
-                          <a href="#" data-toggle="modal" data-target="#modal-danger" class="dropdown-item">Hapus</a>
                         </div>
                       </div>
                     </td>
                   </tr>
+
+      <!-- Modal Hapus -->
+      <div class="modal fade" id="modal-danger<?= $dta['id_bayi'] ?>">
+        <div class="modal-dialog">
+          <div class="modal-content bg-danger">
+            <div class="modal-header">
+              <h4 class="modal-title">Hapus Data Bayi?</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Yakin Ingin Menghapus Data Bayi</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
+              <a href="controller.php?hapus_bayi=true&id_bayi=<?= $dta['id_bayi'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
 
 
 
