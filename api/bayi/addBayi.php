@@ -9,10 +9,12 @@
     $foto_bayi = $_POST['foto_bayi'];
     $status_bayi = $_POST['status_bayi'];
     $bunda_id = $_POST['bunda_id'];
+    $tahun = substr($tanggal_lahir_bayi,0,4);
 
     $query = "INSERT INTO tb_bayi values(null,'$nomor_bayi',
                                             '$nama_bayi',
                                             '$tanggal_lahir_bayi',
+                                            '$tahun',
                                             '$jenis_kelamin_bayi',
                                             '$gambar_qr_bayi',
                                             '$foto_bayi',

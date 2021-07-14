@@ -22,7 +22,7 @@
 $query2 = "INSERT INTO tb_riwayat_kader values(null,'$kader_id',
                                         '$bayi_id',
                                         '$usia_bayi_imunisasi',
-                                        '$jenis_input',
+                                        '$no_imunisasi',
                                         '$status_imunisasi',
                                         '$catatan_imunisasi',
                                         '$tanggal_imunisasi',

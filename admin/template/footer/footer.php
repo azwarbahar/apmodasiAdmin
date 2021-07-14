@@ -68,6 +68,7 @@
 <!-- page script -->
 <script>
   $(function () {
+
     $("#example1").DataTable({
       "responsive": true,
       "autoWidth": false,

@@ -177,7 +177,7 @@ $nama_header = $get_data_admin['nama_admin'];
           </li>
 
           <li class="nav-item">
-            <a href="/apmodasi/admin/imunisasi/data.php" class="nav-link">
+            <a href="/apmodasi/admin/imunisasi/data.php?tahun=2021" class="nav-link">
               <i class="nav-icon fa fa-user-plus"></i>
               <p>
                 Imunisasi Bayi

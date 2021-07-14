@@ -1,6 +1,12 @@
 <?php
 require_once '../template/header/header.php';
-$bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active' ");
+$tahun_now = date("Y");
+$tahun = $_GET['tahun'];
+if ($tahun == "All"){
+  $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'");
+} else {
+  $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active' AND tahun_bayi = '$tahun' ");
+}
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -35,31 +41,52 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active' 
                 <p>NAMA UNIT PELAYANAN KESEHATAN&emsp;: PUSKESMAS SISFO UINAM<br>
                 DESA / KELURAHAN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: KELURAHAN SAINTEK<br>
                 PUSKESMAS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp;: PUSKESMAS SAMATA<br>
-                TAHUN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp;&nbsp;: 2021</p>
-                <!-- <label for="inputName">Kelurahan</label>
+                TAHUN</p>
+                <form method="POST" action="cont.php" enctype="multipart/form-data">
                 <div class="row">
-                  <div class="col-4">
-                    <select class="form-control select2" style="width: 100%;" name="kelurahan_masyarakat" id="kelurahan_masyarakat">
-                      <option selected="selected" value="-">- Semua -</option>
-                      <option value="Balang Baru">Balang Baru</option>
-                      <option value="Barombong">Barombong</option>
-                      <option value="Bongaya">Bongaya</option>
-                      <option value="Bonto Duri">Bonto Duri</option>
-                      <option value="Jongaya">Jongaya</option>
-                      <option value="Maccini Sombala">Maccini Sombala</option>
-                      <option value="Mangasa">Mangasa</option>
-                      <option value="Mannuruki">Mannuruki</option>
-                      <option value="Pa'baeng-Baeng">Pa'baeng-Baeng</option>
-                      <option value="Parang Tambung">Parang Tambung</option>
-                      <option value="Tanjung Merdeka">Tanjung Merdeka</option>
+                  <div class="col-3">
+                    <select class="form-control select2" style="width: 100%;" name="tahun_select" id="tahun_select">
+                      <?php
+                        if ($tahun == "All"){
+                          echo '
+                              <option selected="selected" value="All">- Semua -</option>
+                              <option value="2021">2021</option>
+                              <option value="2020">2020</option>
+                              <option value="2019">2019</option>
+                          ';
+                        } else if ($tahun == "2021"){
+                          echo '
+                              <option value="All">- Semua -</option>
+                              <option selected="selected" value="2021">2021</option>
+                              <option value="2020">2020</option>
+                              <option value="2019">2019</option>
+                          ';
+                        }  else if ($tahun == "2020"){
+                          echo '
+                              <option value="All">- Semua -</option>
+                              <option  value="2021">2021</option>
+                              <option selected="selected" value="2020">2020</option>
+                              <option value="2019">2019</option>
+                          ';
+                        } else if ($tahun == "2019"){
+                          echo '
+                              <option value="All">- Semua -</option>
+                              <option value="2021">2021</option>
+                              <option value="2020">2020</option>
+                              <option selected="selected" value="2019">2019</option>
+                          ';
+                        }
+                      ?>
                     </select>
                   </div>
-
-                  <div class="col-8">
-                  <a href="invoice-print.html" target="_blank" class="btn btn-info float-right"><i class="fas fa-print"></i> Print</a>
+                  <div class="col-2">
+                    <button type="submit" name="cari_tahun" class="btn btn-info"><i class="fas fa-search"></i></button>
                   </div>
-
-                </div> -->
+                  <div class="col-7">
+                  <a href="invoice-print.html" target="_blank" class="btn btn-info float-right"><i class="fas fa-print"></i> Cetak</a>
+                  </div>
+                </div>
+                </form>
                 <!-- <button data-toggle="modal" data-target="#modal-lg" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Bayi</a> -->
               </div>
               <!-- /.card-header -->
@@ -152,57 +179,11 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active' 
                             <!-- /.modal-dialog -->
                           </div>
                           <!-- /.modal -->
-
                         <?php
                       }
+
                     ?>
-                    <!-- <td style="text-align:center; width: 20px;">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
-                          <i class="fas fa fa-ellipsis-v"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right" role="menu">
-                        <?php
-
-                          if ($dta['status_bayi'] == "Menunggu") {
-                            echo "<a href='controller.php?aktif_bayi=true&id_bayi=$dta[id_bayi]' class='dropdown-item'>Aktifkan</a>
-                                  <a href='#' data-toggle='modal' data-target='#modal-danger<?= $dta[id_bayi] ?>' class='dropdown-item'>Hapus</a>
-                            ";
-                          } else {
-                            echo "<a href='#' data-toggle='modal' data-target='#modal-danger<?= $dta[id_bayi] ?>' class='dropdown-item'>Hapus</a>
-                            ";
-                          }
-                        ?>
-                        </div>
-                      </div>
-                    </td> -->
                   </tr>
-
-      <!-- Modal Hapus -->
-      <div class="modal fade" id="modal-danger<?= $dta['id_bayi'] ?>">
-        <div class="modal-dialog">
-          <div class="modal-content bg-danger">
-            <div class="modal-header">
-              <h4 class="modal-title">Hapus Data Bayi?</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Yakin Ingin Menghapus Data Bayi</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-              <a href="controller.php?hapus_bayi=true&id_bayi=<?= $dta['id_bayi'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-
-
 
                   <?php $i = $i + 1; } ?>
                   </tbody>
