@@ -149,13 +149,42 @@ $nama_header = $get_data_admin['nama_admin'];
 
           <li class="nav-header">Master Data</li>
 
-          <li class="nav-item">
-            <a href="/apmodasi/admin/bayi/data.php" class="nav-link">
-              <i class="nav-icon fa fa-user-plus"></i>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-plus"></i>
               <p>
                 Data Bayi
+              <?php
+                $bayi_header = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Menunggu'");
+                $row_bayi_header = mysqli_num_rows($bayi_header);
+                if ($row_bayi_header >= 1){
+                  echo '<span class="right badge badge-danger">New</span>';
+                }
+              ?>
               </p>
             </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="/apmodasi/admin/bayi/data-terbaru.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Terbaru
+                    <?php
+                      $bayi_header = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Menunggu'");
+                      $row_bayi_header = mysqli_num_rows($bayi_header);
+                      if ($row_bayi_header >= 1){
+                        echo '<span class="badge badge-info right">'.$row_bayi_header.'</span>';
+                      }
+                    ?>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/apmodasi/admin/bayi/data.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Semua</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
           <li class="nav-item">

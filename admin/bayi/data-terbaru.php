@@ -1,6 +1,6 @@
 <?php
 require_once '../template/header/header.php';
-$bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'");
+$bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Menunggu'");
 ?>
 
   <!-- Content Wrapper. Contains page content -->

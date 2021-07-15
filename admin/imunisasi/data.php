@@ -111,7 +111,7 @@ if ($tahun == "All"){
                     <th style="font-size: 16px; text-align: center; color: blue;">Polio 4</th>
                     <th style="font-size: 16px; text-align: center; color: blue;">IPV</th>
                     <th style="font-size: 16px; text-align: center; color: blue;">Campak</th>
-                    <!-- <th style="font-size: 16px; text-align: center; color: blue;"></th> -->
+                    <th style="font-size: 16px; text-align: center; color: blue;"></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -181,8 +181,9 @@ if ($tahun == "All"){
                           <!-- /.modal -->
                         <?php
                       }
-
                     ?>
+                    <td>
+                  <a href="invoice-print.html" target="_blank" class="btn btn-info btn-xs"><i class="fas fa-print"></i></a></td>
                   </tr>
 
                   <?php $i = $i + 1; } ?>
