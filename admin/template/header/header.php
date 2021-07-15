@@ -198,7 +198,7 @@ $nama_header = $get_data_admin['nama_admin'];
 
           <li class="nav-item">
             <a href="/apmodasi/admin/kader/data.php" class="nav-link">
-              <i class="nav-icon fa fa-user-plus"></i>
+              <i class="nav-icon fas fa-id-badge"></i>
               <p>
                 Data Kader
               </p>
@@ -207,7 +207,7 @@ $nama_header = $get_data_admin['nama_admin'];
 
           <li class="nav-item">
             <a href="/apmodasi/admin/imunisasi/data.php?tahun=2021" class="nav-link">
-              <i class="nav-icon fa fa-user-plus"></i>
+              <i class="nav-icon fa fa-stethoscope"></i>
               <p>
                 Imunisasi Bayi
               </p>

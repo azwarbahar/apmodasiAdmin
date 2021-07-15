@@ -58,7 +58,7 @@ require '../template/header/header.php';
           <!-- /.col -->
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-success"><i class="fas fa-truck"></i></span>
+              <span class="info-box-icon bg-success"><i class="ion ion-person-add"></i></span>
 
               <div class="info-box-content">
                 <?php
@@ -114,115 +114,6 @@ require '../template/header/header.php';
         </div>
         <br>
         <!-- /.row (main row) -->
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card card-danger">
-              <div class="card-header">
-                <h3 class="card-title">Laporan Masyarakat</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-minus"></i></button>
-                </div>
-              </div>
-              <div class="card-body">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Nama</th>
-                      <th>Tanggal</th>
-                      <!-- <th>Berat</th> -->
-                      <th> </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                      $i = 0;
-                      $laporan_masyarakat = mysqli_query($conn, "SELECT * FROM tb_laporan ORDER BY id_laporan DESC ");
-                      foreach($laporan_masyarakat as $dta_laporan_masyarakat) {
-                        if ($i > 5)
-                          break;
-                      $masyarakat = mysqli_query($conn, "SELECT * FROM tb_masyarakat WHERE id_masyarakat = '$dta_laporan_masyarakat[masyarakat_id]' ");
-                      $dta_masyarakat = mysqli_fetch_assoc($masyarakat);
-                    ?>
-                    <tr>
-                      <td>
-                      <img src="../../../kelurahan/admin/masyarakat/foto/<?= $dta_masyarakat['foto_masyarakat'] ?>"  alt="Product 1" class="img-circle img-size-50 mr-2">
-                      <?= $dta_masyarakat['nama_masyarakat'] ?>
-                      </td>
-                      <td><?= $dta_laporan_masyarakat['created_at'] ?></td>
-                      <!-- <td><span class="badge bg-danger">// $dta_laporan_petugas['berat_sampah'] ?></span><small> Kg</small></td> -->
-                      <td>
-                      <a href="../masyarakat/detail.php?id_masyarakat=<?= $dta_masyarakat['id_masyarakat'] ?>" class="text-muted" >
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </td>
-                    </tr>
-
-                  <?php $i++; } ?>
-                  </tbody>
-                </table><br>
-                    <div class="col-12">
-                      <a href="../laporan/data.php"class="btn btn-primary" style="margin-right: 5px;"> Lihat Semua
-                      </a>
-                    </div><br>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Laporan Petugas Terbaru</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-minus"></i></button>
-                </div>
-              </div>
-              <div class="card-body">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Nama</th>
-                      <th>Tanggal</th>
-                      <th>Berat</th>
-                      <th> </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                      $i = 0;
-                      $laporan_petugas = mysqli_query($conn, "SELECT * FROM tb_laporan_petugas ORDER BY id_laporan_petugas DESC ");
-                      foreach($laporan_petugas as $dta_laporan_petugas) {
-                        if ($i > 5)
-                          break;
-                      $petugas = mysqli_query($conn, "SELECT * FROM tb_pekerja WHERE id_pekerja = '$dta_laporan_petugas[id_petugas]' ");
-                      $dta_petugas = mysqli_fetch_assoc($petugas);
-                    ?>
-                    <tr>
-                      <td>
-                      <img src="../../../kelurahan/admin/petugas/foto/<?= $dta_petugas['foto_pekerja'] ?>"  alt="Product 1" class="img-circle img-size-50 mr-2">
-                      <?= $dta_petugas['nama_pekerja'] ?>
-                      </td>
-                      <td><?= $dta_laporan_petugas['crated_at'] ?></td>
-                      <td><span class="badge bg-danger"><?= $dta_laporan_petugas['berat_sampah'] ?></span><small> Kg</small></td>
-                      <td>
-                      <a href="../petugas/detail.php?id_pekerja=<?= $dta_petugas['id_pekerja'] ?>" class="text-muted" >
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </td>
-                    </tr>
-
-                  <?php $i++; } ?>
-                  </tbody>
-                </table><br>
-                    <div class="col-12">
-                      <a href="../petugas/laporan-petugas.php"class="btn btn-primary" style="margin-right: 5px;"> Lihat Semua
-                      </a>
-                    </div><br>
-              </div>
-            </div>
-          </div>
-        </div>
 
       </div><!-- /.container-fluid -->
     </section>

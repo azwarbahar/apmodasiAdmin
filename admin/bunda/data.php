@@ -155,7 +155,7 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                           <i class="fas fa fa-ellipsis-v"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" role="menu">
-                          <a href="#" class="dropdown-item">Detail</a>
+                          <!-- <a href="#" class="dropdown-item">Detail</a> -->
                           <a href="#" data-toggle="modal" data-target="#modal-lg<?= $dta['id_bunda'] ?>"  class="dropdown-item">Edit</a>
                           <a href="#" data-toggle="modal" data-target="#modal-danger<?= $dta['id_bunda'] ?>" class="dropdown-item">Hapus</a>
                         </div>
