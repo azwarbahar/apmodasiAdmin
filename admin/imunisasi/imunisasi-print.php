@@ -1,5 +1,5 @@
 <?php
-require_once '../template/header/header.php';
+require '../../koneksi.php';
 $tahun_now = date("Y");
 $tahun = $_GET['tahun'];
 if ($tahun == "All"){
@@ -9,109 +9,179 @@ if ($tahun == "All"){
 }
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
+  <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Universita Negeri Makassar</title>
-  <link rel="icon" href="/spk_pm_unm/assets/dist/img/logo_unm_bg_white.png">
+  <title>Apmodasi</title>
+  <link rel="icon" href="/apmodasi/assets/dist/img/logo_apmodasi.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap 4 -->
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="/spk_pm_unm/assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/reses-dprd/assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/spk_pm_unm/assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/reses-dprd/assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+<!-- Load paper.css for happy printing -->
+<link rel="stylesheet" href="dist/paper.css">
+
+<!-- Set page size here: A5, A4 or A3 -->
+<!-- Set also "landscape" if you need -->
+<style>@page { size: A4 landscape }</style>
 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head>
-<body>
-<div class="wrapper">
-  <!-- Main content -->
-  <section class="invoice">
-    </div>
-    <!-- info row -->
-    <div class="row invoice-info">
-      <div class="col-sm-12 invoice-col">
-        <br><br>
-        <h5 style="text-align: center;">HASIL AKHIR RANKING PENERIMAAN CALON MAHASISWA JALUR MANDIRI</h5>
-        <h5 style="text-align: center;">JURUSAN PENDIDIKAN TEKNIK ELEKTRO FT UNM</h5>
-        <h5 style="text-align: center;">MENGGUNAKAN METODE PROFILE MATCHING</h5>
-        <br>
-      </div><br>
-      <!-- /.col -->
+    <!-- <style>
+      body {
+        margin: 0;
+        background: #CCCCCC;
+      }
 
-      <div class="col-sm-3 invoice-col">
+      div.page {
+        margin: 10px auto;
+        border: solid 1px black;
+        display: block;
+        page-break-after: always;
+        width: 209mm;
+        height: 296mm;
+        overflow: hidden;
+        background: white;
+      }
 
-        <address>
-          <strong>No Induk</strong><br>
-          <strong>Nama</strong><br>
-          <strong>Jenis Kelamin</strong><br>
-          <strong>Tanggal Lahir</strong><br>
-          <strong>Hasil :</strong><br>
-        </address>
-      </div>
+      div.landscape-parent {
+        width: 296mm;
+        height: 209mm;
+      }
 
-      <div class="col-sm-6 invoice-col">
+      div.landscape {
+        width: 296mm;
+        height: 209mm;
+      }
 
-        <address>
-          <strong>: <?= $dta['no_induk_mahasiswa'] ?></strong><br>
-          <strong>: <?= $dta['nama_mahasiswa'] ?></strong><br>
-          <strong>: <?= $dta['jekel_mahasiswa'] ?></strong><br>
-          <strong>: <?= $dta['tgl_lahir_mahasiswa'] ?></strong><br>
-        </address>
-      </div>
-    </div>
-    <!-- /.row -->
+      div.content {
+        padding: 10mm;
+      }
 
-    <!-- Table row -->
-    <div class="row">
-      <div class="col-12 table-responsive">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th style="text-align: center; font-size: 15px;">No</th>
-            <th style="font-size: 15px;">Nama</th>
-            <th style="text-align: center; font-size: 15px;">Nilai</th>
-            <th style="text-align: center; font-size: 15px;">Ranking</th>
-          </tr>
-          </thead>
-          <tbody>
+      body,
+      div,
+      td {
+        font-size: 13px;
+        font-family: Verdana;
+      }
 
-          <?php
-                   $i = 1; foreach($hasil_akhir as $dta) {
-                    ?>
-                    <tr>
-                    <td style="text-align: center; font-size: 15px;"><?= $i ?></td>
-                    <?php
-                        $mahasiswa = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE id_mahasiswa='$dta[id_mahasiswa]'");
-                        $dta_mahasiswa = mysqli_fetch_assoc($mahasiswa);
-                    ?>
-                    <td style="font-size: 15px;"><?= $dta_mahasiswa['no_induk_mahasiswa'] ?> - <?= $dta_mahasiswa['nama_mahasiswa'] ?></td>
-                    <td style="text-align: center; font-size: 15px;"><?= $dta['nilai_hasil_akhir_mahasiswa'] ?></td>
-                    <td style="text-align: center; font-size: 15px;"><b>Ranking <?= $i ?></b></td>
+      @media print {
+        body {
+          background: none;
+        }
+        div.page {
+          width: 209mm;
+          height: 296mm;
+        }
+        div.landscape {
+          transform: rotate(270deg) translate(-296mm, 0);
+          transform-origin: 0 0;
+        }
+        div.portrait,
+        div.landscape,
+        div.page {
+          margin: 0;
+          padding: 0;
+          border: none;
+          background: none;
+        }
+      }
+    </style> -->
+  </head>
+  <body class="A4 landscape"> 
+    <section class="sheet padding-10mm">
+      <div class="page landscape-parent">
+      <div class="landscape">
+        <div class="content">
+                <h6 style="text-align: center;"><b>PENCATATAN IMUNISASI RUTIN BAYI DI UNIT PELAYANAN</b></h6> <br>
+                <p style="font-size: 11px;" >
+                NAMA UNIT PELAYANAN KESEHATAN&emsp;: PUSKESMAS SISFO UINAM<br>
+                DESA / KELURAHAN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: KELURAHAN SAINTEK<br>
+                PUSKESMAS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp;: PUSKESMAS SAMATA<br>
+                TAHUN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp;&nbsp;: <?= $tahun ?>
+                <p style="font-size: 10px; text-align: right; ">Tanggal : <?= date('l d F Y')?></p>
+              </p>
+
+          <div class="row">
+            <div class="col-12 table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th style="font-size: 9px; text-align: center; width: 10px">No</th>
+                    <th style="font-size: 9px; text-align: center;">Nama</th>
+                    <th style="font-size: 9px; text-align: center;">Jenis<br>Kelamin</th>
+                    <th style="font-size: 9px; text-align: center;">Tanggal<br>Lahir</th>
+                    <th style="font-size: 9px; text-align: center;">Nama Ibu</th>
+                    <th style="font-size: 9px; text-align: center;">HBO</th>
+                    <th style="font-size: 9px; text-align: center;">BCG</th>
+                    <th style="font-size: 9px; text-align: center;">Polio 1</th>
+                    <th style="font-size: 9px; text-align: center;">DPT-HB-Hib 1</th>
+                    <th style="font-size: 9px; text-align: center;">Polio 2</th>
+                    <th style="font-size: 9px; text-align: center;">DPT-HB-Hib 2</th>
+                    <th style="font-size: 9px; text-align: center;">Polio 3</th>
+                    <th style="font-size: 9px; text-align: center;">DPT-HB-Hib 3</th>
+                    <th style="font-size: 9px; text-align: center;">Polio 4</th>
+                    <th style="font-size: 9px; text-align: center;">IPV</th>
+                    <th style="font-size: 9px; text-align: center;">Campak</th>
                   </tr>
-                  <?php
-                  $i = $i + 1; }
-                  ?>
-          </tbody>
-        </table>
-      </div>
-      <!-- /.col -->
-    </div>
-    <!-- /.row -->
-  </section>
-  <!-- /.content -->
-</div>
-<!-- ./wrapper -->
+                </thead>
+                  <tbody>
+                  <?php $i = 1; foreach($bayi as $dta) { ?>
+                    <tr>
+                      <td style="font-size: 8px; text-align: center; width: 10px"><?= $i ?></td>
+                      <td style="font-size: 8px;"><?= $dta['nama_bayi'] ?></td>
+                      <?php
+                        if ( $dta['jenis_kelamin_bayi'] == "Laki - laki	"){
+                          echo "<td style='text-align: center; font-size: 8px;'>L</td>";
+                        } else {
+                          echo "<td style='text-align: center; font-size: 8px;'>P</td>";
+                        }
+                        $source = $dta['tanggal_lahir_bayi'];
+                        $date = new DateTime($source);
+                      ?>
+                      <td style="font-size: 8px;"><?= $date->format('d/m/Y')?></td>
+                      <?php
+                        $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE id_bunda = '$dta[bunda_id]'");
+                        $get_bunda = mysqli_fetch_assoc($bunda);
+                      ?>
+                      <td style="font-size: 8px;"><?= $get_bunda['nama_bunda'] ?></td>
+                      <?php
+                        $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]'");
+                        foreach($imunisasi as $dta_imunisasi) {
+                          if ($dta_imunisasi['status_imunisasi'] == "Sudah"){
+                            $source2 = $dta_imunisasi['tanggal_imunisasi'];
+                            $date2 = new DateTime($source2);
+                            echo " <td style='text-align:center; font-size: 8px;'>". $date->format('d/m/Y') ." </span>";
+                          } else {
+                            echo "<td style='font-size: 8px; text-align:center;'></td>";
+                          }
+                        }
+                          ?>
+                    </tr>
+                  <?php $i = $i + 1; } ?>
+                  </tbody>
+              </table>
+            </div>
+          </div>
 
-<script type="text/javascript">
-  window.addEventListener("load", window.print());
-</script>
-</body>
+
+        </div>
+      </div>
+    </div>
+
+    </section>
+    <script type="text/javascript">
+      window.addEventListener("load", window.print());
+    </script>
+  </body>
 </html>

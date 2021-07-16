@@ -83,7 +83,7 @@ if ($tahun == "All"){
                     <button type="submit" name="cari_tahun" class="btn btn-info"><i class="fas fa-search"></i></button>
                   </div>
                   <div class="col-7">
-                  <a href="invoice-print.html" target="_blank" class="btn btn-info float-right"><i class="fas fa-print"></i> Cetak</a>
+                  <a href="imunisasi-print.php?tahun=<?= $tahun ?>" target="_blank" class="btn btn-info float-right"><i class="fas fa-print"></i> Cetak</a>
                   </div>
                 </div>
                 </form>
@@ -183,7 +183,7 @@ if ($tahun == "All"){
                       }
                     ?>
                     <td>
-                  <a href="invoice-print.html" target="_blank" class="btn btn-info btn-xs"><i class="fas fa-print"></i></a></td>
+                  <a href="imunisasi-bayi-print.php?id_bayi=<?= $dta['id_bayi'] ?>" target="_blank" class="btn btn-info btn-xs"><i class="fas fa-print"></i></a></td>
                   </tr>
 
                   <?php $i = $i + 1; } ?>
