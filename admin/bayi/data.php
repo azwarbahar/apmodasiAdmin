@@ -113,10 +113,10 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
 
                           if ($dta['status_bayi'] == "Menunggu") {
                             echo "<a href='controller.php?aktif_bayi=true&id_bayi=$dta[id_bayi]' class='dropdown-item'>Aktifkan</a>
-                                  <a href='#' data-toggle='modal' data-target='#modal-danger<?= $dta[id_bayi] ?>' class='dropdown-item'>Hapus</a>
+                                  <a href='#' data-toggle='modal' data-target='#modal-danger$dta[id_bayi]' class='dropdown-item'>Hapus</a>
                             ";
                           } else {
-                            echo "<a href='#' data-toggle='modal' data-target='#modal-danger<?= $dta[id_bayi] ?>' class='dropdown-item'>Hapus</a>
+                            echo "<a href='#' data-toggle='modal' data-target='#modal-danger$dta[id_bayi]' class='dropdown-item'>Hapus</a>
                             ";
                           }
 
