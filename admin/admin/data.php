@@ -14,7 +14,7 @@ $admin = mysqli_query($conn, "SELECT * FROM tb_admin");
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/apmodasi/admin/">Home</a></li>
+              <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
               <li class="breadcrumb-item active">Admin</li>
             </ol>
           </div><!-- /.col -->
@@ -76,7 +76,7 @@ $admin = mysqli_query($conn, "SELECT * FROM tb_admin");
                           </div>
                         </div>
                         <br>
-                        <img style="max-width:180px; max-height:180px;" id="blah" src="/apmodasi/assets/dist/img/default-150x150.png" alt="your image" />
+                        <img style="max-width:180px; max-height:180px;" id="blah" src="../../assets/dist/img/default-150x150.png" alt="your image" />
 
 
                         </div>
@@ -112,8 +112,8 @@ $admin = mysqli_query($conn, "SELECT * FROM tb_admin");
                   <tr>
                     <td style="text-align:center"><?= $i ?></td>
                     <td style="text-align: center">
-                      <a href="/apmodasi/assets/dist/img/admin/<?= $dta['foto_admin'] ?>" data-toggle="lightbox" data-title="Nama : <?= $dta['nama_admin'] ?>" data-gallery="gallery">
-                        <img src="/apmodasi/assets/dist/img/admin/<?= $dta['foto_admin'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
+                      <a href="../../assets/dist/img/admin/<?= $dta['foto_admin'] ?>" data-toggle="lightbox" data-title="Nama : <?= $dta['nama_admin'] ?>" data-gallery="gallery">
+                        <img src="../../assets/dist/img/admin/<?= $dta['foto_admin'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
                       </a>
                     </td>
                     <td><?= $dta['nama_admin'] ?></td>
@@ -186,7 +186,7 @@ $admin = mysqli_query($conn, "SELECT * FROM tb_admin");
                           </div>
                         </div>
                         <br>
-                        <img style="max-width:180px; max-height:180px;" id="blah" src="/apmodasi/assets/dist/img/admin/<?= $dta['foto_admin'] ?>" alt="your image" />
+                        <img style="max-width:180px; max-height:180px;" id="blah" src="../../assets/dist/img/admin/<?= $dta['foto_admin'] ?>" alt="your image" />
 
                         </div>
                         <div class="modal-footer justify-content-between">
