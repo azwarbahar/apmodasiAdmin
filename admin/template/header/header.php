@@ -16,31 +16,31 @@ $nama_header = $get_data_admin['nama_admin'];
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Apmodasi</title>
-  <link rel="icon" href="/apmodasi/assets/dist/img/logo_apmodasi.png">
+  <link rel="icon" href="../../../assets/dist/img/logo_apmodasi.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="/apmodasi/assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/fontawesome-free/css/all.min.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="/apmodasi/assets/plugins/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="../../assets/plugins/summernote/summernote-bs4.css">
   <!-- Ekko Lightbox -->
-  <link rel="stylesheet" href="/apmodasi/assets/plugins/ekko-lightbox/ekko-lightbox.css">
+  <link rel="stylesheet" href="../../assets/plugins/ekko-lightbox/ekko-lightbox.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="/apmodasi/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="/apmodasi/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="/apmodasi/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
 
 <!-- bootstrap-switch-button -->
   <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
 
   <!-- Theme style -->
-  <link rel="stylesheet" href="/apmodasi/assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../assets/dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="/apmodasi/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -55,7 +55,7 @@ $nama_header = $get_data_admin['nama_admin'];
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/apmodasi/admin/index.php" class="nav-link">Home</a>
+        <a href="../../admin/index.php" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -98,7 +98,7 @@ $nama_header = $get_data_admin['nama_admin'];
     </div>
     <div class="modal-footer justify-content-between">
       <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Batal</button>
-      <a href="/apmodasi/logout.php?logout=true&for=login_admin" type="button" class="btn btn-outline-dark">Keluar</a>
+      <a href="../../logout.php?logout=true&for=login_admin" type="button" class="btn btn-outline-dark">Keluar</a>
     </div>
   </div>
   <!-- /.modal-content -->
@@ -110,8 +110,8 @@ $nama_header = $get_data_admin['nama_admin'];
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-info elevation-5">
     <!-- Brand Logo -->
-    <a href="/apmodasi/admin/index.php" class="brand-link">
-      <img src="/apmodasi/assets/dist/img/logo_apmodasi.png" alt="Logo Kabupaten Soppeng" class="brand-image img-circle elevation-3"
+    <a href="../../admin/index.php" class="brand-link">
+      <img src="../../assets/dist/img/logo_apmodasi.png" alt="Logo Kabupaten Soppeng" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Apmodasi</span>
     </a>
@@ -121,7 +121,7 @@ $nama_header = $get_data_admin['nama_admin'];
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/apmodasi/assets/dist/img/admin/<?= $get_data_admin['foto_admin'] ?>" class="img-circle elevation-2" alt="User Image">
+          <img src="../../assets/dist/img/admin/<?= $get_data_admin['foto_admin'] ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"><?= $nama_header ?></a>
@@ -136,7 +136,7 @@ $nama_header = $get_data_admin['nama_admin'];
                with font-awesome or any other icon font library -->
 
           <li class="nav-item has-treeview menu-open">
-            <a href="/apmodasi/admin/" class="nav-link active">
+            <a href="../../admin/" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -165,7 +165,7 @@ $nama_header = $get_data_admin['nama_admin'];
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="/apmodasi/admin/bayi/data-terbaru.php" class="nav-link">
+                <a href="../../admin/bayi/data-terbaru.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Terbaru
                     <?php
@@ -179,7 +179,7 @@ $nama_header = $get_data_admin['nama_admin'];
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/apmodasi/admin/bayi/data.php" class="nav-link">
+                <a href="../../admin/bayi/data.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Semua</p>
                 </a>
@@ -188,7 +188,7 @@ $nama_header = $get_data_admin['nama_admin'];
           </li>
 
           <li class="nav-item">
-            <a href="/apmodasi/admin/bunda/data.php" class="nav-link">
+            <a href="../../admin/bunda/data.php" class="nav-link">
               <i class="nav-icon fa fa-user-plus"></i>
               <p>
                 Data Bunda
@@ -197,7 +197,7 @@ $nama_header = $get_data_admin['nama_admin'];
           </li>
 
           <li class="nav-item">
-            <a href="/apmodasi/admin/kader/data.php" class="nav-link">
+            <a href="../../admin/kader/data.php" class="nav-link">
               <i class="nav-icon fas fa-id-badge"></i>
               <p>
                 Data Kader
@@ -206,7 +206,7 @@ $nama_header = $get_data_admin['nama_admin'];
           </li>
 
           <li class="nav-item">
-            <a href="/apmodasi/admin/imunisasi/data.php?tahun=2021" class="nav-link">
+            <a href="../../admin/imunisasi/data.php?tahun=2021" class="nav-link">
               <i class="nav-icon fa fa-stethoscope"></i>
               <p>
                 Imunisasi Bayi
@@ -215,7 +215,7 @@ $nama_header = $get_data_admin['nama_admin'];
           </li>
 
           <li class="nav-item">
-            <a href="/apmodasi/admin/admin/data.php" class="nav-link">
+            <a href="../../admin/admin/data.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>
                 Admin

@@ -29,7 +29,7 @@ if($_FILES['foto_bunda']) {
                 "status" => "success",
                 "error" => false,
                 "message" => "File uploaded successfully",
-                "url" => "/apmodasi/assets/dist/img/bunda/image_".time().".png"
+                "url" => "/bunda/image_".time().".png"
               );
         }else
         {
