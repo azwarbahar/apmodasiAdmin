@@ -15,17 +15,17 @@ if ($tahun == "All"){
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Apmodasi</title>
-  <link rel="icon" href="/apmodasi/assets/dist/img/logo_apmodasi.png">
+  <link rel="icon" href="../../assets/dist/img/logo_apmodasi.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap 4 -->
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="/reses-dprd/assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/reses-dprd/assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../assets/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
 <!-- Load paper.css for happy printing -->
