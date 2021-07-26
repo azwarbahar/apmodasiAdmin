@@ -4,8 +4,7 @@
 
 $bayi_id = $_GET["bayi_id"];
 $query = "SELECT * FROM tb_imunisasi WHERE bayi_id = '$bayi_id' ";
-
- $result = mysqli_query($conn, $query);
+$result = mysqli_query($conn, $query);
 
  $array = array();
  while($row = mysqli_fetch_assoc($result)){

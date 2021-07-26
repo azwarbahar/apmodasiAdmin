@@ -21,6 +21,8 @@ $nama_header = $get_data_admin['nama_admin'];
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="../../assets/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="../../assets/plugins/summernote/summernote-bs4.css">
   <!-- Ekko Lightbox -->
@@ -206,7 +208,7 @@ $nama_header = $get_data_admin['nama_admin'];
           </li>
 
           <li class="nav-item">
-            <a href="../../admin/imunisasi/data.php?tahun=2021" class="nav-link">
+            <a href="../../admin/imunisasi/data.php?tahun=All" class="nav-link">
               <i class="nav-icon fa fa-stethoscope"></i>
               <p>
                 Imunisasi Bayi
@@ -222,6 +224,17 @@ $nama_header = $get_data_admin['nama_admin'];
               </p>
             </a>
           </li>
+
+          <!-- <li class="nav-header">SEMENTARA</li>
+
+          <li class="nav-item">
+            <a href="../../admin/sementara/bayi.php" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>
+                Admin
+              </p>
+            </a>
+          </li> -->
 
           <li class="nav-header"></li>
           <li class="nav-header"></li>

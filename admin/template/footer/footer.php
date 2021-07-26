@@ -54,6 +54,11 @@
 <script src="../../assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../assets/dist/js/demo.js"></script>
+<!-- InputMask -->
+<script src="../../assets/plugins/moment/moment.min.js"></script>
+<script src="../../assets/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- date-range-picker -->
+<script src="../../assets/plugins/daterangepicker/daterangepicker.js"></script>
 
 
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -68,6 +73,10 @@
 <!-- page script -->
 <script>
   $(function () {
+    //Date range picker
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
 
     $("#example1").DataTable({
       "responsive": true,
