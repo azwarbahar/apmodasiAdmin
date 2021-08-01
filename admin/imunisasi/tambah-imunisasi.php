@@ -44,7 +44,7 @@ $dta = mysqli_fetch_assoc($result);
             <form method="POST" action="controller.php" enctype="multipart/form-data">
             <div class="card-body">
                 <?php
-                    $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]'");
+                    $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]' AND nama_imunisasi != 'IPV'");
                     foreach($imunisasi as $dta_imunisasi) {
                 ?>
                 <div class="form-group">

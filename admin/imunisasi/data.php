@@ -109,7 +109,7 @@ if ($tahun == "All"){
                     <th style="font-size: 16px; text-align: center; color: blue;">Polio 3</th>
                     <th style="font-size: 16px; text-align: center; color: blue;">DPT-HB-Hib 3</th>
                     <th style="font-size: 16px; text-align: center; color: blue;">Polio 4</th>
-                    <th style="font-size: 16px; text-align: center; color: blue;">IPV</th>
+                    <!-- <th style="font-size: 16px; text-align: center; color: blue;">IPV</th> -->
                     <th style="font-size: 16px; text-align: center; color: blue;">Campak</th>
                     <th style="font-size: 16px; text-align: center; color: blue;"></th>
                   </tr>
@@ -138,7 +138,7 @@ if ($tahun == "All"){
                     ?>
                     <td style="font-size: 16px;"><?= $get_bunda['nama_bunda'] ?></td>
                     <?php
-                      $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]'");
+                      $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]' AND nama_imunisasi != 'IPV' ");
                       foreach($imunisasi as $dta_imunisasi) {
                         if ($dta_imunisasi['status_imunisasi'] == "Sudah"){
                           echo " <td style='text-align:center; font-size: 16px;'><span class='badge bg-success' type='button' data-toggle='modal' data-target='#modal-sm$dta_imunisasi[id_imunisasi]' > Sudah </span>";
