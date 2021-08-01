@@ -135,8 +135,12 @@ if ($tahun == "All"){
                     <?php
                       $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE id_bunda = '$dta[bunda_id]'");
                       $get_bunda = mysqli_fetch_assoc($bunda);
+                      if ($get_bunda == null){
+                        echo '<td style="font-size: 16px;"> - </td>';
+                      } else{
+                        echo '<td style="font-size: 16px;">'. $get_bunda['nama_bunda'].' </td>';
+                      }
                     ?>
-                    <td style="font-size: 16px;"><?= $get_bunda['nama_bunda'] ?></td>
                     <?php
                       $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]' AND nama_imunisasi != 'IPV' ");
                       foreach($imunisasi as $dta_imunisasi) {
