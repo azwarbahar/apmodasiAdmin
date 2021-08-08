@@ -74,12 +74,12 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
 
                         <div class="form-group">
                           <label for="inputName">NIP</label>
-                          <input type="text" id="nip_kader" name="nip_kader"class="form-control">
+                          <input type="text" id="nip_kader" name="nip_kader"class="form-control" required>
                         </div>
 
                         <div class="form-group">
                           <label for="inputName">Nama Lengkap</label>
-                          <input type="text" id="nama_kader" name="nama_kader"class="form-control">
+                          <input type="text" id="nama_kader" name="nama_kader"class="form-control" required>
                         </div>
 
                         <div class="form-group">
@@ -93,12 +93,12 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
 
                         <div class="form-group">
                           <label for="inputName">Kontak</label>
-                          <input type="text" id="kontak_kader" name="kontak_kader"class="form-control">
+                          <input type="text" id="kontak_kader" name="kontak_kader"class="form-control" required>
                         </div>
 
                         <div class="form-group">
                           <label for="inputName">Alamat</label>
-                          <input type="text" id="alamat_kader" name="alamat_kader"class="form-control">
+                          <input type="text" id="alamat_kader" name="alamat_kader"class="form-control" required>
                         </div>
 
                         <div class="form-group">
@@ -143,8 +143,8 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                   <?php $i = 1; foreach($kader as $dta) { ?>
                   <tr>
                     <td style="text-align: center">
-                      <a href="../../assets/dist/img/kader//<?= $dta['foto_kader'] ?>" data-toggle="lightbox" data-title="Nama : <?= $dta['nama_kader'] ?>" data-gallery="gallery">
-                        <img src="../../assets/dist/img/kader//<?= $dta['foto_kader'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
+                      <a href="../../assets/dist/img/kader/<?= $dta['foto_kader'] ?>" data-toggle="lightbox" data-title="Nama : <?= $dta['nama_kader'] ?>" data-gallery="gallery">
+                        <img src="../../assets/dist/img/kader/<?= $dta['foto_kader'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
                       </a>
                     </td>
                     <td style="text-align:center"><?= $dta['nip_kader'] ?></td>
@@ -188,12 +188,12 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
 
                         <div class="form-group">
                           <label for="inputName">NIP</label>
-                          <input type="text" value="<?= $dta['nip_kader'] ?>" id="nip_kader" name="nip_kader"class="form-control">
+                          <input type="text" value="<?= $dta['nip_kader'] ?>" id="nip_kader" name="nip_kader"class="form-control" required>
                         </div>
 
                         <div class="form-group">
                           <label for="inputName">Nama Lengkap</label>
-                          <input type="text" value="<?= $dta['nama_kader'] ?>" id="nama_kader" name="nama_kader"class="form-control">
+                          <input type="text" value="<?= $dta['nama_kader'] ?>" id="nama_kader" name="nama_kader"class="form-control" required>
                         </div>
 
                         <div class="form-group">
@@ -215,12 +215,12 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
 
                         <div class="form-group">
                           <label for="inputName">Kontak</label>
-                          <input type="text" value="<?= $dta['kontak_kader'] ?>" id="kontak_kader" name="kontak_kader"class="form-control">
+                          <input type="text" value="<?= $dta['kontak_kader'] ?>" id="kontak_kader" name="kontak_kader"class="form-control" required>
                         </div>
 
                         <div class="form-group">
                           <label for="inputName">Alamat</label>
-                          <input type="text" value="<?= $dta['alamat_kader'] ?>" id="alamat_kader" name="alamat_kader"class="form-control">
+                          <input type="text" value="<?= $dta['alamat_kader'] ?>" id="alamat_kader" name="alamat_kader"class="form-control" required>
                         </div>
 
                         <div class="form-group">

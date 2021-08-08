@@ -105,9 +105,9 @@ if ($tahun == "All"){
         <div class="content">
                 <h6 style="text-align: center;"><b>PENCATATAN IMUNISASI RUTIN BAYI DI UNIT PELAYANAN</b></h6> <br>
                 <p style="font-size: 11px;" >
-                NAMA UNIT PELAYANAN KESEHATAN&emsp;: PUSKESMAS SISFO UINAM<br>
-                DESA / KELURAHAN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: KELURAHAN SAINTEK<br>
-                PUSKESMAS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp;: PUSKESMAS SAMATA<br>
+                NAMA UNIT PELAYANAN KESEHATAN&emsp;: PUSKESMAS PALLANGGA<br>
+                DESA / KELURAHAN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: TETEBATU<br>
+                PUSKESMAS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp;: PUSKESMAS PALLANGGA<br>
                 TAHUN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp;&nbsp;: <?= $tahun ?>
                 <p style="font-size: 10px; text-align: right; ">Tanggal : <?= date('l d F Y')?></p>
               </p>
