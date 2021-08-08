@@ -111,7 +111,6 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                         <br>
                         <img style="max-width:180px; max-height:180px;" id="blah" src="../../assets/dist/img/default-150x150.png" alt="your image" />
 
-
                         </div>
                         <div class="modal-footer justify-content-between">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
