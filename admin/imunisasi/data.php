@@ -119,13 +119,13 @@ if ($tahun == "All"){
                   <tr>
                     <td style="text-align:center"><?= $i ?></td>
                     <td style="text-align: center">
-                      <a href="../../assets/dist/img/bayi//<?= $dta['foto_bayi'] ?>" data-toggle="lightbox" data-title="Nama : <?= $dta['nama_bayi'] ?>" data-gallery="gallery">
-                        <img src="../../assets/dist/img/bayi//<?= $dta['foto_bayi'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
+                      <a href="../../assets/dist/img/bayi/<?= $dta['foto_bayi'] ?>" data-toggle="lightbox" data-title="Nama : <?= $dta['nama_bayi'] ?>" data-gallery="gallery">
+                        <img src="../../assets/dist/img/bayi/<?= $dta['foto_bayi'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
                       </a>
                     </td>
                     <td style="font-size: 16px;"><?= $dta['nama_bayi'] ?></td>
                     <?php
-                      if ( $dta['jenis_kelamin_bayi'] == "Laki - laki	"){
+                      if ( $dta['jenis_kelamin_bayi'] == "Laki - laki"){
                         echo "<td style='text-align: center; font-size: 16px;'>L</td>";
                       } else {
                         echo "<td style='text-align: center; font-size: 16px;'>P</td>";

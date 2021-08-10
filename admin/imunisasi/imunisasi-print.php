@@ -141,7 +141,7 @@ if ($tahun == "All"){
                       <td style="font-size: 8px; text-align: center; width: 10px"><?= $i ?></td>
                       <td style="font-size: 8px;"><?= $dta['nama_bayi'] ?></td>
                       <?php
-                        if ( $dta['jenis_kelamin_bayi'] == "Laki - laki	"){
+                        if ( $dta['jenis_kelamin_bayi'] == "Laki - laki"){
                           echo "<td style='text-align: center; font-size: 8px;'>L</td>";
                         } else {
                           echo "<td style='text-align: center; font-size: 8px;'>P</td>";
