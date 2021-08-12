@@ -37,11 +37,13 @@ if ($tahun == "All"){
 
             <div class="card">
               <div class="card-header">
-                <h5 style="text-align: center;"><b>PENCATATAN IMUNISASI RUTIN BAYI DI UNIT PELAYANAN</b></h5> <br>
-                <p>NAMA UNIT PELAYANAN KESEHATAN&emsp;: PUSKESMAS SISFO UINAM<br>
-                DESA / KELURAHAN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: KELURAHAN SAINTEK<br>
-                PUSKESMAS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp;: PUSKESMAS SAMATA<br>
-                TAHUN</p>
+                <h6 style="text-align: center;"><b>PENCATATAN IMUNISASI RUTIN BAYI DI UNIT PELAYANAN</b></h6> <br>
+                <p >
+                NAMA UNIT PELAYANAN KESEHATAN&emsp;: PUSKESMAS PALLANGGA<br>
+                DESA / KELURAHAN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: TETEBATU<br>
+                PUSKESMAS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp;: PUSKESMAS PALLANGGA<br>
+                TAHUN
+              </p>
                 <form method="POST" action="cont.php" enctype="multipart/form-data">
                 <div class="row">
                   <div class="col-3">
