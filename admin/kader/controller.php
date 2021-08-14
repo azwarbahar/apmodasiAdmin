@@ -10,13 +10,13 @@ require('../../koneksi.php');
 
 // SUBMIT kader
 if (isset($_POST['submit_kader'])) {
-	$nip_kader = $_POST['nip_kader'];
+	$nip_kader = "-";
 	$nama_kader = $_POST['nama_kader'];
 	$jenis_kelamin_kader = $_POST['jenis_kelamin_kader'];
 	$kontak_kader = $_POST['kontak_kader'];
 	$alamat_kader = $_POST['alamat_kader'];
-	$username_kader = $_POST['nip_kader'];
-	$password_kader = $_POST['nip_kader'];
+	$username_kader = $_POST['kontak_kader'];
+	$password_kader = $_POST['kontak_kader'];
 	$passwordHash = password_hash($password_kader, PASSWORD_DEFAULT);
 	$status_kader = "Active";
 	$role = "Kader";
@@ -56,13 +56,12 @@ if (isset($_POST['submit_kader'])) {
 // UPDATE kader
 if (isset($_POST['edit_kader'])) {
 	$id_kader = $_POST['id_kader'];
-	$nip_kader = $_POST['nip_kader'];
 	$nama_kader = $_POST['nama_kader'];
 	$jenis_kelamin_kader = $_POST['jenis_kelamin_kader'];
 	$kontak_kader = $_POST['kontak_kader'];
 	$alamat_kader = $_POST['alamat_kader'];
 	$status_kader = $_POST['status_kader'];
-	$username_kader = $_POST['nip_kader'];
+	$username_kader = $_POST['kontak_kader'];
 
     // SET FOTO
 	if ($_FILES['foto_kader']['name'] != '') {
@@ -78,8 +77,7 @@ if (isset($_POST['edit_kader'])) {
 	} else {
 		$nama_foto = $_POST['foto_now'];
 	}
-    $query = "UPDATE tb_kader SET nip_kader = '$nip_kader',
-                                  nama_kader = '$nama_kader',
+    $query = "UPDATE tb_kader SET nama_kader = '$nama_kader',
                                   jenis_kelamin_kader = '$jenis_kelamin_kader',
                                   kontak_kader = '$kontak_kader',
                                   alamat_kader = '$alamat_kader',

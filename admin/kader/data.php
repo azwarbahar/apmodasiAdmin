@@ -72,10 +72,10 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                         </div>
                         <div class="modal-body">
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <label for="inputName">NIP</label>
                           <input type="text" id="nip_kader" name="nip_kader"class="form-control" required>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                           <label for="inputName">Nama Lengkap</label>
@@ -131,7 +131,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                   <thead>
                   <tr>
                     <th>Foto</th>
-                    <th>NIP</th>
+                    <!-- <th>NIP</th> -->
                     <th>Nama</th>
                     <th>Kontak</th>
                     <th>Status</th>
@@ -146,7 +146,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                         <img src="../../assets/dist/img/kader/<?= $dta['foto_kader'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
                       </a>
                     </td>
-                    <td style="text-align:center"><?= $dta['nip_kader'] ?></td>
+                    <!-- <td style="text-align:center"></td> -->
                     <td><?= $dta['nama_kader'] ?></td>
                     <td><?= $dta['kontak_kader'] ?></td>
                     <?php
@@ -170,7 +170,6 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                     </td>
                   </tr>
 
-                  
 
                 <!-- Modal EDIT KADER -->
                 <div class="modal fade" id="modal-lg<?= $dta['id_kader'] ?>">
@@ -184,11 +183,6 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                           </button>
                         </div>
                         <div class="modal-body">
-
-                        <div class="form-group">
-                          <label for="inputName">NIP</label>
-                          <input type="text" value="<?= $dta['nip_kader'] ?>" id="nip_kader" name="nip_kader"class="form-control" required>
-                        </div>
 
                         <div class="form-group">
                           <label for="inputName">Nama Lengkap</label>
@@ -252,6 +246,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
 
                         </div>
                         <div class="modal-footer justify-content-between">
+                          <input type="hidden" value="<?= $dta['nip_kader'] ?>" name="nip_kader">
                           <input type="hidden" name="id_kader" value="<?= $dta['id_kader'] ?>">
                           <input type="hidden" name="foto_now" value="<?= $dta['foto_kader'] ?>">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

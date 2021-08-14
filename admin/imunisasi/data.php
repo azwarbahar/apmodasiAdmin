@@ -173,7 +173,7 @@ if ($tahun == "All"){
                                           alt="User profile picture">
                                     </div>
                                     <h3 class="profile-username text-center"><?= $get_kader['nama_kader'] ?></h3>
-                                    <p class="text-muted text-center"><?= $get_kader['nip_kader'] ?></p>
+                                    <p class="text-muted text-center"><?= $get_kader['kontak_kader'] ?></p>
                                   <!-- /.card-body -->
                                 </div>
                                 <div class="modal-footer justify-content-between">
