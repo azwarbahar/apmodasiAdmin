@@ -28,13 +28,11 @@ if (isset($_POST['submit_imunisasi'])) {
                                                 catatan_imunisasi = '$catatan_imunisasi',
                                                 tanggal_imunisasi = '$tanggal_imunisasi',
                                                 update_at = null WHERE bayi_id = '$id_bayi' AND no_imunisasi = '$no_imunisasi'";
-    
-    
             $query2 = "INSERT INTO tb_riwayat_kader values(null,'$kader_id',
                                                     '$id_bayi',
                                                     '$usia_bayi_imunisasi',
+                                                    'Vaksin',
                                                     '$no_imunisasi',
-                                                    '$status_imunisasi',
                                                     '$catatan_imunisasi',
                                                     '$tanggal_imunisasi',
                                                     null,

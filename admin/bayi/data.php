@@ -121,6 +121,8 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                             ";
                           } else {
                             echo "<a href='#' data-toggle='modal' data-target='#modal-danger$dta[id_bayi]' class='dropdown-item'>Hapus</a>
+                                  <a href='#' data-toggle='modal' data-target='#modal-lgBB$dta[id_bayi]'  class='dropdown-item'>Berat</a>
+                                  <a href='#' data-toggle='modal' data-target='#modal-lgTB$dta[id_bayi]'  class='dropdown-item'>Tinggi</a>
                             ";
                           }
 
@@ -129,6 +131,58 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                       </div>
                     </td>
                   </tr>
+
+                  
+                <!-- Modal EDIT KADER -->
+                <div class="modal fade" id="modal-lgBB<?= $dta['id_bayi'] ?>">
+                  <div class="modal-dialog modal-lg">
+                    <form method="POST" action="controller.php" enctype="multipart/form-data">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Tambah Berat Badan</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                        <div class="form-group">
+                          <label for="inputName">Nama Lengkap</label>
+                          <input type="text" value="<?= $dta['nama_kader'] ?>" id="nama_kader" name="nama_kader"class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputName">Status Akun</label>
+                          <div class="col-sm-9">
+                            <select name="status_kader" id="status_kader" class="form-control">
+                            <?php
+                              if ($dta['status_kader']=="Active"){
+                                echo "<option selected='selected' value='Active'>Active</option>
+                                  <option value='Suspend'>Suspend</option>";
+                              } else{
+                                echo "<option value='Active'>Active</option>
+                                  <option selected='selected' value='Suspend'>Suspend</option>";
+                              }
+                            ?>
+                            </select>
+                          </div>
+                        </div>
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <input type="hidden" value="<?= $dta['nip_kader'] ?>" name="nip_kader">
+                          <input type="hidden" name="id_kader" value="<?= $dta['id_kader'] ?>">
+                          <input type="hidden" name="foto_now" value="<?= $dta['foto_kader'] ?>">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                          <button type="submit" name="edit_kader" class="btn btn-primary">Simpan</button>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
 
       <!-- Modal Hapus -->
       <div class="modal fade" id="modal-danger<?= $dta['id_bayi'] ?>">
