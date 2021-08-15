@@ -21,7 +21,7 @@ if (isset($_POST['submit_imunisasi'])) {
         $tanggal_imunisasi = $_POST['tanggal'.$no_imunisasi];
         $jenis_input = "Vaksin";
 
-        if (!$catatan_imunisasi == ""){
+        if (!$usia_bayi_imunisasi == ""){
             $query = "UPDATE tb_imunisasi SET usia_bayi_imunisasi = '$usia_bayi_imunisasi',
                                                 kader_id = '$kader_id',
                                                 status_imunisasi = '$status_imunisasi',
