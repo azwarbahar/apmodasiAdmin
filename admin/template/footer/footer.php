@@ -74,10 +74,6 @@
 <script>
   $(function () {
     //Date range picker
-    $('#reservationdate').datetimepicker({
-        format: 'L'
-    });
-
     $("#example1").DataTable({
       "responsive": true,
       "autoWidth": false,
@@ -175,6 +171,11 @@
       "autoWidth": false,
       "responsive": true,
     });
+    
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+
 
     // Summernote
     $('.textarea').summernote()
