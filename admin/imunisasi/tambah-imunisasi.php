@@ -5,8 +5,6 @@ $id_bayi = $_GET['id_bayi'];
 $result = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE id_bayi = '$id_bayi'");
 $dta = mysqli_fetch_assoc($result);
 ?>
-
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
