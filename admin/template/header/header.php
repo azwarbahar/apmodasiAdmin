@@ -173,7 +173,7 @@ $nama_header = $get_data_admin['nama_admin'];
                     <?php
                       $bayi_header = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Menunggu'");
                       $row_bayi_header = mysqli_num_rows($bayi_header);
-                      if ($row_bayi_header >= 1){
+                      if ($row_bayi_header >= 1){ 
                         echo '<span class="badge badge-info right">'.$row_bayi_header.'</span>';
                       }
                     ?>
@@ -189,13 +189,44 @@ $nama_header = $get_data_admin['nama_admin'];
             </ul>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item has-treeview">
             <a href="../../admin/bunda/data.php" class="nav-link">
               <i class="nav-icon fa fa-user-plus"></i>
               <p>
                 Data Bunda
+              <?php
+                $bunda_header = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND role = 'Bunda' ");
+                $bunda_header = mysqli_num_rows($bunda_header);
+                if ($bunda_header >= 1){
+                  echo '<span class="right badge badge-danger">New</span>';
+                }
+              ?>
               </p>
             </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="../../admin/bunda/data-terbaru.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Terbaru
+                    <?php
+                      $bunda_header = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND role = 'Bunda' ");
+                      $row_bunda_header = mysqli_num_rows($bunda_header);
+                      if ($row_bunda_header >= 1){ 
+                        echo '<span class="badge badge-info right">'.$row_bunda_header.'</span>';
+                      }
+                    ?>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../admin/bayi/data.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Semua</p>
+                </a>
+              </li>
+            </ul>
+
+
           </li>
 
           <li class="nav-item">
