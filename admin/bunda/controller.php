@@ -101,6 +101,26 @@ if (isset($_POST['edit_bunda'])) {
 	<?php }
 }
 
+if (isset($_GET['konfirmasi_bunda'])){
+	$id_auth = $_GET['id_auth'];
+	
+    $query = "UPDATE tb_auth SET ststus = 'Active',
+                                  update_at = null WHERE id_auth = '$id_auth'";
+		mysqli_query($conn, $query);
+		plugins(); ?>
+		<script>
+			$(document).ready(function() {
+				swal({
+					title: 'Berhasil',
+					text: 'Data Akun berhasil dikonfirmasi',
+					icon: 'success'
+				}).then((data) => {
+					location.href = 'data-terbaru.php';
+				});
+			});
+		</script>
+	<?php
+}
 
 // HAPUS AREA
 if (isset($_GET['hapus_bunda'])) {
