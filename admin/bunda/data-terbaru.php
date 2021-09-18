@@ -1,6 +1,6 @@
 <?php
 require_once '../template/header/header.php';
-$bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
+$auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND role = 'Bunda'");
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -55,7 +55,7 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                   </div>
 
                 </div> -->
-                <button data-toggle="modal" data-target="#modal-lg" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Bunda</a>
+                <!-- <button data-toggle="modal" data-target="#modal-lg" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Bunda</a> -->
               </div>
 
 
@@ -126,28 +126,32 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                     <th>Foto</th>
                     <th>Nama</th>
                     <th>Kontak</th>
-                    <th>Bayi</th>
+                    <th>Status</th>
                     <th></th>
                   </tr>
                   </thead>
                   <tbody>
-                  <?php $i = 1; foreach($bunda as $dta) { ?>
+                  <?php $i = 1; foreach($auth as $dta_auth) {
+                      $user_id = $dta_auth['user_id'];
+                      $bunda = mysqli_query($conn, "SELECT * FROM tb_admin WHERE id_admin = '$user_id'");
+                      $get_data_bunda = mysqli_fetch_assoc($bunda);
+                    ?>
                   <tr>
                     <td style="text-align:center"><?= $i ?></td>
                     <td style="text-align: center">
-                      <a href="../../assets/dist/img/bunda//<?= $dta['foto_bunda'] ?>" data-toggle="lightbox" data-title="Nama : <?= $dta['nama_bunda'] ?>" data-gallery="gallery">
-                        <img src="../../assets/dist/img/bunda//<?= $dta['foto_bunda'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
+                      <a href="../../assets/dist/img/bunda/<?= $get_data_bunda['foto_bunda'] ?>" data-toggle="lightbox" data-title="Nama : <?= $get_data_bunda['nama_bunda'] ?>" data-gallery="gallery">
+                        <img src="../../assets/dist/img/bunda/<?= $get_data_bunda['foto_bunda'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
                       </a>
                     </td>
-                    <td><?= $dta['nama_bunda'] ?></td>
-                    <td><?= $dta['kontak_bunda'] ?></td>
+                    <td><?= $get_data_bunda['nama_bunda'] ?></td>
+                    <td><?= $get_data_bunda['kontak_bunda'] ?></td>
                     <?php
-                      $bayi_bunda = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE bunda_id = '$dta[id_bunda]' ");
-                      $row_bayi_bunda = mysqli_num_rows($bayi_bunda);
-                      $row_bayi_bunda_final = $row_bayi_bunda;
+                      // $bayi_bunda = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE bunda_id = '$get_data_bunda[id_bunda]' ");
+                      // $row_bayi_bunda = mysqli_num_rows($bayi_bunda);
+                      // $row_bayi_bunda_final = $row_bayi_bunda;
                     ?>
                     <td style="text-align:center">
-                    <span class="badge badge-info"><?= $row_bayi_bunda_final ?> Orang</span>
+                    <span class="badge badge-danger"><?= $dta_auth['status'] ?></span>
                     </td>
                     <td style="text-align:center; width: 20px;">
                       <div class="btn-group">
@@ -156,8 +160,8 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" role="menu">
                           <!-- <a href="#" class="dropdown-item">Detail</a> -->
-                          <a href="#" data-toggle="modal" data-target="#modal-lg<?= $dta['id_bunda'] ?>"  class="dropdown-item">Edit</a>
-                          <a href="#" data-toggle="modal" data-target="#modal-danger<?= $dta['id_bunda'] ?>" class="dropdown-item">Hapus</a>
+                          <a href="#" data-toggle="modal" data-target="#modal-lg<?= $get_data_bunda['id_bunda'] ?>"  class="dropdown-item">Edit</a>
+                          <a href="#" data-toggle="modal" data-target="#modal-danger<?= $get_data_bunda['id_bunda'] ?>" class="dropdown-item">Hapus</a>
                         </div>
                       </div>
                     </td>
@@ -166,7 +170,7 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
 
 
                 <!-- Modal EDIT KADER -->
-                <div class="modal fade" id="modal-lg<?= $dta['id_bunda'] ?>">
+                <div class="modal fade" id="modal-lg<?= $get_data_bunda['id_bunda'] ?>">
                   <div class="modal-dialog modal-lg">
                     <form method="POST" action="controller.php" enctype="multipart/form-data">
                       <div class="modal-content">
@@ -180,23 +184,23 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
 
                         <div class="form-group">
                           <label for="inputName">Nama Lengkap</label>
-                          <input type="text" value="<?= $dta['nama_bunda'] ?>" id="nama_bunda" name="nama_bunda"class="form-control">
+                          <input type="text" value="<?= $get_data_bunda['nama_bunda'] ?>" id="nama_bunda" name="nama_bunda"class="form-control">
                         </div>
 
                         <div class="form-group">
                           <label for="inputName">Kontak</label>
-                          <input type="text" value="<?= $dta['kontak_bunda'] ?>" id="kontak_bunda" name="kontak_bunda"class="form-control">
+                          <input type="text" value="<?= $get_data_bunda['kontak_bunda'] ?>" id="kontak_bunda" name="kontak_bunda"class="form-control">
                         </div>
 
                         <div class="form-group">
                           <label for="inputName">Alamat</label>
-                          <input type="text" value="<?= $dta['alamat_bunda'] ?>" id="alamat_bunda" name="alamat_bunda"class="form-control">
+                          <input type="text" value="<?= $get_data_bunda['alamat_bunda'] ?>" id="alamat_bunda" name="alamat_bunda"class="form-control">
                         </div>
 
                         <div class="form-group">
                           <label for="inputName">Username</label>
                           <?php
-                            $get_auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE user_id = '$dta[id_bunda]' AND role = 'Bunda' ");
+                            $get_auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE user_id = '$get_data_bunda[id_bunda]' AND role = 'Bunda' ");
                             $data_auth = mysqli_fetch_assoc($get_auth);
                           ?>
 
@@ -228,14 +232,14 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                           </div>
                         </div>
                         <br>
-                        <img style="max-width:180px; max-height:180px;" id="blah" src="../../assets/dist/img/bunda/<?= $dta['foto_bunda'] ?>" alt="your image" />
+                        <img style="max-width:180px; max-height:180px;" id="blah" src="../../assets/dist/img/bunda/<?= $get_data_bunda['foto_bunda'] ?>" alt="your image" />
 
 
 
                         </div>
                         <div class="modal-footer justify-content-between">
-                          <input type="hidden" name="id_bunda" value="<?= $dta['id_bunda'] ?>">
-                          <input type="hidden" name="foto_now" value="<?= $dta['foto_bunda'] ?>">
+                          <input type="hidden" name="id_bunda" value="<?= $get_data_bunda['id_bunda'] ?>">
+                          <input type="hidden" name="foto_now" value="<?= $get_data_bunda['foto_bunda'] ?>">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
                           <button type="submit" name="edit_bunda" class="btn btn-primary">Simpan</button>
                         </div>
@@ -248,7 +252,7 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                 <!-- /.modal -->
 
       <!-- Modal Hapus -->
-      <div class="modal fade" id="modal-danger<?= $dta['id_bunda'] ?>">
+      <div class="modal fade" id="modal-danger<?= $get_data_bunda['id_bunda'] ?>">
         <div class="modal-dialog">
           <div class="modal-content bg-danger">
             <div class="modal-header">
@@ -262,7 +266,7 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-              <a href="controller.php?hapus_bunda=true&id_bunda=<?= $dta['id_bunda'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
+              <a href="controller.php?hapus_bunda=true&id_bunda=<?= $get_data_bunda['id_bunda'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
             </div>
           </div>
           <!-- /.modal-content -->
