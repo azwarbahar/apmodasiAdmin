@@ -182,7 +182,7 @@ $auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-              <a href="controller.php?konfirmasi_bunda=true&id_auth=<?= $dta_auth['id_auth'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
+              <a href="controller.php?konfirmasi_bunda=true&id_auth=<?= $dta_auth['id_auth'] ?>" type="button" class="btn btn-outline-light">Konfirmasi</a>
             </div>
           </div>
           <!-- /.modal-content -->
