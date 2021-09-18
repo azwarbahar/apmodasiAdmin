@@ -104,7 +104,7 @@ if (isset($_POST['edit_bunda'])) {
 if (isset($_GET['konfirmasi_bunda'])){
 	$id_auth = $_GET['id_auth'];
 	
-    $query = "UPDATE tb_auth SET ststus = 'Active',
+    $query = "UPDATE tb_auth SET status = 'Active',
                                   update_at = null WHERE id_auth = '$id_auth'";
 		mysqli_query($conn, $query);
 		plugins(); ?>
