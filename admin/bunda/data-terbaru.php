@@ -133,14 +133,14 @@ $auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND
                   <tbody>
                   <?php $i = 1; foreach($auth as $dta_auth) {
                       $user_id = $dta_auth['user_id'];
-                      $bunda = mysqli_query($conn, "SELECT * FROM tb_admin WHERE id_admin = '$user_id'");
+                      $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE id_bunda = '$user_id'");
                       $get_data_bunda = mysqli_fetch_assoc($bunda);
                     ?>
                   <tr>
                     <td style="text-align:center"><?= $i ?></td>
                     <td style="text-align: center">
-                      <a href="../../assets/dist/img/bunda//<?= $get_data_bunda['foto_bunda'] ?>" data-toggle="lightbox" data-title="Nama : <?= $get_data_bunda['nama_bunda'] ?>" data-gallery="gallery">
-                        <img src="../../assets/dist/img/bunda//<?= $get_data_bunda['foto_bunda'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
+                      <a href="../../assets/dist/img/bunda/<?= $get_data_bunda['foto_bunda'] ?>" data-toggle="lightbox" data-title="Nama : <?= $get_data_bunda['nama_bunda'] ?>" data-gallery="gallery">
+                        <img src="../../assets/dist/img/bunda/<?= $get_data_bunda['foto_bunda'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
                       </a>
                     </td>
                     <td><?= $get_data_bunda['nama_bunda'] ?></td>
