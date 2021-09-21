@@ -101,7 +101,7 @@ if ($tahun == "All"){
       }
     </style> -->
   </head>
-  <body class="A4 landscape"> 
+  <body class="landscape"> 
     <section class="sheet padding-10mm">
       <div class="page landscape-parent">
       <div class="landscape">

@@ -33,12 +33,16 @@ if ($tahun == "All"){
 
 <!-- Set page size here: A5, A4 or A3 -->
 <!-- Set also "landscape" if you need -->
-<style>@page { size: A4 landscape  }</style>
+<style>
+  
+  @media print{@page {size: landscape}}
+/* @page { size: A4 landscape  } */
+</style>
 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   </head>
-  <body class="A4 landscape"> 
+  <body class="landscape">
     <section class="sheet padding-10mm">
       <div class="page landscape-parent">
         <div class="landscape">
