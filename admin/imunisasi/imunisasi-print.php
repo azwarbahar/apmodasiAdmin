@@ -166,7 +166,7 @@ if ($tahun == "All"){
                             $date2 = new DateTime($source2);
                             echo " <td style='text-align:center; font-size: 8px;'>". $date->format('d/m/Y') ." </span>";
                           } else {
-                            echo "<td style='font-size: 8px; text-align:center;'></td>";
+                            echo "<td style='font-size: 8px; text-align:center;'> - </td>";
                           }
                         }
                           ?>
