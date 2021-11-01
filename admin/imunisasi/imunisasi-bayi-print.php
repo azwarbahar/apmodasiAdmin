@@ -3,7 +3,7 @@ require '../../koneksi.php';
 $id_bayi = $_GET['id_bayi'];
 $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE id_bayi = '$id_bayi' ");
 $dta_bayi = mysqli_fetch_assoc($bayi);
-$imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE (nama_imunisasi != 'HB' AND nama_imunisasi != 'IPV') AND bayi_id = '$dta[id_bayi]' ");
+$imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE (nama_imunisasi != 'HB' AND nama_imunisasi != 'IPV') AND bayi_id = '$id_bayi' ");
 
 ?>
 
@@ -98,6 +98,17 @@ $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE (nama_imunisa
       </div>
       <!-- /.col -->
     </div>
+    
+    <div class="row" style="margin-left: 10px; margin-right: 10px;">
+            <div class="col-6">
+              <p style="margin-top: 20px;">Mengetahui <br>Kepala Puskesmas Pallangga</p><br><br>
+              <p> dr. Tri Octaviyani Djam'aa MPH <br> NIP. 19821003 201001 2 037 </p>
+            </div>
+            <div class="col-6">
+              <p style="margin-top: 20px; text-align: right;"><br>Koordinator Imunisasi</p><br><br>
+              <p style=" text-align: right;" > Nurlina, A.Md.Kep <br> NIP. 19750505 199703 2 008 </p>
+            </div>
+          </div>
     <!-- /.row -->
   </section>
   <!-- /.content -->

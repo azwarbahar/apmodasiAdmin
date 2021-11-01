@@ -177,6 +177,21 @@ if ($tahun == "All"){
             </div>
           </div>
 
+          <div class="row">
+            <div class="col-6">
+              <p style="margin-top: 20px;">Mengetahui <br>Kepala Puskesmas Pallangga</p><br><br>
+              <p> dr. Tri Octaviyani Djam'aa MPH <br> NIP. 19821003 201001 2 037 </p>
+            </div>
+            <div class="col-6">
+              <p style="margin-top: 20px; text-align: right;"><br>Koordinator Imunisasi</p><br><br>
+              <p style=" text-align: right;" > Nurlina, A.Md.Kep <br> NIP. 19750505 199703 2 008 </p>
+            </div>
+          </div>
+
+          <!-- <p style="margin-top: 20px;">Mengetahui <br>Kepala Puskesmas Pallangga</p><br><br>
+
+          <p> dr. Tri Octaviyani Djam'aa MPH <br> NIP. 19821003 201001 2 037 </p> -->
+          <!-- <p>Koordinator Imunisasi</p> -->
 
         </div>
       </div>
