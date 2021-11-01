@@ -144,7 +144,7 @@ if ($tahun == "All"){
                       }
                     ?>
                     <?php
-                      $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]' AND (nama_imunisasi != 'HB' OR nama_imunisasi != 'IPV') ");
+                      $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE (nama_imunisasi = 'HB' OR nama_imunisasi != 'IPV') AND bayi_id = '$dta[id_bayi]' ");
                       foreach($imunisasi as $dta_imunisasi) {
                         if ($dta_imunisasi['status_imunisasi'] == "Sudah"){
                           echo " <td style='text-align:center; font-size: 16px;'><span class='badge bg-success' type='button' data-toggle='modal' data-target='#modal-sm$dta_imunisasi[id_imunisasi]' > Sudah </span>";
