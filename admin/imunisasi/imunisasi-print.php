@@ -125,7 +125,7 @@ if ($tahun == "All"){
                     <th style="font-size: 9px; text-align: center;">Jenis<br>Kelamin</th>
                     <th style="font-size: 9px; text-align: center;">Tanggal<br>Lahir</th>
                     <th style="font-size: 9px; text-align: center;">Nama Ibu</th>
-                    <th style="font-size: 9px; text-align: center;">HBO</th>
+                    <!-- <th style="font-size: 9px; text-align: center;">HBO</th> -->
                     <th style="font-size: 9px; text-align: center;">BCG</th>
                     <th style="font-size: 9px; text-align: center;">Polio 1</th>
                     <th style="font-size: 9px; text-align: center;">DPT-HB-Hib 1</th>
@@ -159,7 +159,7 @@ if ($tahun == "All"){
                       ?>
                       <td style="font-size: 8px;"><?= $get_bunda['nama_bunda'] ?></td>
                       <?php
-                        $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]' AND nama_imunisasi != 'IPV'");
+                        $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE (nama_imunisasi != 'HB' AND nama_imunisasi != 'IPV') AND bayi_id = '$dta[id_bayi]' ");
                         foreach($imunisasi as $dta_imunisasi) {
                           if ($dta_imunisasi['status_imunisasi'] == "Sudah"){
                             $source2 = $dta_imunisasi['tanggal_imunisasi'];

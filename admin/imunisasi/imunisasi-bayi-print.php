@@ -3,7 +3,7 @@ require '../../koneksi.php';
 $id_bayi = $_GET['id_bayi'];
 $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE id_bayi = '$id_bayi' ");
 $dta_bayi = mysqli_fetch_assoc($bayi);
-$imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$id_bayi' AND nama_imunisasi != 'IPV' ")
+$imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE (nama_imunisasi != 'HB' AND nama_imunisasi != 'IPV') AND bayi_id = '$dta[id_bayi]' ");
 
 ?>
 
