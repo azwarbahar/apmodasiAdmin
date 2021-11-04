@@ -164,7 +164,7 @@ if ($tahun == "All"){
                           if ($dta_imunisasi['status_imunisasi'] == "Sudah"){
                             $source2 = $dta_imunisasi['tanggal_imunisasi'];
                             $date2 = new DateTime($source2);
-                            echo " <td style='text-align:center; font-size: 8px;'>". $date->format('d/m/Y') ." </span>";
+                            echo " <td style='text-align:center; font-size: 8px;'>". $date2->format('d/m/Y') ." </span>";
                           } else {
                             echo "<td style='font-size: 8px; text-align:center;'> - </td>";
                           }
