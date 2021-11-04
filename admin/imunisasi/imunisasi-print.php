@@ -124,7 +124,7 @@ if ($tahun == "All"){
                     <th style="font-size: 9px; text-align: center;">Nama</th>
                     <th style="font-size: 9px; text-align: center;">Jenis<br>Kelamin</th>
                     <th style="font-size: 9px; text-align: center;">Tanggal<br>Lahir</th>
-                    <th style="font-size: 9px; text-align: center;">Nama Ibu</th>
+                    <th style="font-size: 9px; text-align: center;">Nama Bunda</th>
                     <!-- <th style="font-size: 9px; text-align: center;">HBO</th> -->
                     <th style="font-size: 9px; text-align: center;">BCG</th>
                     <th style="font-size: 9px; text-align: center;">Polio 1</th>
