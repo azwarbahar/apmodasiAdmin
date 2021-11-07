@@ -124,6 +124,7 @@ $auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND
                   <tr>
                     <th>No</th>
                     <th>Foto</th>
+                    <th>NIK</th>
                     <th>Nama</th>
                     <th>Kontak</th>
                     <th>Status</th>
@@ -132,8 +133,8 @@ $auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND
                   </thead>
                   <tbody>
                   <?php $i = 1; foreach($auth as $dta_auth) {
-                      $user_id = $dta_auth['user_id'];
-                      $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE id_bunda = '$user_id'");
+                      $user_id = $dta_auth['user_kode'];
+                      $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE nik_bunda = '$user_id'");
                       $get_data_bunda = mysqli_fetch_assoc($bunda);
                     ?>
                   <tr>
@@ -143,6 +144,7 @@ $auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND
                         <img src="../../assets/dist/img/bunda/<?= $get_data_bunda['foto_bunda'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
                       </a>
                     </td>
+                    <td><?= $get_data_bunda['nik_bunda'] ?></td>
                     <td><?= $get_data_bunda['nama_bunda'] ?></td>
                     <td><?= $get_data_bunda['kontak_bunda'] ?></td>
                     <?php
@@ -161,7 +163,7 @@ $auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND
                         <div class="dropdown-menu dropdown-menu-right" role="menu">
                           <!-- <a href="#" class="dropdown-item">Detail</a> -->
                           <a href="#" data-toggle="modal" data-target="#modal-acc<?= $dta_auth['id_auth'] ?>"  class="dropdown-item">Konfirmasi</a>
-                          <a href="#" data-toggle="modal" data-target="#modal-danger<?= $get_data_bunda['id_bunda'] ?>" class="dropdown-item">Hapus</a>
+                          <a href="#" data-toggle="modal" data-target="#modal-danger<?= $get_data_bunda['nik_bunda'] ?>" class="dropdown-item">Hapus</a>
                         </div>
                       </div>
                     </td>
@@ -193,7 +195,7 @@ $auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND
 
 
       <!-- Modal Hapus -->
-      <div class="modal fade" id="modal-danger<?= $get_data_bunda['id_bunda'] ?>">
+      <div class="modal fade" id="modal-danger<?= $get_data_bunda['nik_bunda'] ?>">
         <div class="modal-dialog">
           <div class="modal-content bg-danger">
             <div class="modal-header">
@@ -207,7 +209,7 @@ $auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-              <a href="controller.php?hapus_bunda=true&id_bunda=<?= $get_data_bunda['id_bunda'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
+              <a href="controller.php?hapus_bunda=true&nik_bunda=<?= $get_data_bunda['nik_bunda'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
             </div>
           </div>
           <!-- /.modal-content -->

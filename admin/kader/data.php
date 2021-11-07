@@ -78,6 +78,11 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                         </div> -->
 
                         <div class="form-group">
+                          <label for="inputName">NIP</label>
+                          <input type="text" id="nip_kader" name="nip_kader"class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
                           <label for="inputName">Nama Lengkap</label>
                           <input type="text" id="nama_kader" name="nama_kader"class="form-control" required>
                         </div>
@@ -131,7 +136,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                   <thead>
                   <tr>
                     <th>Foto</th>
-                    <!-- <th>NIP</th> -->
+                    <th>NIP</th>
                     <th>Nama</th>
                     <th>Kontak</th>
                     <th>Status</th>
@@ -146,7 +151,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                         <img src="../../assets/dist/img/kader/<?= $dta['foto_kader'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
                       </a>
                     </td>
-                    <!-- <td style="text-align:center"></td> -->
+                    <td style="text-align:center"><?= $dta['nip_kader'] ?></td>
                     <td><?= $dta['nama_kader'] ?></td>
                     <td><?= $dta['kontak_kader'] ?></td>
                     <?php
@@ -163,8 +168,8 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" role="menu">
                           <!-- <a href="#" class="dropdown-item">Detail</a> -->
-                          <a href="#" data-toggle="modal" data-target="#modal-lg<?= $dta['id_kader'] ?>"  class="dropdown-item">Edit</a>
-                          <a href="#" data-toggle="modal" data-target="#modal-danger<?= $dta['id_kader'] ?>" class="dropdown-item">Hapus</a>
+                          <a href="#" data-toggle="modal" data-target="#modal-lg<?= $dta['nip_kader'] ?>"  class="dropdown-item">Edit</a>
+                          <a href="#" data-toggle="modal" data-target="#modal-danger<?= $dta['nip_kader'] ?>" class="dropdown-item">Hapus</a>
                         </div>
                       </div>
                     </td>
@@ -172,7 +177,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
 
 
                 <!-- Modal EDIT KADER -->
-                <div class="modal fade" id="modal-lg<?= $dta['id_kader'] ?>">
+                <div class="modal fade" id="modal-lg<?= $dta['nip_kader'] ?>">
                   <div class="modal-dialog modal-lg">
                     <form method="POST" action="controller.php" enctype="multipart/form-data">
                       <div class="modal-content">
@@ -183,6 +188,11 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                           </button>
                         </div>
                         <div class="modal-body">
+
+                        <div class="form-group">
+                          <label for="inputName">NIP</label>
+                          <input type="text" value="<?= $dta['nip_kader'] ?>" id="nip_kader" name="nip_kader"class="form-control" required>
+                        </div>
 
                         <div class="form-group">
                           <label for="inputName">Nama Lengkap</label>
@@ -246,8 +256,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
 
                         </div>
                         <div class="modal-footer justify-content-between">
-                          <input type="hidden" value="<?= $dta['nip_kader'] ?>" name="nip_kader">
-                          <input type="hidden" name="id_kader" value="<?= $dta['id_kader'] ?>">
+                          <input type="hidden" value="<?= $dta['nip_kader'] ?>" name="nip_kader_now">
                           <input type="hidden" name="foto_now" value="<?= $dta['foto_kader'] ?>">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
                           <button type="submit" name="edit_kader" class="btn btn-primary">Simpan</button>
@@ -261,7 +270,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                 <!-- /.modal -->
 
       <!-- Modal Hapus -->
-      <div class="modal fade" id="modal-danger<?= $dta['id_kader'] ?>">
+      <div class="modal fade" id="modal-danger<?= $dta['nip_kader'] ?>">
         <div class="modal-dialog">
           <div class="modal-content bg-danger">
             <div class="modal-header">
@@ -275,7 +284,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-              <a href="controller.php?hapus_kader=true&id_kader=<?= $dta['id_kader'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
+              <a href="controller.php?hapus_kader=true&nip_kader=<?= $dta['nip_kader'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
             </div>
           </div>
           <!-- /.modal-content -->

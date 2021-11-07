@@ -73,24 +73,44 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                         <div class="modal-body">
 
                         <div class="form-group">
+                          <label for="inputName">NIK Bunda</label>
+                          <input type="text" id="nik_bunda" name="nik_bunda"class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
                           <label for="inputName">Nama Lengkap</label>
-                          <input type="text" id="nama_bunda" name="nama_bunda"class="form-control">
+                          <input type="text" id="nama_bunda" name="nama_bunda"class="form-control" required>
                         </div>
 
                         <div class="form-group">
                           <label for="inputName">Kontak</label>
-                          <input type="text" id="kontak_bunda" name="kontak_bunda"class="form-control">
+                          <input type="text" id="kontak_bunda" name="kontak_bunda"class="form-control" required>
                         </div>
 
                         <div class="form-group">
                           <label for="inputName">Alamat</label>
-                          <input type="text" id="alamat_bunda" name="alamat_bunda"class="form-control">
+                          <input type="text" id="alamat_bunda" name="alamat_bunda"class="form-control" required>
                         </div>
 
                         <div class="form-group">
-                          <label for="inputName">Username</label>
-                          <input type="text" id="username_bunda" name="username_bunda"class="form-control">
+                        <label for="inputName">Kelurahan</label>
+                          <select class="form-control select2" style="width: 100%;" name="kelurahan_bunda" id="kelurahan_bunda">
+                            <option selected="selected" value="-">- Pilih -</option>
+                            <option value="Tetebatu">Tetebatu</option>
+                            <option value="Parangbanoa">Parangbanoa</option>
+                            <option value="Pangkabinanga">Pangkabinanga</option>
+                            <option value="Jenetallasa">Jenetallasa</option>
+                            <option value="Bontoala">Bontoala</option>
+                            <option value="Panakukang">Panakukang</option>
+                            <option value="Taeng">Taeng</option>
+                            <option value="Mangalli">Mangalli</option>
+                          </select>
                         </div>
+
+                        <!-- <div class="form-group">
+                          <label for="inputName">Username</label>
+                          <input type="text" id="username_bunda" name="username_bunda"class="form-control" required>
+                        </div> -->
 
                         <div class="form-group">
                           <label for="customFile">Foto</label>
@@ -124,6 +144,7 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                   <tr>
                     <th>No</th>
                     <th>Foto</th>
+                    <th>NIK</th>
                     <th>Nama</th>
                     <th>Kontak</th>
                     <th>Bayi</th>
@@ -139,10 +160,11 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                         <img src="../../assets/dist/img/bunda//<?= $dta['foto_bunda'] ?>" border=3 height=60 width=60 class="img-fluid mb-2" alt="red sample"/>
                       </a>
                     </td>
+                    <td><?= $dta['nik_bunda'] ?></td>
                     <td><?= $dta['nama_bunda'] ?></td>
                     <td><?= $dta['kontak_bunda'] ?></td>
                     <?php
-                      $bayi_bunda = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE bunda_id = '$dta[id_bunda]' ");
+                      $bayi_bunda = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE nik_bunda = '$dta[nik_bunda]' ");
                       $row_bayi_bunda = mysqli_num_rows($bayi_bunda);
                       $row_bayi_bunda_final = $row_bayi_bunda;
                     ?>
@@ -156,8 +178,8 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" role="menu">
                           <!-- <a href="#" class="dropdown-item">Detail</a> -->
-                          <a href="#" data-toggle="modal" data-target="#modal-lg<?= $dta['id_bunda'] ?>"  class="dropdown-item">Edit</a>
-                          <a href="#" data-toggle="modal" data-target="#modal-danger<?= $dta['id_bunda'] ?>" class="dropdown-item">Hapus</a>
+                          <a href="#" data-toggle="modal" data-target="#modal-lg<?= $dta['nik_bunda'] ?>"  class="dropdown-item">Edit</a>
+                          <a href="#" data-toggle="modal" data-target="#modal-danger<?= $dta['nik_bunda'] ?>" class="dropdown-item">Hapus</a>
                         </div>
                       </div>
                     </td>
@@ -165,8 +187,8 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
 
 
 
-                <!-- Modal EDIT KADER -->
-                <div class="modal fade" id="modal-lg<?= $dta['id_bunda'] ?>">
+                <!-- Modal EDIT BUNDA -->
+                <div class="modal fade" id="modal-lg<?= $dta['nik_bunda'] ?>">
                   <div class="modal-dialog modal-lg">
                     <form method="POST" action="controller.php" enctype="multipart/form-data">
                       <div class="modal-content">
@@ -177,6 +199,11 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                           </button>
                         </div>
                         <div class="modal-body">
+
+                        <div class="form-group">
+                          <label for="inputName">NIK Bunda</label>
+                          <input type="text" value="<?= $dta['nik_bunda'] ?>" id="nik_bunda" name="nik_bunda"class="form-control" required>
+                        </div>
 
                         <div class="form-group">
                           <label for="inputName">Nama Lengkap</label>
@@ -194,14 +221,25 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                         </div>
 
                         <div class="form-group">
-                          <label for="inputName">Username</label>
+                        <label for="inputName">Kelurahan</label>
+                          <select class="form-control select2" style="width: 100%;" name="kelurahan_bunda" id="kelurahan_bunda">
+                            <option selected="selected" value="<?= $dta['kelurahan_bunda'] ?>"><?= $dta['kelurahan_bunda'] ?></option>
+                            <option value="Tetebatu">Tetebatu</option>
+                            <option value="Parangbanoa">Parangbanoa</option>
+                            <option value="Pangkabinanga">Pangkabinanga</option>
+                            <option value="Jenetallasa">Jenetallasa</option>
+                            <option value="Bontoala">Bontoala</option>
+                            <option value="Panakukang">Panakukang</option>
+                            <option value="Taeng">Taeng</option>
+                            <option value="Mangalli">Mangalli</option>
+                          </select>
+                        </div>
+
+
                           <?php
-                            $get_auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE user_id = '$dta[id_bunda]' AND role = 'Bunda' ");
+                            $get_auth = mysqli_query($conn, "SELECT * FROM tb_auth WHERE user_kode = '$dta[nik_bunda]' AND role = 'Bunda' ");
                             $data_auth = mysqli_fetch_assoc($get_auth);
                           ?>
-
-                          <input type="text" value="<?= $data_auth['username'] ?>" id="username_bunda" name="username_bunda"class="form-control">
-                        </div>
 
                           <div class="form-group">
                             <label for="inputName">Status Akun</label>
@@ -230,11 +268,9 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                         <br>
                         <img style="max-width:180px; max-height:180px;" id="blah" src="../../assets/dist/img/bunda/<?= $dta['foto_bunda'] ?>" alt="your image" />
 
-
-
                         </div>
                         <div class="modal-footer justify-content-between">
-                          <input type="hidden" name="id_bunda" value="<?= $dta['id_bunda'] ?>">
+                          <input type="hidden" name="nik_bunda_now" value="<?= $dta['nik_bunda'] ?>">
                           <input type="hidden" name="foto_now" value="<?= $dta['foto_bunda'] ?>">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
                           <button type="submit" name="edit_bunda" class="btn btn-primary">Simpan</button>
@@ -248,7 +284,7 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                 <!-- /.modal -->
 
       <!-- Modal Hapus -->
-      <div class="modal fade" id="modal-danger<?= $dta['id_bunda'] ?>">
+      <div class="modal fade" id="modal-danger<?= $dta['nik_bunda'] ?>">
         <div class="modal-dialog">
           <div class="modal-content bg-danger">
             <div class="modal-header">
@@ -262,7 +298,7 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-              <a href="controller.php?hapus_bunda=true&id_bunda=<?= $dta['id_bunda'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
+              <a href="controller.php?hapus_bunda=true&nik_bunda=<?= $dta['nik_bunda'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
             </div>
           </div>
           <!-- /.modal-content -->
