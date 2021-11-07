@@ -4,7 +4,7 @@
 
 $user_id = $_GET["user_id"];
 $role = $_GET["role"];
-$query = "SELECT * FROM tb_auth WHERE user_id = '$user_id' AND role = '$role' ";
+$query = "SELECT * FROM tb_auth WHERE user_kode = '$user_id' AND role = '$role' ";
 
  $result = mysqli_query($conn, $query);
 
