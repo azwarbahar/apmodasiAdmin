@@ -3,7 +3,7 @@
  header('Content-type: application/json');
 
 $id_bunda = $_GET["id_bunda"];
-$query = "SELECT * FROM tb_bunda WHERE id_bunda = '$id_bunda'";
+$query = "SELECT * FROM tb_bunda WHERE nik_bunda = '$id_bunda'";
 
  $result = mysqli_query($conn, $query);
 

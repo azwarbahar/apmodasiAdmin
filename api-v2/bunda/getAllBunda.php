@@ -2,7 +2,7 @@
  require_once '../../koneksi-v2.php';
  header('Content-type: application/json');
 
-$query = "SELECT * FROM tb_bunda ORDER BY id_bunda DESC";
+$query = "SELECT * FROM tb_bunda ORDER BY nik_bunda DESC";
 
  $result = mysqli_query($conn, $query);
 
