@@ -8,7 +8,7 @@
  $finalPath = "image_".time().".png";
 
  $query = "UPDATE tb_bunda SET foto_bunda = '$finalPath',
-                                update_at = null WHERE id_bunda = '$id_bunda'";
+                                update_at = null WHERE nik_bunda = '$id_bunda'";
 
  if (mysqli_query($conn, $query)) {
      file_put_contents( $path, base64_decode($foto_bunda) );
