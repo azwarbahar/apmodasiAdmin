@@ -11,10 +11,10 @@ require('../../koneksi-v2.php');
 // AKTIF BAYI
 if (isset($_GET['aktif_bayi'])) {
 	$id_bayi = $_GET['id_bayi'];
-	$no_imunisasi = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11");
-	$nama_imunisasi = array("HB", "BCG", "Polio 1", "DPT-HB-Hib 1", "Polio 2", "DPT-HB-Hib 2", "Polio 3", "DPT-HB-Hib 3", "Polio 4", "IPV", "CAMPAK");
-	$keterangan_imunisasi = array("Opsional", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib");
-	$interval_imunisasi = array("0 - 7 Hari", "0 - 11 Bulan", "0 - 11 Bulan", "2 - 11 Bulan", "2 - 11 Bulan", "3 - 11 Bulan", "3 - 11 Bulan", "4 - 11 Bulan", "4 - 11 Bulan", "4 - 11 Bulan", "9 - 11 Bulan", );
+	$no_imunisasi = array("1", "2", "3", "4", "5", "6", "7", "8", "9");
+	$nama_imunisasi = array("BCG", "Polio 1", "DPT-HB-Hib 1", "Polio 2", "DPT-HB-Hib 2", "Polio 3", "DPT-HB-Hib 3", "Polio 4", "CAMPAK");
+	$keterangan_imunisasi = array("Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib");
+	$interval_imunisasi = array("0 - 11 Bulan", "0 - 11 Bulan", "2 - 11 Bulan", "2 - 11 Bulan", "3 - 11 Bulan", "3 - 11 Bulan", "4 - 11 Bulan", "4 - 11 Bulan", "9 - 11 Bulan", );
 
 	$usia_bayi_imunisasi = "-";
 	$kader_id = "-";
