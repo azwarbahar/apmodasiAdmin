@@ -5,9 +5,9 @@
  $bunda_id = $_GET["bunda_id"];
  $status_bayi = $_GET["status_bayi"];
  if ($status_bayi == "Semua"){
-   $query = "SELECT * FROM tb_bayi WHERE bunda_id = '$bunda_id'";
+   $query = "SELECT * FROM tb_bayi WHERE nik_bunda = '$bunda_id'";
  } else{
-   $query = "SELECT * FROM tb_bayi WHERE bunda_id = '$bunda_id' AND status_bayi = '$status_bayi' ";
+   $query = "SELECT * FROM tb_bayi WHERE nik_bunda = '$bunda_id' AND status_bayi = '$status_bayi' ";
  }
 
 
