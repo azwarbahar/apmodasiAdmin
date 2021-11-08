@@ -8,7 +8,7 @@
  $finalPath = "image_".time().".png";
 
  $query = "UPDATE tb_kader SET foto_kader = '$finalPath',
-                                update_at = null WHERE id_kader = '$id_kader'";
+                                update_at = null WHERE nip_kader = '$id_kader'";
 
  if (mysqli_query($conn, $query)) {
      file_put_contents( $path, base64_decode($foto_kader) );
