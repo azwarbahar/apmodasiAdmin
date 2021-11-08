@@ -1,5 +1,5 @@
 <?php
-require '../../koneksi.php';
+require '../../koneksi-v2.php';
 $tahun_now = date("Y");
 $tahun = $_GET['tahun'];
 if ($tahun == "All"){

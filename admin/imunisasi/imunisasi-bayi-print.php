@@ -1,5 +1,5 @@
 <?php
-require '../../koneksi.php';
+require '../../koneksi-v2.php';
 $id_bayi = $_GET['id_bayi'];
 $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE id_bayi = '$id_bayi' ");
 $dta_bayi = mysqli_fetch_assoc($bayi);
