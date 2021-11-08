@@ -84,7 +84,7 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Menunggu
                     <td><?= $dta['nama_bayi'] ?></td>
                     <td><?= $dta['jenis_kelamin_bayi'] ?></td>
                     <?php
-                      $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE id_bunda = '$dta[bunda_id]'");
+                      $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE nik_bunda = '$dta[nik_bunda]'");
                       $get_bunda = mysqli_fetch_assoc($bunda);
                       if ($get_bunda == null){
                         echo '<td style="font-size: 16px;"> - </td>';
