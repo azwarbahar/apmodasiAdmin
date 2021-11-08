@@ -3,7 +3,7 @@ require '../../koneksi.php';
 $id_bayi = $_GET['id_bayi'];
 $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE id_bayi = '$id_bayi' ");
 $dta_bayi = mysqli_fetch_assoc($bayi);
-$imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE (nama_imunisasi != 'HB' AND nama_imunisasi != 'IPV') AND bayi_id = '$id_bayi' ");
+$imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$id_bayi' ");
 
 ?>
 
@@ -41,7 +41,7 @@ $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE (nama_imunisa
         <?php
         $source2 = $dta_bayi['tanggal_lahir_bayi'];
         $date2 = new DateTime($source2);
-        $ibu = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE id_bunda = '$dta_bayi[bunda_id]' ");
+        $ibu = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE nik_bunda = '$dta_bayi[nik_bunda]' ");
         $dta_ibu = mysqli_fetch_assoc($ibu);
 
         ?>

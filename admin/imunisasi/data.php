@@ -135,7 +135,7 @@ if ($tahun == "All"){
                     ?>
                     <td style="font-size: 16px;"><?= $dta['tanggal_lahir_bayi']?></td>
                     <?php
-                      $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE id_bunda = '$dta[bunda_id]'");
+                      $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda WHERE nik_bunda = '$dta[nik_bunda]'");
                       $get_bunda = mysqli_fetch_assoc($bunda);
                       if ($get_bunda == null){
                         echo '<td style="font-size: 16px;"> - </td>';
@@ -144,7 +144,7 @@ if ($tahun == "All"){
                       }
                     ?>
                     <?php
-                      $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE (nama_imunisasi != 'HB' AND nama_imunisasi != 'IPV') AND bayi_id = '$dta[id_bayi]' ");
+                      $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]' ");
                       foreach($imunisasi as $dta_imunisasi) {
                         if ($dta_imunisasi['status_imunisasi'] == "Sudah"){
                           echo " <td style='text-align:center; font-size: 16px;'><span class='badge bg-success' type='button' data-toggle='modal' data-target='#modal-sm$dta_imunisasi[id_imunisasi]' > Sudah </span>";
