@@ -190,7 +190,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                         <div class="modal-body">
 
                         <div class="form-group">
-                          <label for="inputName">NIP</label>
+                          <label for="inputName">NIK</label>
                           <input type="text" value="<?= $dta['nik_kader'] ?>" id="nip_kader" name="nip_kader"class="form-control" required>
                         </div>
 

@@ -189,7 +189,7 @@ if ($tahun == "All"){
                       }
                     ?>
                     <td>
-                  <a href="tambah-imunisasi.php?id_bayi=$dta['id_bayi']" class="btn btn-danger btn-xs"><i class="fas fa-edit"></i></a>
+                  <a href="tambah-imunisasi.php?id_bayi=<?= $dta['id_bayi']?>" class="btn btn-danger btn-xs"><i class="fas fa-edit"></i></a>
                   <a href="imunisasi-bayi-print.php?id_bayi=<?= $dta['id_bayi'] ?>" target="_blank" class="btn btn-info btn-xs"><i class="fas fa-print"></i></a></td>
                   </tr>
 
