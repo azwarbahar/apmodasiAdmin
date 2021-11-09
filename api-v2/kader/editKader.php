@@ -11,7 +11,7 @@
  $query = "UPDATE tb_kader SET nama_kader = '$nama_kader',
                                     kontak_kader = '$kontak_kader',
 							        alamat_kader = '$alamat_kader',
-                                    update_at = null WHERE nip_kader = '$id_kader'";
+                                    update_at = null WHERE nik_kader = '$id_kader'";
 $query2 = "UPDATE tb_auth SET username = '$username_kader',
                                 update_at = null WHERE user_kode = '$id_kader' AND role = 'Kader' ";
 if (mysqli_query($conn, $query)) {

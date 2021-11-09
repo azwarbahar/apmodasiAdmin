@@ -11,7 +11,7 @@ require('../../koneksi-v2.php');
 // SUBMIT kader
 if (isset($_POST['submit_kader'])) {
 	$nip_kader = $_POST['nip_kader'];
-	$query = "SELECT * FROM tb_kader WHERE nip_kader='$nip_kader'";
+	$query = "SELECT * FROM tb_kader WHERE nik_kader='$nip_kader'";
 	$sql = mysqli_query($conn, $query);
 	$row_pass = mysqli_fetch_assoc($sql);
 	if ($row_pass){
@@ -20,7 +20,7 @@ if (isset($_POST['submit_kader'])) {
 			$(document).ready(function() {
 				swal({
 					title: 'Gagal!',
-					text: 'NIP Sudah terdaftar',
+					text: 'NIK Sudah terdaftar',
 					icon: 'error'
 				}).then((data) => {
 					location.href = 'data.php';
@@ -98,14 +98,14 @@ if (isset($_POST['edit_kader'])) {
 	} else {
 		$nama_foto = $_POST['foto_now'];
 	}
-    $query = "UPDATE tb_kader SET nip_kader = '$nip_kader',
+    $query = "UPDATE tb_kader SET nik_kader = '$nip_kader',
                                   nama_kader = '$nama_kader',
                                   jenis_kelamin_kader = '$jenis_kelamin_kader',
                                   kontak_kader = '$kontak_kader',
                                   alamat_kader = '$alamat_kader',
                                   foto_kader = '$nama_foto',
                                   status_kader = '$status_kader',
-                                  update_at = null WHERE nip_kader = '$nip_kader_now'";
+                                  update_at = null WHERE nik_kader = '$nip_kader_now'";
 		mysqli_query($conn, $query);
 	// EDIT PARTAI
 	if (mysqli_affected_rows($conn) > 0) {
@@ -134,7 +134,7 @@ if (isset($_POST['edit_kader'])) {
 if (isset($_GET['hapus_kader'])) {
 	$nip_kader = $_GET['nip_kader'];
 
-	$query = "DELETE FROM tb_kader WHERE nip_kader = '$nip_kader'";
+	$query = "DELETE FROM tb_kader WHERE nik_kader = '$nip_kader'";
 	$query2 = "DELETE FROM tb_auth WHERE user_kode = '$nip_kader' AND role = 'Kader' ";
 	mysqli_query($conn, $query);
 	mysqli_query($conn, $query2);
