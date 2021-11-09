@@ -71,7 +71,7 @@ $dta = mysqli_fetch_assoc($result);
                                 <?php
                                 $result=mysqli_query($conn,'SELECT * FROM tb_kader');
                                 while($row=mysqli_fetch_assoc($result)) {
-                                    echo "<option value='$row[id_kader]'>$row[nama_kader]</option>";
+                                    echo "<option value='$row[nik_kader]'>$row[nama_kader]</option>";
                                 }
                                 ?>
                             </select>
