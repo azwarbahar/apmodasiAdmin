@@ -59,7 +59,7 @@ $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$i
     <!-- /.row -->
 
     <!-- Table row -->
-    <div class="row">
+    <div class="row" style="margin-left: 10px; margin-right: 10px;">
       <div class="col-12 table-responsive">
         <table class="table table-bordered table-striped">
           <thead>
@@ -88,7 +88,7 @@ $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$i
                       }
                     ?>
                     <td style="text-align: center; font-size: 15px;"><?= $cetak_tanggal ?></td>
-                    <td style="text-align: center; font-size: 15px;">-</td>
+                    <td style="text-align: center; font-size: 15px;"> <?= $dta['catatan_imunisasi'] ?></td>
                   </tr>
                   <?php
                   $i = $i + 1; }
@@ -97,6 +97,90 @@ $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$i
         </table>
       </div>
       <!-- /.col -->
+    </div>
+
+    <!-- Berta badan -->
+    <div class="row" style="margin-left: 10px; margin-right: 10px;">
+      <div class="col-12 table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th style="text-align: center; width: 10px; font-size: 15px;">No</th>
+            <th style="text-align: center; font-size: 15px;">Berat Badan</th>
+            <th style="text-align: center; font-size: 15px;">Tanggal</th>
+            <th style="text-align: center; font-size: 15px;">Keterangan</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <?php
+            $berat = mysqli_query($conn, "SELECT * FROM tb_berat_badan WHERE bayi_id = '$id_bayi' ");
+                   $i = 1; foreach($berat as $dta_berat) {
+                    ?>
+                    <tr>
+                    <td style="text-align: center; width: 10px; font-size: 15px;"><?= $i ?></td>
+                    <td style="font-size: 15px;"> <b> <?= $dta_berat['nilai_bb'] ?> Kg</b></td>
+                    <?php
+                      if ($dta_berat['tanggal_bb'] == "-"){
+                        $cetak_tanggal = "";
+                      } else {
+                        $source = $dta_berat['tanggal_bb'];
+                        $date = new DateTime($source);
+                        $cetak_tanggal1 = $date->format('d F Y') ;
+                      }
+                    ?>
+                    <td style="text-align: center; font-size: 15px;"><?= $cetak_tanggal1 ?></td>
+                    <td style="text-align: center; font-size: 15px;"><?= $dta_berat['catatan_bb'] ?></td>
+                  </tr>
+                  <?php
+                  $i = $i + 1; }
+                  ?>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Berta badan -->
+    <div class="row" style="margin-left: 10px; margin-right: 10px;">
+      <div class="col-12 table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th style="text-align: center; width: 10px; font-size: 15px;">No</th>
+            <th style="text-align: center; font-size: 15px;">Berat Badan</th>
+            <th style="text-align: center; font-size: 15px;">Tanggal</th>
+            <th style="text-align: center; font-size: 15px;">Keterangan</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <?php
+            $berat = mysqli_query($conn, "SELECT * FROM tb_berat_badan WHERE bayi_id = '$id_bayi' ");
+                   $i = 1; foreach($berat as $dta_berat) {
+                    ?>
+                    <tr>
+                    <td style="text-align: center; width: 10px; font-size: 15px;"><?= $i ?></td>
+                    <td style="font-size: 15px;"> <b> <?= $dta_berat['nilai_bb'] ?> Kg</b></td>
+                    <?php
+                      if ($dta_berat['tanggal_bb'] == "-"){
+                        $cetak_tanggal = "";
+                      } else {
+                        $source = $dta_berat['tanggal_bb'];
+                        $date = new DateTime($source);
+                        $cetak_tanggal1 = $date->format('d F Y') ;
+                      }
+                    ?>
+                    <td style="text-align: center; font-size: 15px;"><?= $cetak_tanggal1 ?></td>
+                    <td style="text-align: center; font-size: 15px;"><?= $dta_berat['catatan_bb'] ?></td>
+                  </tr>
+                  <?php
+                  $i = $i + 1; }
+                  ?>
+          </tbody>
+        </table>
+      </div>
+
     </div>
     
     <div class="row" style="margin-left: 10px; margin-right: 10px;">
