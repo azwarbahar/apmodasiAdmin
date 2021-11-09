@@ -83,7 +83,7 @@ if (isset($_POST['login'])) {
 
       <form  method="POST" class="needs-validation">
         <div class="input-group mb-3">
-          <input id="username_admin" type="text" class="form-control" name="username_admin" tabindex="1" required autofocus value="">
+          <input id="username_admin" type="text" placeholder="Username" class="form-control" name="username_admin" tabindex="1" required autofocus value="">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -102,7 +102,7 @@ if (isset($_POST['login'])) {
                       <?php } ?>
 
         <div class="input-group mb-3">
-          <input id="password_admin" type="password" class="form-control" name="password_admin" tabindex="2" required>
+          <input id="password_admin" type="password" placeholder="Password" class="form-control" name="password_admin" tabindex="2" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

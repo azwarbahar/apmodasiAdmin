@@ -49,7 +49,7 @@ $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$i
                 NAMA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: <?= $dta_bayi['nama_bayi'] ?><br>
                 JENIS KELAMIN&emsp;&emsp;&emsp;: <?= $dta_bayi['jenis_kelamin_bayi'] ?><br>
                 TANGGAL LAHIR&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $date2->format('d F Y') ; ?><br>
-                NAMA BUNDA&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;: <?= $dta_ibu['nama_bunda'] ?>
+                NAMA BUNDA&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $dta_ibu['nama_bunda'] ?>
                 
         <p style="font-size: 14px; text-align: right; margin-right: 20px;; ">Tanggal : <?= date('l d F Y')?></p>
               </p>
@@ -59,7 +59,7 @@ $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$i
     <!-- /.row -->
 
     <!-- Table row -->
-    <div class="row" style="margin-left: 10px; margin-right: 10px;">
+    <div class="row" style="margin-left: 20px; margin-right: 20px;">
       <div class="col-12 table-responsive">
         <table class="table table-bordered table-striped">
           <thead>
@@ -100,7 +100,7 @@ $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$i
     </div>
 
     <!-- Berta badan -->
-    <div class="row" style="margin-left: 10px; margin-right: 10px;">
+    <div class="row" style="margin-left: 20px; margin-right: 20px;">
       <div class="col-12 table-responsive">
         <table class="table table-bordered table-striped">
           <thead>
@@ -142,7 +142,7 @@ $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$i
     </div>
 
     <!-- Tinggi badan -->
-    <div class="row" style="margin-left: 10px; margin-right: 10px;">
+    <div class="row" style="margin-left: 20px; margin-right: 20px;">
       <div class="col-12 table-responsive">
         <table class="table table-bordered table-striped">
           <thead>
