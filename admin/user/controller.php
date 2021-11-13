@@ -22,7 +22,7 @@ if (isset($_POST['submit_admin'])) {
     $file_tmp = $_FILES['foto_admin']['tmp_name'];
 
     // TAMBAH DATA
-	$query= "INSERT INTO tb_akun_kecamatan VALUES (NULL, '$nama_admin', '$username', '$password', '$nama_foto', '$status_admin')";
+	$query= "INSERT INTO tb_admin VALUES (NULL, '$nama_admin', '$username', '$password', '$nama_foto', '$status_admin')";
 	mysqli_query($conn, $query);
 	if (mysqli_affected_rows($conn) > 0) {
 		move_uploaded_file($file_tmp, 'foto/'.$nama_foto);
@@ -61,7 +61,7 @@ if (isset($_POST['edit_admin'])) {
 	} else {
 		$nama_foto = $_POST['foto_now'];
 	}
-		$query = "UPDATE tb_akun_kecamatan SET nama_akun_kecamatan = '$nama_admin', foto_akun_kecamatan = '$nama_foto' WHERE id_akun_kecamatan = '$id_admin'";
+		$query = "UPDATE tb_admin SET nama_akun = '$nama_admin', foto_akun = '$nama_foto' WHERE id_akun = '$id_admin'";
 		mysqli_query($conn, $query);
 	// EDIT PARTAI
 	if (mysqli_affected_rows($conn) > 0) {
@@ -85,7 +85,7 @@ if (isset($_POST['edit_admin'])) {
 if (isset($_GET['hapus_admin'])) {
 	$id_admin = $_GET['id_admin'];
 
-	$query = "DELETE FROM tb_akun_kecamatan WHERE id_akun_kecamatan = '$id_admin'";
+	$query = "DELETE FROM tb_admin WHERE id_akun = '$id_admin'";
 	mysqli_query($conn, $query);
 	if (mysqli_affected_rows($conn) > 0) {
 		plugins(); ?>
