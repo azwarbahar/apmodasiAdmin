@@ -6,7 +6,7 @@ function plugins() { ?>
 	<script src="../../assets/dist/jquery.min.js"></script>
 	<script src="../../assets/dist/sweetalert/sweetalert.min.js"></script>
 <?php }
-require('../../../koneksi.php');
+require('../../../koneksi-v2.php');
 
 // SUBMIT ADMIN
 if (isset($_POST['submit_admin'])) {
