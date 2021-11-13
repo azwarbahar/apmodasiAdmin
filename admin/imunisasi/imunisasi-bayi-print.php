@@ -161,7 +161,7 @@ $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$i
                     ?>
                     <tr>
                     <td style="text-align: center; width: 10px; font-size: 15px;"><?= $i ?></td>
-                    <td style="font-size: 15px;"> <b> <?= $dta_tinggi['nilai_tb'] ?> Kg</b></td>
+                    <td style="font-size: 15px;"> <b> <?= $dta_tinggi['nilai_tb'] ?> Cm</b></td>
                     <?php
                       if ($dta_tinggi['tanggal_tb'] == "-"){
                         $cetak_tanggal = "";
@@ -172,7 +172,7 @@ $imunisasi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$i
                       }
                     ?>
                     <td style="text-align: center; font-size: 15px;"><?= $cetak_tanggal1 ?></td>
-                    <td style="text-align: center; font-size: 15px;"><?= $dta_berat['catatan_tb'] ?></td>
+                    <td style="text-align: center; font-size: 15px;"><?= $dta_tinggi['catatan_tb'] ?></td>
                   </tr>
                   <?php
                   $i = $i + 1; }
