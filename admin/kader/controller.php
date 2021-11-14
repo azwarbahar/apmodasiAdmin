@@ -132,10 +132,10 @@ if (isset($_POST['edit_kader'])) {
 
 // HAPUS AREA
 if (isset($_GET['hapus_kader'])) {
-	$nip_kader = $_GET['nip_kader'];
+	$nik_kader = $_GET['nik_kader'];
 
-	$query = "DELETE FROM tb_kader WHERE nik_kader = '$nip_kader'";
-	$query2 = "DELETE FROM tb_auth WHERE user_kode = '$nip_kader' AND role = 'Kader' ";
+	$query = "DELETE FROM tb_kader WHERE nik_kader = '$nik_kader'";
+	$query2 = "DELETE FROM tb_auth WHERE user_kode = '$nik_kader' AND role = 'Kader' ";
 	mysqli_query($conn, $query);
 	mysqli_query($conn, $query2);
 	if (mysqli_affected_rows($conn) > 0) {

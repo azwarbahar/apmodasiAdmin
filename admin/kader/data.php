@@ -270,7 +270,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
                 <!-- /.modal -->
 
       <!-- Modal Hapus -->
-      <div class="modal fade" id="modal-danger<?= $dta['nip_kader'] ?>">
+      <div class="modal fade" id="modal-danger<?= $dta['nik_kader'] ?>">
         <div class="modal-dialog">
           <div class="modal-content bg-danger">
             <div class="modal-header">
@@ -284,7 +284,7 @@ $kader = mysqli_query($conn, "SELECT * FROM tb_kader");
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-              <a href="controller.php?hapus_kader=true&nip_kader=<?= $dta['nip_kader'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
+              <a href="controller.php?hapus_kader=true&nik_kader=<?= $dta['nik_kader'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
             </div>
           </div>
           <!-- /.modal-content -->
