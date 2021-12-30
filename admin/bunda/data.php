@@ -28,37 +28,10 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-
             <div class="card">
               <div class="card-header">
-                <!-- <label for="inputName">Kelurahan</label>
-                <div class="row">
-                  <div class="col-4">
-                    <select class="form-control select2" style="width: 100%;" name="kelurahan_masyarakat" id="kelurahan_masyarakat">
-                      <option selected="selected" value="-">- Semua -</option>
-                      <option value="Balang Baru">Balang Baru</option>
-                      <option value="Barombong">Barombong</option>
-                      <option value="Bongaya">Bongaya</option>
-                      <option value="Bonto Duri">Bonto Duri</option>
-                      <option value="Jongaya">Jongaya</option>
-                      <option value="Maccini Sombala">Maccini Sombala</option>
-                      <option value="Mangasa">Mangasa</option>
-                      <option value="Mannuruki">Mannuruki</option>
-                      <option value="Pa'baeng-Baeng">Pa'baeng-Baeng</option>
-                      <option value="Parang Tambung">Parang Tambung</option>
-                      <option value="Tanjung Merdeka">Tanjung Merdeka</option>
-                    </select>
-                  </div>
-
-                  <div class="col-8">
-                  <a href="invoice-print.html" target="_blank" class="btn btn-info float-right"><i class="fas fa-print"></i> Print</a>
-                  </div>
-
-                </div> -->
                 <button data-toggle="modal" data-target="#modal-lg" type="button" class="btn btn-primary"><i class="fa fa-plus-square"></i>&nbsp Tambah Bunda</a>
               </div>
-
-
                 <!-- Modal Tambah bunda -->
                 <div class="modal fade" id="modal-lg">
                   <div class="modal-dialog modal-lg">
@@ -93,7 +66,7 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                         </div>
 
                         <div class="form-group">
-                        <label for="inputName">Kelurahan</label>
+                        <label for="inputName">Kelurahan/Desa</label>
                           <select class="form-control select2" style="width: 100%;" name="kelurahan_bunda" id="kelurahan_bunda">
                             <option selected="selected" value="-">- Pilih -</option>
                             <option value="Tetebatu">Tetebatu</option>
@@ -135,8 +108,6 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                   <!-- /.modal-dialog -->
                 </div>
                 <!-- /.modal -->
-
-
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -221,7 +192,7 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                         </div>
 
                         <div class="form-group">
-                        <label for="inputName">Kelurahan</label>
+                        <label for="inputName">Kelurahan/Desa</label>
                           <select class="form-control select2" style="width: 100%;" name="kelurahan_bunda" id="kelurahan_bunda">
                             <option selected="selected" value="<?= $dta['kelurahan_bunda'] ?>"><?= $dta['kelurahan_bunda'] ?></option>
                             <option value="Tetebatu">Tetebatu</option>
@@ -283,31 +254,29 @@ $bunda = mysqli_query($conn, "SELECT * FROM tb_bunda");
                 </div>
                 <!-- /.modal -->
 
-      <!-- Modal Hapus -->
-      <div class="modal fade" id="modal-danger<?= $dta['nik_bunda'] ?>">
-        <div class="modal-dialog">
-          <div class="modal-content bg-danger">
-            <div class="modal-header">
-              <h4 class="modal-title">Hapus Akun Bunda?</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Yakin Ingin Menghapus Akun Bunda</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
-              <a href="controller.php?hapus_bunda=true&nik_bunda=<?= $dta['nik_bunda'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-
-
+                    <!-- Modal Hapus -->
+                    <div class="modal fade" id="modal-danger<?= $dta['nik_bunda'] ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content bg-danger">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Hapus Akun Bunda?</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Yakin Ingin Menghapus Akun Bunda</p>
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Batal</button>
+                            <a href="controller.php?hapus_bunda=true&nik_bunda=<?= $dta['nik_bunda'] ?>" type="button" class="btn btn-outline-light">Hapus</a>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
                   <?php $i = $i + 1; } ?>
                   </tbody>
 
