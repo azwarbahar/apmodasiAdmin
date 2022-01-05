@@ -148,10 +148,34 @@ $nama_header = $get_data_admin['nama_admin'];
 
           <!-- <li class="nav-header">Setting</li> -->
 
+          <li class="nav-header">
+              <i class="nav-icon fas fa-user-plus"></i>
+          Data Bayi</li>
 
-          <li class="nav-header">Master Data</li>
+              <li class="nav-item">
+                <a href="../../admin/bayi/data-terbaru.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Terbaru
+                    <?php
+                      $bayi_header = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Menunggu'");
+                      $row_bayi_header = mysqli_num_rows($bayi_header);
+                      if ($row_bayi_header >= 1){ 
+                        echo '<span class="badge badge-info right">'.$row_bayi_header.'</span>';
+                      }
+                    ?>
+                  </p>
+                </a>
+              </li>
 
-          <li class="nav-item has-treeview">
+              <li class="nav-item">
+                <a href="../../admin/bayi/data.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Semua</p>
+                </a>
+              </li>
+              <!-- <br> -->
+        <!-- <li class="nav-header"></li> -->
+          <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-plus"></i>
               <p>
@@ -187,9 +211,33 @@ $nama_header = $get_data_admin['nama_admin'];
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
 
-          <li class="nav-item has-treeview">
+          <li class="nav-header">
+              <i class="nav-icon fas fa-user-plus"></i>
+          Data Bunda</li>
+              <li class="nav-item">
+                <a href="../../admin/bunda/data-terbaru.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Terbaru
+                    <?php
+                      $bunda_header = mysqli_query($conn, "SELECT * FROM tb_auth WHERE status = 'Inactive' AND role = 'Bunda' ");
+                      $row_bunda_header = mysqli_num_rows($bunda_header);
+                      if ($row_bunda_header >= 1){
+                        echo '<span class="badge badge-info right">'.$row_bunda_header.'</span>';
+                      }
+                    ?>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../admin/bunda/data.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Semua</p>
+                </a>
+              </li><br>
+
+          <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-user-plus"></i>
               <p>
@@ -227,7 +275,7 @@ $nama_header = $get_data_admin['nama_admin'];
             </ul>
 
 
-          </li>
+          </li> -->
 
           <li class="nav-item">
             <a href="../../admin/kader/data.php" class="nav-link">
