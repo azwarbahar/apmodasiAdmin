@@ -45,6 +45,7 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContent">
                   <div class="tab-pane fade show active" id="tab-berjalan-pane" role="tabpanel" aria-labelledby="tab-berjalan">
+                    <!-- BERJALAN -->
                     <section class="content">
                       <div class="container-fluid">
                         <div class="row">
@@ -60,12 +61,20 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                     <th>Jenis Kelamin</th>
                                     <th>Nama Bunda</th>
                                     <th>Tanggal Lahir</th>
-                                    <th>Status</th>
+                                    <th></th>
                                     <th></th>
                                   </tr>
                                   </thead>
                                   <tbody>
-                                  <?php $i = 1; foreach($bayi as $dta) { ?>
+                                  <?php
+                                    $bayi_berjalan = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'");
+                                  $i = 1; foreach($bayi_berjalan as $dta) {
+                                    $imunisasi_bayi = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]' AND status_imunisasi = 'Sudah' ");
+                                    $row_imunisasi_bayi = mysqli_num_rows($imunisasi_bayi);
+                                    // $get_bunda = mysqli_fetch_assoc($imunisasi_bayi);
+                                    if ($row_imunisasi_bayi < 9){
+
+                                    ?>
                                   <tr>
                                     <td style="text-align:center"><?= $i ?></td>
                                     <td style="text-align: center">
@@ -85,13 +94,108 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                       }
                                     ?>
                                     <td><?= $dta['tanggal_lahir_bayi'] ?></td>
+                                    <td style="text-align:center">
                                     <?php
-                                      if ($dta['status_bayi']=="Active"){
-                                        echo " <td style='text-align:center'><span class='badge bg-primary'> $dta[status_bayi] </span>";
-                                      } else{
-                                        echo " <td style='text-align:center'><span class='badge bg-warning'> $dta[status_bayi] </span>";
-                                      }
-                                    ?>
+                                    if ($row_imunisasi_bayi <= 1) {
+                                      ?>
+                                        <div class="progress-group">
+                                          Imunisasi
+                                          <span class="float-right"><b><?= $row_imunisasi_bayi ?></b>/9</span>
+                                          <div class="progress progress-sm">
+                                            <div class="progress-bar bg-danger" style="width: 5%"></div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <?php
+                                    } else if ($row_imunisasi_bayi <= 2) {
+                                      ?>
+                                            <div class="progress-group">
+                                              Imunisasi
+                                              <span class="float-right"><b><?= $row_imunisasi_bayi ?></b>/9</span>
+                                              <div class="progress progress-sm">
+                                                <div class="progress-bar bg-danger" style="width: 15%"></div>
+                                              </div>
+                                            </div>
+                                          </td>
+                                      <?php
+                                    } else if ($row_imunisasi_bayi <= 3) {
+                                            ?>
+                                                <div class="progress-group">
+                                                  Imunisasi
+                                                  <span class="float-right"><b><?= $row_imunisasi_bayi ?></b>/9</span>
+                                                  <div class="progress progress-sm">
+                                                    <div class="progress-bar bg-danger" style="width: 30%"></div>
+                                                  </div>
+                                                </div>
+                                              </td>
+                                            <?php
+                                    } else if ($row_imunisasi_bayi <= 4) {
+                                        ?>
+                                            <div class="progress-group">
+                                              Imunisasi
+                                              <span class="float-right"><b><?= $row_imunisasi_bayi ?></b>/9</span>
+                                              <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 45%"></div>
+                                              </div>
+                                            </div>
+                                          </td>
+                                      <?php
+                                    } else if ($row_imunisasi_bayi <= 5) {
+                                      ?>
+                                        <div class="progress-group">
+                                          Imunisasi
+                                          <span class="float-right"><b><?= $row_imunisasi_bayi ?></b>/9</span>
+                                          <div class="progress progress-sm">
+                                            <div class="progress-bar bg-warning" style="width: 55%"></div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <?php
+                                    }else if ($row_imunisasi_bayi <= 6) {
+                                        ?>
+                                          <div class="progress-group">
+                                            Imunisasi
+                                            <span class="float-right"><b><?= $row_imunisasi_bayi ?></b>/9</span>
+                                            <div class="progress progress-sm">
+                                              <div class="progress-bar bg-warning" style="width: 65%"></div>
+                                            </div>
+                                          </div>
+                                        </td>
+                                      <?php
+                                    }else if ($row_imunisasi_bayi <= 7) {
+                                          ?>
+                                            <div class="progress-group">
+                                              Imunisasi
+                                              <span class="float-right"><b><?= $row_imunisasi_bayi ?></b>/9</span>
+                                              <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 75%"></div>
+                                              </div>
+                                            </div>
+                                          </td>
+                                        <?php
+                                    }else if ($row_imunisasi_bayi <= 8) {
+                                            ?>
+                                              <div class="progress-group">
+                                                Imunisasi
+                                                <span class="float-right"><b><?= $row_imunisasi_bayi ?></b>/9</span>
+                                                <div class="progress progress-sm">
+                                                  <div class="progress-bar bg-warning" style="width: 85%"></div>
+                                                </div>
+                                              </div>
+                                            </td>
+                                          <?php
+                                    } else {
+                                      ?>
+                                        <div class="progress-group">
+                                          Imunisasi
+                                          <span class="float-right"><b><?= $row_imunisasi_bayi ?></b>/9</span>
+                                          <div class="progress progress-sm">
+                                            <div class="progress-bar bg-success" style="width: 100%"></div>
+                                          </div>
+                                        </div>
+                                      <?php
+                                    }?>
+                                    </td>
                                     <!-- <td>
                                       <div class="progress progress-sm">
                                         <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
@@ -181,7 +285,10 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
 
 
 
-                                  <?php $i = $i + 1; } ?>
+                                  <?php
+                                   $i = $i + 1;
+                                }
+                                    } ?>
                                   </tbody>
 
                                 </table>
@@ -198,13 +305,14 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                     </section>
                   </div>
                   <div class="tab-pane fade" id="tab-selesai-panel" role="tabpanel" aria-labelledby="tab-selesai">
+                    <!-- SELESAI -->
                     <section class="content">
                         <div class="container-fluid">
                           <div class="row">
                             <div class="col-12">
                               <div class="card">
                                 <div class="card-body">
-                                  <table id="example1" class="table table-bordered table-striped">
+                                  <table id="tbl_example11" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
                                       <th>No</th>
@@ -218,7 +326,14 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $i = 1; foreach($bayi as $dta) { ?>
+                                    <?php
+                                      $bayi_selesai = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'");
+                                      $i = 1; foreach($bayi_selesai as $dta) {
+                                        $imunisasi_bayi_selesai = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]' AND status_imunisasi = 'Sudah' ");
+                                        $row_imunisasi_bayi_selesai = mysqli_num_rows($imunisasi_bayi_selesai);
+                                        // // $get_bunda = mysqli_fetch_assoc($imunisasi_bayi);
+                                        if ($row_imunisasi_bayi_selesai >= 9){
+                                      ?>
                                     <tr>
                                       <td style="text-align:center"><?= $i ?></td>
                                       <td style="text-align: center">
@@ -238,13 +353,109 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                         }
                                       ?>
                                       <td><?= $dta['tanggal_lahir_bayi'] ?></td>
+                                      
+                                    <td style="text-align:center">
                                       <?php
-                                        if ($dta['status_bayi']=="Active"){
-                                          echo " <td style='text-align:center'><span class='badge bg-primary'> $dta[status_bayi] </span>";
-                                        } else{
-                                          echo " <td style='text-align:center'><span class='badge bg-warning'> $dta[status_bayi] </span>";
-                                        }
+                                    if ($row_imunisasi_bayi_selesai <= 1) {
                                       ?>
+                                        <div class="progress-group">
+                                          Imunisasi
+                                          <span class="float-right"><b><?= $row_imunisasi_bayi_selesai ?></b>/9</span>
+                                          <div class="progress progress-sm">
+                                            <div class="progress-bar bg-danger" style="width: 5%"></div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <?php
+                                    } else if ($row_imunisasi_bayi_selesai <= 2) {
+                                      ?>
+                                            <div class="progress-group">
+                                              Imunisasi
+                                              <span class="float-right"><b><?= $row_imunisasi_bayi_selesai ?></b>/9</span>
+                                              <div class="progress progress-sm">
+                                                <div class="progress-bar bg-danger" style="width: 15%"></div>
+                                              </div>
+                                            </div>
+                                          </td>
+                                      <?php
+                                    } else if ($row_imunisasi_bayi_selesai <= 3) {
+                                            ?>
+                                                <div class="progress-group">
+                                                  Imunisasi
+                                                  <span class="float-right"><b><?= $row_imunisasi_bayi_selesai ?></b>/9</span>
+                                                  <div class="progress progress-sm">
+                                                    <div class="progress-bar bg-danger" style="width: 30%"></div>
+                                                  </div>
+                                                </div>
+                                              </td>
+                                            <?php
+                                    } else if ($row_imunisasi_bayi_selesai <= 4) {
+                                        ?>
+                                            <div class="progress-group">
+                                              Imunisasi
+                                              <span class="float-right"><b><?= $row_imunisasi_bayi_selesai ?></b>/9</span>
+                                              <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 45%"></div>
+                                              </div>
+                                            </div>
+                                          </td>
+                                      <?php
+                                    } else if ($row_imunisasi_bayi_selesai <= 5) {
+                                      ?>
+                                        <div class="progress-group">
+                                          Imunisasi
+                                          <span class="float-right"><b><?= $row_imunisasi_bayi_selesai ?></b>/9</span>
+                                          <div class="progress progress-sm">
+                                            <div class="progress-bar bg-warning" style="width: 55%"></div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <?php
+                                    }else if ($row_imunisasi_bayi_selesai <= 6) {
+                                        ?>
+                                          <div class="progress-group">
+                                            Imunisasi
+                                            <span class="float-right"><b><?= $row_imunisasi_bayi_selesai ?></b>/9</span>
+                                            <div class="progress progress-sm">
+                                              <div class="progress-bar bg-warning" style="width: 65%"></div>
+                                            </div>
+                                          </div>
+                                        </td>
+                                      <?php
+                                    }else if ($row_imunisasi_bayi_selesai <= 7) {
+                                          ?>
+                                            <div class="progress-group">
+                                              Imunisasi
+                                              <span class="float-right"><b><?= $row_imunisasi_bayi_selesai ?></b>/9</span>
+                                              <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 75%"></div>
+                                              </div>
+                                            </div>
+                                          </td>
+                                        <?php
+                                    }else if ($row_imunisasi_bayi_selesai <= 8) {
+                                            ?>
+                                              <div class="progress-group">
+                                                Imunisasi
+                                                <span class="float-right"><b><?= $row_imunisasi_bayi_selesai ?></b>/9</span>
+                                                <div class="progress progress-sm">
+                                                  <div class="progress-bar bg-warning" style="width: 85%"></div>
+                                                </div>
+                                              </div>
+                                            </td>
+                                          <?php
+                                    } else {
+                                      ?>
+                                        <div class="progress-group">
+                                          Imunisasi
+                                          <span class="float-right"><b><?= $row_imunisasi_bayi_selesai ?></b>/9</span>
+                                          <div class="progress progress-sm">
+                                            <div class="progress-bar bg-success" style="width: 100%"></div>
+                                          </div>
+                                        </div>
+                                      <?php
+                                    }?>
+                                    </td>
                                       <!-- <td>
                                         <div class="progress progress-sm">
                                           <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
@@ -334,7 +545,10 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
 
 
 
-                                    <?php $i = $i + 1; } ?>
+                                    <?php 
+                                    $i = $i + 1; 
+                                  }
+                                    } ?>
                                     </tbody>
 
                                   </table>
@@ -351,13 +565,14 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                     </section>
                   </div>
                   <div class="tab-pane fade" id="tab-semua-panel" role="tabpanel" aria-labelledby="tab-semua">
+                    <!-- SEMUA -->
                     <section class="content">
                         <div class="container-fluid">
                           <div class="row">
                             <div class="col-12">
                               <div class="card">
                                 <div class="card-body">
-                                  <table id="example1" class="table table-bordered table-striped">
+                                  <table id="tbl_example12" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
                                       <th>No</th>
@@ -371,7 +586,10 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $i = 1; foreach($bayi as $dta) { ?>
+                                    <?php $i = 1; foreach($bayi as $dta) { 
+                                      $imunisasi_bayi_semua = mysqli_query($conn, "SELECT * FROM tb_imunisasi WHERE bayi_id = '$dta[id_bayi]' AND status_imunisasi = 'Sudah' ");
+                                      $row_imunisasi_bayi_semua = mysqli_num_rows($imunisasi_bayi_semua);
+                                      ?>
                                     <tr>
                                       <td style="text-align:center"><?= $i ?></td>
                                       <td style="text-align: center">
@@ -391,13 +609,109 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                         }
                                       ?>
                                       <td><?= $dta['tanggal_lahir_bayi'] ?></td>
+                                      
+                                    <td style="text-align:center">
                                       <?php
-                                        if ($dta['status_bayi']=="Active"){
-                                          echo " <td style='text-align:center'><span class='badge bg-primary'> $dta[status_bayi] </span>";
-                                        } else{
-                                          echo " <td style='text-align:center'><span class='badge bg-warning'> $dta[status_bayi] </span>";
-                                        }
+                                    if ($row_imunisasi_bayi_semua <= 1) {
                                       ?>
+                                        <div class="progress-group">
+                                          Imunisasi
+                                          <span class="float-right"><b><?= $row_imunisasi_bayi_semua ?></b>/9</span>
+                                          <div class="progress progress-sm">
+                                            <div class="progress-bar bg-danger" style="width: 5%"></div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <?php
+                                    } else if ($row_imunisasi_bayi_semua <= 2) {
+                                      ?>
+                                            <div class="progress-group">
+                                              Imunisasi
+                                              <span class="float-right"><b><?= $row_imunisasi_bayi_semua ?></b>/9</span>
+                                              <div class="progress progress-sm">
+                                                <div class="progress-bar bg-danger" style="width: 15%"></div>
+                                              </div>
+                                            </div>
+                                          </td>
+                                      <?php
+                                    } else if ($row_imunisasi_bayi_semua <= 3) {
+                                            ?>
+                                                <div class="progress-group">
+                                                  Imunisasi
+                                                  <span class="float-right"><b><?= $row_imunisasi_bayi_semua ?></b>/9</span>
+                                                  <div class="progress progress-sm">
+                                                    <div class="progress-bar bg-danger" style="width: 30%"></div>
+                                                  </div>
+                                                </div>
+                                              </td>
+                                            <?php
+                                    } else if ($row_imunisasi_bayi_semua <= 4) {
+                                        ?>
+                                            <div class="progress-group">
+                                              Imunisasi
+                                              <span class="float-right"><b><?= $row_imunisasi_bayi_semua ?></b>/9</span>
+                                              <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 45%"></div>
+                                              </div>
+                                            </div>
+                                          </td>
+                                      <?php
+                                    } else if ($row_imunisasi_bayi_semua <= 5) {
+                                      ?>
+                                        <div class="progress-group">
+                                          Imunisasi
+                                          <span class="float-right"><b><?= $row_imunisasi_bayi_semua ?></b>/9</span>
+                                          <div class="progress progress-sm">
+                                            <div class="progress-bar bg-warning" style="width: 55%"></div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <?php
+                                    }else if ($row_imunisasi_bayi_semua <= 6) {
+                                        ?>
+                                          <div class="progress-group">
+                                            Imunisasi
+                                            <span class="float-right"><b><?= $row_imunisasi_bayi_semua ?></b>/9</span>
+                                            <div class="progress progress-sm">
+                                              <div class="progress-bar bg-warning" style="width: 65%"></div>
+                                            </div>
+                                          </div>
+                                        </td>
+                                      <?php
+                                    }else if ($row_imunisasi_bayi_semua <= 7) {
+                                          ?>
+                                            <div class="progress-group">
+                                              Imunisasi
+                                              <span class="float-right"><b><?= $row_imunisasi_bayi_semua ?></b>/9</span>
+                                              <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 75%"></div>
+                                              </div>
+                                            </div>
+                                          </td>
+                                        <?php
+                                    }else if ($row_imunisasi_bayi_semua <= 8) {
+                                            ?>
+                                              <div class="progress-group">
+                                                Imunisasi
+                                                <span class="float-right"><b><?= $row_imunisasi_bayi_semua ?></b>/9</span>
+                                                <div class="progress progress-sm">
+                                                  <div class="progress-bar bg-warning" style="width: 85%"></div>
+                                                </div>
+                                              </div>
+                                            </td>
+                                          <?php
+                                    } else {
+                                      ?>
+                                        <div class="progress-group">
+                                          Imunisasi
+                                          <span class="float-right"><b><?= $row_imunisasi_bayi_semua ?></b>/9</span>
+                                          <div class="progress progress-sm">
+                                            <div class="progress-bar bg-success" style="width: 100%"></div>
+                                          </div>
+                                        </div>
+                                      <?php
+                                    }?>
+                                    </td>
                                       <!-- <td>
                                         <div class="progress progress-sm">
                                           <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
