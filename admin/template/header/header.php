@@ -287,7 +287,10 @@ $nama_header = $get_data_admin['nama_admin'];
           </li>
 
           <li class="nav-item">
-            <a href="../../admin/imunisasi/data.php?tahun=All" class="nav-link">
+            <?php
+              $tahun_now = date("Y");
+            ?>
+            <a href="../../admin/imunisasi/data.php?tahun=<?= $tahun_now ?>" class="nav-link">
               <i class="nav-icon fa fa-stethoscope"></i>
               <p>
                 Imunisasi Bayi

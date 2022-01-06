@@ -52,6 +52,7 @@ if ($tahun == "All"){
                         if ($tahun == "All"){
                           echo '
                               <option selected="selected" value="All">- Semua -</option>
+                              <option value="'.$tahun_now.'">'.$tahun_now.'</option>
                               <option value="2021">2021</option>
                               <option value="2020">2020</option>
                               <option value="2019">2019</option>
@@ -59,6 +60,7 @@ if ($tahun == "All"){
                         } else if ($tahun == "2021"){
                           echo '
                               <option value="All">- Semua -</option>
+                              <option value="'.$tahun_now.'">'.$tahun_now.'</option>
                               <option selected="selected" value="2021">2021</option>
                               <option value="2020">2020</option>
                               <option value="2019">2019</option>
@@ -66,6 +68,7 @@ if ($tahun == "All"){
                         }  else if ($tahun == "2020"){
                           echo '
                               <option value="All">- Semua -</option>
+                              <option value="'.$tahun_now.'">'.$tahun_now.'</option>
                               <option  value="2021">2021</option>
                               <option selected="selected" value="2020">2020</option>
                               <option value="2019">2019</option>
@@ -73,9 +76,18 @@ if ($tahun == "All"){
                         } else if ($tahun == "2019"){
                           echo '
                               <option value="All">- Semua -</option>
+                              <option value="'.$tahun_now.'">'.$tahun_now.'</option>
                               <option value="2021">2021</option>
                               <option value="2020">2020</option>
                               <option selected="selected" value="2019">2019</option>
+                          ';
+                        } else {
+                          echo '
+                              <option value="All">- Semua -</option>
+                              <option selected="selected" value="'.$tahun.'">'.$tahun.'</option>
+                              <option value="2021">2021</option>
+                              <option value="2020">2020</option>
+                              <option value="2019">2019</option>
                           ';
                         }
                       ?>
