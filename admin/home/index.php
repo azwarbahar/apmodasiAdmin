@@ -1,7 +1,7 @@
 
 <?php
 
-require '../template/header/header.php';
+// require '../template/header/header.php';
 // $result= mysqli_query($conn,'SELECT * FROM tb_hasil_akhir_mahasiswa');
 ?>
 
@@ -121,7 +121,8 @@ require '../template/header/header.php';
                 <h3 class="card-title">GRAFIK IMUNISASI</h3>
               </div>
               <div class="card-body">
-                
+                <!-- GRAFIK -->
+
               </div>
             </div>
           </div>
