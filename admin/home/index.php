@@ -116,13 +116,79 @@ require '../template/header/header.php';
 
         <div class="row">
            <div class="col-12">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">GRAFIK IMUNISASI</h3>
+            <div class="card card-primary card-tabs">
+              <div class="card-header p-0 pt-1">
+                <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+                  <li class="pt-2 px-3"><h3 class="card-title">Data imunisasi</h3></li>
+                  <li class="nav-item">
+                    <a class="nav-link active" id="custom-tabs-two-grafik-tab" data-toggle="pill" href="#custom-tabs-two-grafik" role="tab" aria-controls="custom-tabs-two-grafik" aria-selected="true">Grafik</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-two-tabel-tab" data-toggle="pill" href="#custom-tabs-two-tabel" role="tab" aria-controls="custom-tabs-two-tabel" aria-selected="false">Tabel</a>
+                  </li>
+                </ul>
               </div>
               <div class="card-body">
-                <!-- GRAFIK -->
+                <div class="tab-content" id="custom-tabs-two-tabContent">
+                  <!-- GRAFIK -->
+                  <div class="tab-pane fade show active" id="custom-tabs-two-grafik" role="tabpanel" aria-labelledby="custom-tabs-two-grafik-tab">
+                    <div id="container22"></div>
+                  </div>
+                  <!-- TABEL -->
+                  <div class="tab-pane fade" id="custom-tabs-two-tabel" role="tabpanel" aria-labelledby="custom-tabs-two-tabel-tab">
+                    <div class="card-body p-0">
+                      <table class="table table-bordered" id="datatable1">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>BCG</th>
+                            <th>Polio 1</th>
+                            <th>DPT-HB-Hib 1</th>
+                            <th>Polio 2</th>
+                            <th>DPT-HB-Hib 2</th>
+                            <th>Polio 3</th>
+                            <th>DPT-HB-Hib 3</th>
+                            <th>Polio 4</th>
+                            <th>Campak</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                              $imunisasi_tahun = mysqli_query($conn, "SELECT * FROM tb_imunisasi GROUP BY YEAR(tanggal_imunisasi) ");
+                              foreach($imunisasi_tahun as $dta_imunisasi_tahun) {
+                            ?>
+                            <?php
+                              if ($dta_imunisasi_tahun['tanggal_imunisasi'] != "-"){
+                            ?>
+                          <tr>
+                            <?php
+                              $tahun_ini = substr($dta_imunisasi_tahun['tanggal_imunisasi'],0,4);
+                            ?>
+                            <th><?=  $tahun_ini ?></th>
+                            <?php
+                              $imunisasi_array = array("BCG", "Polio 1", "DPT-HB-Hib 1", "Polio 2",
+                                                      "DPT-HB-Hib 2", "Polio 3", "DPT-HB-Hib 3",
+                                                      "Polio 4", "CAMPAK");
+                              foreach ($imunisasi_array as $dta_imunisasi_array){
+                                $result_imun = mysqli_query($conn,"SELECT * FROM tb_imunisasi WHERE nama_imunisasi = '$dta_imunisasi_array' AND
+                                                                    status_imunisasi = 'Sudah' AND year(tanggal_imunisasi) =  $tahun_ini ");
+                                $row_imun = mysqli_num_rows($result_imun);
+                                ?>
+                                <td style="text-align:center"><?= $row_imun ?></td>
+                                <?php
+                              }
+                            ?>
+                          </tr>
+                            <?php
+                                }
+                              }
+                            ?>
+                        </tbody>
+                      </table>
 
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -204,49 +270,67 @@ require '../template/header/header.php';
 	<script src="../../assets/dist/js1/highcharts.js"></script>
 	<script src="../../assets/dist/js1/exporting.js"></script>
 
-
-
-
+<?php
+ $data_tahun_grafik = array();
+  $imunisasi_tahun_grafik = mysqli_query($conn, "SELECT * FROM tb_imunisasi GROUP BY YEAR(tanggal_imunisasi) ");
+  foreach($imunisasi_tahun as $dta_imunisasi_tahun) {
+    if ($dta_imunisasi_tahun['tanggal_imunisasi'] != "-"){
+      $data_tahun_grafik[] = array(substr($dta_imunisasi_tahun['tanggal_imunisasi'],0,4));
+    }
+  }
+?>
 <!-- page script -->
 <script>
-
-	var chart11; // globally available
+   var tahun_imunisasi = <?php echo json_encode($data_tahun_grafik) ?>;
+   var fdf = [32, 45, 32];
+	var chart12; // globally available
   $(function () {
 
-    chart11 = new Highcharts.Chart({
+    chart12 = new Highcharts.Chart({
 	         chart: {
-	            renderTo: 'container2',
+             renderTo: 'container22',
 	            type: 'column'
 	         },
 	         title: {
-	            text: 'Grafik Perangkingan '
+	            text: 'Grafik Tahun Imunisasi '
 	         },
 	         xAxis: {
-	            categories: ['Mahasiswa']
+	            categories: tahun_imunisasi
 	         },
 	         yAxis: {
+              allowDecimals: false,
 	            title: {
 	               text: 'Nilai'
 	            }
 	         },
-	              series:
-	            [
+	         series: [
 	            <?php
-              $kelurahan_array = array("Balang Baru", "Barombong", "Bongaya",
-                                       "Bonto Duri", "Jongaya", "Maccini Sombala", "Mangasa",
-                                       "Mannuruki", "Pabaeng-Baeng", "Parang Tambung", "Tanjung Merdeka");
-              foreach ($kelurahan_array as $dta_kelurahan_array){
-                $result= mysqli_query($conn,"SELECT SUM(berat_sampah) AS total_berat FROM tb_laporan_petugas WHERE kelurahan = '$dta_kelurahan_array' ");
-                $row = mysqli_fetch_assoc($result)
-	                  ?>
-	                 //data yang diambil dari database dimasukan ke variable nama dan data
-	                 //
-	                  {	name: '<?php echo $dta_kelurahan_array ?>',
-	                    data: [<?php echo $row['total_berat'] ?>]
-	                  },
-	                  <?php } ?>
-	            ]
-	      });
+                $imunisasi_array_grafik = array("BCG", "Polio 1", "DPT-HB-Hib 1", "Polio 2",
+                                          "DPT-HB-Hib 2", "Polio 3", "DPT-HB-Hib 3",
+                                          "Polio 4", "CAMPAK");
+                foreach ($imunisasi_array_grafik as $name_imunisasi_array_grafik){
+                  $value_imun_grafik = array();
+                  $tahun = 2019;
+                  foreach ($data_tahun_grafik as $dta_data_tahun_grafik){
+                      $result_imun_grafik = mysqli_query($conn,"SELECT * FROM tb_imunisasi WHERE nama_imunisasi = '$name_imunisasi_array_grafik' AND
+                                                          status_imunisasi = 'Sudah' AND year(tanggal_imunisasi) =  $tahun ");
+                      $value_imun_grafik[] = array(mysqli_num_rows($result_imun_grafik));
+                      $tahun++;
+                  }
+	            ?>
+              {
+              name: '<?php  $name_imunisasi_array_grafik ?>',
+              data: <?php echo json_encode( $value_imun_grafik); ?>
+            },
+	                  // {	name: '',
+	            <?php
+                  //  $value_imun_grafik = array();
+                } ?>
+	         ],
+            exporting: {
+              enabled: false
+            }
+	  });
 
 
     $(document).on('click', '[data-toggle="lightbox"]', function(event) {
