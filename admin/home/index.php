@@ -300,7 +300,7 @@ require '../template/header/header.php';
 	         yAxis: {
               allowDecimals: false,
 	            title: {
-	               text: 'Nilai'
+	               text: 'Jumlah'
 	            }
 	         },
 	         series: [
