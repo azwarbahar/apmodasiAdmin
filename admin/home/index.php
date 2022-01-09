@@ -319,7 +319,7 @@ require '../template/header/header.php';
                   }
 	            ?>
               {
-              name: '<?php  $name_imunisasi_array_grafik ?>',
+              name: '<?php  echo $name_imunisasi_array_grafik ?>',
               data: <?php echo json_encode( $value_imun_grafik); ?>
             },
 	                  // {	name: '',
