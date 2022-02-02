@@ -16,6 +16,7 @@ if (isset($_GET['aktif_bayi'])) {
 	$keterangan_imunisasi = array("Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib", "Wajib");
 	$interval_imunisasi = array("0 - 11 Bulan", "0 - 11 Bulan", "2 - 11 Bulan", "2 - 11 Bulan", "3 - 11 Bulan", "3 - 11 Bulan", "4 - 11 Bulan", "4 - 11 Bulan", "9 - 11 Bulan", );
 
+	$jenis_kelamin_bayi = $_GET['jenis_kelamin_bayi'];
 	$usia_bayi_imunisasi = "-";
 	$kader_id = "-";
 	$status_imunisasi = "Belum";
@@ -29,6 +30,7 @@ if (isset($_GET['aktif_bayi'])) {
 												'$no_imunisasi[$x]',
 												'$nama_imunisasi[$x]',
 												'$usia_bayi_imunisasi',
+												'$jenis_kelamin_bayi',
 												'$kader_id',
 												'$status_imunisasi',
 												'$catatan_imunisasi',
@@ -54,7 +56,7 @@ if (isset($_GET['aktif_bayi'])) {
 					text: 'Bayi berhasil diaktifkan',
 					icon: 'success'
 				}).then((data) => {
-					location.href = 'data.php';
+					location.href = 'data-terbaru.php';
 				});
 			});
 		</script>

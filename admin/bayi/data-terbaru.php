@@ -116,7 +116,7 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Menunggu
                         <?php
 
                           if ($dta['status_bayi'] == "Menunggu") {
-                            echo "<a href='controller.php?aktif_bayi=true&id_bayi=$dta[id_bayi]' class='dropdown-item'>Aktifkan</a>
+                            echo "<a href='controller.php?aktif_bayi=true&jenis_kelamin_bayi=$dta[jenis_kelamin_bayi]&id_bayi=$dta[id_bayi]' class='dropdown-item'>Aktifkan</a>
                                   <a href='#' data-toggle='modal' data-target='#modal-danger$dta[id_bayi] ?>' class='dropdown-item'>Hapus</a>
                             ";
                           } else {

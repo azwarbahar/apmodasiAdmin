@@ -119,7 +119,7 @@ require '../template/header/header.php';
             <div class="card card-primary card-tabs">
               <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                  <li class="pt-2 px-3"><h3 class="card-title">Data imunisasi</h3></li>
+                  <li class="pt-2 px-3"><h3 class="card-title">Data imunisasi Laki-laki</h3></li>
                   <li class="nav-item">
                     <a class="nav-link active" id="custom-tabs-two-grafik-tab" data-toggle="pill" href="#custom-tabs-two-grafik" role="tab" aria-controls="custom-tabs-two-grafik" aria-selected="true">Grafik</a>
                   </li>
@@ -171,7 +171,7 @@ require '../template/header/header.php';
                                                       "Polio 4", "CAMPAK");
                               foreach ($imunisasi_array as $dta_imunisasi_array){
                                 $result_imun = mysqli_query($conn,"SELECT * FROM tb_imunisasi WHERE nama_imunisasi = '$dta_imunisasi_array' AND
-                                                                    status_imunisasi = 'Sudah' AND year(tanggal_imunisasi) =  $tahun_ini ");
+                                                                    jenis_kelamin_bayi_imunisasi = 'Laki - laki' AND status_imunisasi = 'Sudah' AND year(tanggal_imunisasi) =  $tahun_ini ");
                                 $row_imun = mysqli_num_rows($result_imun);
                                 ?>
                                 <td style="text-align:center"><?= $row_imun ?></td>
@@ -193,6 +193,90 @@ require '../template/header/header.php';
             </div>
           </div>
         </div>
+
+        <br>
+
+        
+        <div class="row">
+           <div class="col-12">
+            <div class="card card-warning card-tabs">
+              <div class="card-header p-0 pt-1">
+                <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+                  <li class="pt-2 px-3"><h3 class="card-title">Data imunisasi Perempuan</h3></li>
+                  <li class="nav-item">
+                    <a class="nav-link active" id="custom-tabs-two-grafik-tab-warning" data-toggle="pill" href="#custom-tabs-two-grafik-warning" role="tab" aria-controls="custom-tabs-two-grafik-warning" aria-selected="true">Grafik</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-two-tabel-tab-warning" data-toggle="pill" href="#custom-tabs-two-tabel-warning" role="tab" aria-controls="custom-tabs-two-tabel-warning" aria-selected="false">Tabel</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content" id="custom-tabs-two-tabContent">
+                  <!-- GRAFIK -->
+                  <div class="tab-pane fade show active" id="custom-tabs-two-grafik-warning" role="tabpanel" aria-labelledby="custom-tabs-two-grafik-tab-warning">
+                    <div id="container23"></div>
+                  </div>
+                  <!-- TABEL -->
+                  <div class="tab-pane fade" id="custom-tabs-two-tabel-warning" role="tabpanel" aria-labelledby="custom-tabs-two-tabel-tab-warning">
+                    <div class="card-body p-0">
+                      <table class="table table-bordered" id="datatable1">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>BCG</th>
+                            <th>Polio 1</th>
+                            <th>DPT-HB-Hib 1</th>
+                            <th>Polio 2</th>
+                            <th>DPT-HB-Hib 2</th>
+                            <th>Polio 3</th>
+                            <th>DPT-HB-Hib 3</th>
+                            <th>Polio 4</th>
+                            <th>Campak</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                              $imunisasi_tahun = mysqli_query($conn, "SELECT * FROM tb_imunisasi GROUP BY YEAR(tanggal_imunisasi) ");
+                              foreach($imunisasi_tahun as $dta_imunisasi_tahun) {
+                            ?>
+                            <?php
+                              if ($dta_imunisasi_tahun['tanggal_imunisasi'] != "-"){
+                            ?>
+                          <tr>
+                            <?php
+                              $tahun_ini = substr($dta_imunisasi_tahun['tanggal_imunisasi'],0,4);
+                            ?>
+                            <th><?=  $tahun_ini ?></th>
+                            <?php
+                              $imunisasi_array = array("BCG", "Polio 1", "DPT-HB-Hib 1", "Polio 2",
+                                                      "DPT-HB-Hib 2", "Polio 3", "DPT-HB-Hib 3",
+                                                      "Polio 4", "CAMPAK");
+                              foreach ($imunisasi_array as $dta_imunisasi_array){
+                                $result_imun = mysqli_query($conn,"SELECT * FROM tb_imunisasi WHERE nama_imunisasi = '$dta_imunisasi_array' AND
+                                                                    jenis_kelamin_bayi_imunisasi = 'Perempuan' AND status_imunisasi = 'Sudah' AND year(tanggal_imunisasi) =  $tahun_ini ");
+                                $row_imun = mysqli_num_rows($result_imun);
+                                ?>
+                                <td style="text-align:center"><?= $row_imun ?></td>
+                                <?php
+                              }
+                            ?>
+                          </tr>
+                            <?php
+                                }
+                              }
+                            ?>
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- /.row (main row) -->
 
       </div><!-- /.container-fluid -->
@@ -282,8 +366,8 @@ require '../template/header/header.php';
 <!-- page script -->
 <script>
    var tahun_imunisasi = <?php echo json_encode($data_tahun_grafik) ?>;
-   var fdf = [32, 45, 32];
 	var chart12; // globally available
+  var chart13;
   $(function () {
 
     chart12 = new Highcharts.Chart({
@@ -292,7 +376,7 @@ require '../template/header/header.php';
 	            type: 'column'
 	         },
 	         title: {
-	            text: 'Grafik Tahun Imunisasi '
+	            text: 'Grafik Tahun Imunisasi Jenis Kelamin Laki-laki'
 	         },
 	         xAxis: {
 	            categories: tahun_imunisasi
@@ -313,7 +397,8 @@ require '../template/header/header.php';
                   $tahun = 2019;
                   foreach ($data_tahun_grafik as $dta_data_tahun_grafik){
                       $result_imun_grafik = mysqli_query($conn,"SELECT * FROM tb_imunisasi WHERE nama_imunisasi = '$name_imunisasi_array_grafik' AND
-                                                          status_imunisasi = 'Sudah' AND year(tanggal_imunisasi) =  $tahun ");
+                                                         jenis_kelamin_bayi_imunisasi = 'Laki - laki' AND status_imunisasi = 'Sudah' AND year(tanggal_imunisasi) =  $tahun ");
+                      
                       $value_imun_grafik[] = array(mysqli_num_rows($result_imun_grafik));
                       $tahun++;
                   }
@@ -331,6 +416,55 @@ require '../template/header/header.php';
               enabled: false
             }
 	  });
+
+
+    chart13 = new Highcharts.Chart({
+	         chart: {
+             renderTo: 'container23',
+	            type: 'column'
+	         },
+	         title: {
+	            text: 'Grafik Tahun Imunisasi Jenis Kelamin Perempuan'
+	         },
+	         xAxis: {
+	            categories: tahun_imunisasi
+	         },
+	         yAxis: {
+              allowDecimals: false,
+	            title: {
+	               text: 'Jumlah'
+	            }
+	         },
+	         series: [
+	            <?php
+                $imunisasi_array_grafik = array("BCG", "Polio 1", "DPT-HB-Hib 1", "Polio 2",
+                                          "DPT-HB-Hib 2", "Polio 3", "DPT-HB-Hib 3",
+                                          "Polio 4", "CAMPAK");
+                foreach ($imunisasi_array_grafik as $name_imunisasi_array_grafik){
+                  $value_imun_grafik = array();
+                  $tahun = 2019;
+                  foreach ($data_tahun_grafik as $dta_data_tahun_grafik){
+                      $result_imun_grafik = mysqli_query($conn,"SELECT * FROM tb_imunisasi WHERE nama_imunisasi = '$name_imunisasi_array_grafik' AND
+                                                         jenis_kelamin_bayi_imunisasi = 'Perempuan' AND status_imunisasi = 'Sudah' AND year(tanggal_imunisasi) =  $tahun ");
+                      
+                      $value_imun_grafik[] = array(mysqli_num_rows($result_imun_grafik));
+                      $tahun++;
+                  }
+	            ?>
+              {
+              name: '<?php  echo $name_imunisasi_array_grafik ?>',
+              data: <?php echo json_encode( $value_imun_grafik); ?>
+            },
+	                  // {	name: '',
+	            <?php
+                  //  $value_imun_grafik = array();
+                } ?>
+	         ],
+            exporting: {
+              enabled: false
+            }
+	  });
+
 
 
     $(document).on('click', '[data-toggle="lightbox"]', function(event) {
