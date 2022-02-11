@@ -204,7 +204,7 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                       <small>8/11</small>
                                     </td> -->
                                     <td style="text-align:center; width: 20px;">
-                                    <a href="#" data-toggle='modal' data-target='#modal-danger$dta[id_bayi]' class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></a>
+                                    <a href="#" data-toggle='modal' data-target='#modal-danger-berjalan-<?= $dta['id_bayi']?>' class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></a>
 
                                     </td>
                                   </tr>
@@ -260,7 +260,7 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                 <!-- /.modal -->
 
                                   <!-- Modal Hapus -->
-                                  <div class="modal fade" id="modal-danger<?= $dta['id_bayi'] ?>">
+                                  <div class="modal fade" id="modal-danger-berjalan-<?= $dta['id_bayi'] ?>">
                                     <div class="modal-dialog">
                                       <div class="modal-content bg-danger">
                                         <div class="modal-header">
@@ -464,7 +464,7 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                         <small>8/11</small>
                                       </td> -->
                                       <td style="text-align:center; width: 20px;">
-                                      <a href="#" data-toggle='modal' data-target='#modal-danger$dta[id_bayi]' class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></a>
+                                      <a href="#" data-toggle='modal' data-target='#modal-danger-selesai-<?= $dta['id_bayi']?>' class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></a>
 
                                       </td>
                                     </tr>
@@ -520,7 +520,7 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                   <!-- /.modal -->
 
                                     <!-- Modal Hapus -->
-                                    <div class="modal fade" id="modal-danger<?= $dta['id_bayi'] ?>">
+                                    <div class="modal fade" id="modal-danger-selesai-<?= $dta['id_bayi'] ?>">
                                       <div class="modal-dialog">
                                         <div class="modal-content bg-danger">
                                           <div class="modal-header">
@@ -720,7 +720,7 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                         <small>8/11</small>
                                       </td> -->
                                       <td style="text-align:center; width: 20px;">
-                                      <a href="#" data-toggle='modal' data-target='#modal-danger$dta[id_bayi]' class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></a>
+                                      <a href="#" data-toggle='modal' data-target='#modal-danger-semua-<?= $dta['id_bayi'] ?>' class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></a>
 
                                       </td>
                                     </tr>
@@ -776,7 +776,7 @@ $bayi = mysqli_query($conn, "SELECT * FROM tb_bayi WHERE status_bayi = 'Active'"
                                   <!-- /.modal -->
 
                                     <!-- Modal Hapus -->
-                                    <div class="modal fade" id="modal-danger<?= $dta['id_bayi'] ?>">
+                                    <div class="modal fade" id="modal-danger-semua-<?= $dta['id_bayi'] ?>">
                                       <div class="modal-dialog">
                                         <div class="modal-content bg-danger">
                                           <div class="modal-header">
